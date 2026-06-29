@@ -1,0 +1,99 @@
+/* ===================== DESIGN TOKENS ===================== */
+:root {
+  /* Brand */
+  --clr-primary: #6211ED;
+  --clr-primary-light: rgba(98, 17, 237, 0.15);
+  --clr-primary-mid: rgba(98, 17, 237, 0.25);
+  --clr-primary-hover: rgba(98, 17, 237, 0.40);
+  --clr-primary-text: #3000b3;
+
+  --clr-secondary: #2575FC;
+  --clr-secondary-dark: #002CCB;
+  --clr-grad-main: linear-gradient(135deg, #6a11ff, #2575fc);
+
+  --clr-accent: #FF4646;
+  --clr-accent-grad: linear-gradient(135deg, #ff2e2edf, #ff7818de);
+
+  /* Background */
+  --clr-bg: #E5E5F7;
+  --clr-bg-dot: #444CF7;
+  --clr-surface-glass: rgba(255, 255, 255, 0.195);
+  --clr-surface-white: rgba(255, 255, 255, 0.35);
+  --clr-surface-card: rgba(98, 98, 98, 0.19);
+  --clr-overlay-modal: rgba(98, 17, 237, 0.12);
+
+  /* Gradients */
+  --clr-grad-teal: linear-gradient(133deg,
+      rgba(42, 123, 155, 0) 0%,
+      rgba(87, 119, 199, 0) 26%,
+      rgba(83, 116, 237, 0.4) 100%);
+  --clr-grad-teal-rev: linear-gradient(319deg,
+      rgba(42, 123, 155, 0) 0%,
+      rgba(87, 119, 199, 0) 26%,
+      rgba(83, 116, 237, 0.4) 100%);
+  --clr-grad-section: linear-gradient(135deg,
+      rgba(42, 123, 155, 0.18),
+      rgba(82, 24, 255, 0.12));
+  --clr-grad-section-sm: linear-gradient(135deg,
+      rgba(42, 123, 155, 0.14),
+      rgba(82, 24, 255, 0.10));
+  --clr-grad-blue: linear-gradient(160deg,
+      rgb(192, 210, 255),
+      rgb(167, 139, 250));
+  --clr-grad-overlay: linear-gradient(to top,
+      rgba(83, 116, 237, 0.999),
+      transparent 60%);
+  --clr-grad-offer: linear-gradient(133deg,
+      rgba(42, 123, 155, 0.26) 0%,
+      rgba(87, 119, 199, 0) 20%,
+      rgba(83, 116, 237, 0.29) 100%);
+  --clr-grad-cat: linear-gradient(135deg,
+      rgba(87, 119, 199, 0),
+      rgba(83, 116, 237, 0.4));
+
+  /* Text */
+  --clr-text: #1C1C1E;
+  --clr-text-muted: rgba(0, 0, 0, 0.6);
+  --clr-text-faint: rgba(0, 0, 0, 0.344);
+  --clr-text-white: #ffffff;
+
+  /* Purple tones */
+  --clr-purple-bar: rgb(131, 125, 216);
+  --clr-purple-light: rgb(179, 192, 255);
+  --clr-purple-card: rgba(167, 139, 250, 0.743);
+  --clr-purple-hover: rgba(167, 139, 250, 0.4);
+
+  /* Border / Shadow */
+  --clr-border: rgba(255, 255, 255, 0.12);
+  --clr-border-dark: rgba(42, 42, 42, 0.15);
+  --clr-border-blue: rgba(17, 0, 255, 0.634);
+  --clr-border-purple: rgba(167, 139, 250, 0.4);
+  --clr-shadow: rgba(0, 0, 0, 0.35);
+  --clr-shadow-sm: rgba(0, 0, 0, 0.15);
+  --clr-shadow-card: rgba(0, 0, 0, 0.317);
+
+  /* Scrollbar */
+  --sb-track-color: #ffffff6b;
+  --sb-thumb-color: #5863fdbe;
+  --sb-size: 8px;
+
+  /* Status Colors */
+
+  --clr-success-bg: rgba(34, 197, 94, 0.28);
+  --clr-success-text: #156c35;
+
+  --clr-info-bg: rgba(59, 130, 246, 0.15);
+  --clr-info-text: #2563eb;
+
+  --clr-warning-bg: rgba(234, 178, 8, 0.441);
+  --clr-warning-text: #8a5f00;
+
+  --clr-danger-bg: rgba(239, 68, 68, 0.15);
+  --clr-danger-text: #dc2626;
+
+  --clr-state-neutral-bg: rgba(100, 100, 100, 0.15);
+  --clr-state-neutral-text: #3f3f3f;
+
+}
+
+/* ========================================================= */

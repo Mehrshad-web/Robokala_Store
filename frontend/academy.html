@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="components/bootstrap/bootstrap.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+    <link rel="stylesheet" href="components/css/root.css">
+    <link rel="stylesheet" href="components/css/body.css">
+    <link rel="stylesheet" href="components/css/navbar.css">
+    <link rel="stylesheet" href="components/css/components.css">
+    <link rel="stylesheet" href="css/academy/academy.css">
+    <link rel="stylesheet" href="components/css/footer.css">
+    <title>آموزش | RoboKala</title>
+</head>
+
+<body>
+    <!-- navbar -->
+    <nav class="nav-wrap">
+        <div class="Byisland ms-2 byLogo" id="byLogo" style="--dir: 22rem">
+            <a href="#">
+                <div class="logo p-1">
+                    <div class="logo-dot"></div>
+                    <span>RoboKala</span>
+                </div>
+            </a>
+        </div>
+
+        <div class="island" id="island">
+            <div class="links">
+                <button class="lnk">خانه</button>
+                <button class="lnk">محصولات</button>
+                <button class="lnk active">پکیج ها</button>
+                <button class="lnk"><i class="ti ti-shopping-cart"></i></button>
+            </div>
+            <div class="search-wrapper" id="searchWrapper">
+                <input type="text" class="search-input" id="searchInput" placeholder="جستجو...">
+
+                <button class="nav-search" id="searchBtn">
+                    <img src="img/search.png" alt="">
+                </button>
+            </div>
+            <div class="peek-bar"></div>
+        </div>
+
+        <div class="Byisland account me-2" id="bybtn" style="--dir: -22rem">
+            <img class="img-account" src="img/account.png" alt="account">
+        </div>
+    </nav>
+
+    <section class="academy-page">
+
+        <!-- top tap article/video-->
+        <div class="academy-header">
+            <div class="academy-tabs  glass-card">
+                <button class="academy-tab active" data-tab="articles">
+                    <i class="ti ti-article"></i> مقالات
+                </button>
+                <button class="academy-tab" data-tab="videos">
+                    <i class="ti ti-player-play"></i> ویدیوها
+                </button>
+            </div>
+        </div>
+
+        <!-- category list-->
+        <div class="category-filter" id="categoryFilter">
+            <button class="category-pill active">همه</button>
+            <button class="category-pill">آردوینو</button>
+            <button class="category-pill">رزبری پای</button>
+            <button class="category-pill">سنسورها</button>
+            <button class="category-pill">پایتون</button>
+            <button class="category-pill">رباتیک پیشرفته</button>
+        </div>
+
+        <!-- ================= article ================= -->
+        <div class="academy-section active" id="section-articles">
+            <div class="articles-grid">
+
+                <div class="article-card glass-card">
+                    <div class="article-img">
+                        <img src="img/edu/ardoino2.jpeg" alt="">
+                        <span class="article-cat-badge">آردوینو</span>
+                    </div>
+                    <div class="article-body">
+                        <h3 class="article-title">آموزش راه‌اندازی اولین پروژه آردوینو</h3>
+                        <p class="article-excerpt">در این مقاله قدم به قدم یاد می‌گیرید چطور اولین پروژه خودتون رو با
+                            آردوینو شروع کنید.</p>
+                        <div class="article-meta">
+                            <span><i class="ti ti-calendar"></i> ۱۴۰۳/۳/۱۰</span>
+                            <span><i class="ti ti-clock"></i> ۸ دقیقه مطالعه</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="article-card glass-card">
+                    <div class="article-img">
+                        <img src="img/edu/robatic.jpeg" alt="">
+                        <span class="article-cat-badge">سنسورها</span>
+                    </div>
+                    <div class="article-body">
+                        <h3 class="article-title">معرفی کامل سنسور اولتراسونیک و کاربردها</h3>
+                        <p class="article-excerpt">سنسور HC-SR04 یکی از پرکاربردترین سنسورهای فاصله‌سنجی توی پروژه‌های
+                            رباتیکه.</p>
+                        <div class="article-meta">
+                            <span><i class="ti ti-calendar"></i> ۱۴۰۳/۲/۲۵</span>
+                            <span><i class="ti ti-clock"></i> ۵ دقیقه مطالعه</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="article-card glass-card">
+                    <div class="article-img">
+                        <img src="img/edu/micro.jpeg" alt="">
+                        <span class="article-cat-badge">پایتون</span>
+                    </div>
+                    <div class="article-body">
+                        <h3 class="article-title">شروع برنامه‌نویسی رزبری پای با پایتون</h3>
+                        <p class="article-excerpt">یادگیری پایه‌های پایتون برای کنترل پین‌های GPIO روی رزبری پای.</p>
+                        <div class="article-meta">
+                            <span><i class="ti ti-calendar"></i> ۱۴۰۳/۲/۱۸</span>
+                            <span><i class="ti ti-clock"></i> ۱۲ دقیقه مطالعه</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="article-card glass-card">
+                    <div class="article-img">
+                        <img src="img/edu/micro2.jpeg" alt="">
+                        <span class="article-cat-badge">سنسورها</span>
+                    </div>
+                    <div class="article-body">
+                        <h3 class="article-title">معرفی کامل سنسور اولتراسونیک و کاربردها</h3>
+                        <p class="article-excerpt">سنسور HC-SR04 یکی از پرکاربردترین سنسورهای فاصله‌سنجی توی پروژه‌های
+                            رباتیکه.</p>
+                        <div class="article-meta">
+                            <span><i class="ti ti-calendar"></i> ۱۴۰۳/۲/۲۵</span>
+                            <span><i class="ti ti-clock"></i> ۵ دقیقه مطالعه</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="article-card glass-card">
+                    <div class="article-img">
+                        <img src="img/edu/iot.jpeg" alt="">
+                        <span class="article-cat-badge">سنسورها</span>
+                    </div>
+                    <div class="article-body">
+                        <h3 class="article-title">معرفی کامل سنسور اولتراسونیک و کاربردها</h3>
+                        <p class="article-excerpt">سنسور HC-SR04 یکی از پرکاربردترین سنسورهای فاصله‌سنجی توی پروژه‌های
+                            رباتیکه.</p>
+                        <div class="article-meta">
+                            <span><i class="ti ti-calendar"></i> ۱۴۰۳/۲/۲۵</span>
+                            <span><i class="ti ti-clock"></i> ۵ دقیقه مطالعه</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="article-card glass-card">
+                    <div class="article-img">
+                        <img src="img/edu/ardoino.jpeg" alt="">
+                        <span class="article-cat-badge">سنسورها</span>
+                    </div>
+                    <div class="article-body">
+                        <h3 class="article-title">معرفی کامل سنسور اولتراسونیک و کاربردها</h3>
+                        <p class="article-excerpt">سنسور HC-SR04 یکی از پرکاربردترین سنسورهای فاصله‌سنجی توی پروژه‌های
+                            رباتیکه.</p>
+                        <div class="article-meta">
+                            <span><i class="ti ti-calendar"></i> ۱۴۰۳/۲/۲۵</span>
+                            <span><i class="ti ti-clock"></i> ۵ دقیقه مطالعه</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!-- pagination -->
+            <div class="academy-pagination">
+                <button class="page-btn active">1</button>
+                <button class="page-btn">2</button>
+                <button class="page-btn">3</button>
+            </div>
+        </div>
+
+        <!-- ================= videos ================= -->
+        <div class="academy-section" id="section-videos">
+            <div class="videos-grid">
+
+                <div class="video-card glass-card">
+                    <div class="video-thumb">
+                        <img src="img/edu/ardoino2.jpeg" alt="">
+                        <div class="video-play-btn"><i class="ti ti-player-play-filled"></i></div>
+                        <span class="video-duration">۱۲:۳۴</span>
+                        <span class="video-cat-badge">آردوینو</span>
+                    </div>
+                    <div class="video-body">
+                        <h3 class="video-title">آموزش ساخت ربات دنبال‌کننده خط</h3>
+                        <div class="video-meta">
+                            <span>۱۴۰۳/۳/۵</span>
+                            <span><i class="ti ti-eye"></i> ۲,۴۰۰ بازدید</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="video-card glass-card">
+                    <div class="video-thumb">
+                        <img src="img/edu/ardoino.jpeg" alt="">
+                        <div class="video-play-btn"><i class="ti ti-player-play-filled"></i></div>
+                        <span class="video-duration">۰۸:۱۲</span>
+                        <span class="video-cat-badge">رزبری پای</span>
+                    </div>
+                    <div class="video-body">
+                        <h3 class="video-title">نصب سیستم‌عامل روی رزبری پای از صفر</h3>
+                        <div class="video-meta">
+                            <span>۱۴۰۳/۲/۲۲</span>
+                            <span><i class="ti ti-eye"></i> ۱,۸۰۰ بازدید</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="video-card glass-card">
+                    <div class="video-thumb">
+                        <img src="img/edu/micro.jpeg" alt="">
+                        <div class="video-play-btn"><i class="ti ti-player-play-filled"></i></div>
+                        <span class="video-duration">۱۵:۴۵</span>
+                        <span class="video-cat-badge">رباتیک پیشرفته</span>
+                    </div>
+                    <div class="video-body">
+                        <h3 class="video-title">ساخت بازوی رباتیک کنترل‌شونده با موبایل</h3>
+                        <div class="video-meta">
+                            <span>۱۴۰۳/۱/۳۰</span>
+                            <span><i class="ti ti-eye"></i> ۳,۱۰۰ بازدید</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- pagination -->
+            <div class="academy-pagination">
+                <button class="page-btn active">1</button>
+                <button class="page-btn">2</button>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- footer -->
+    <footer class="site-footer">
+        <div class="footer-wrap">
+            <!-- about -->
+            <div class="f-col">
+                <div class="f-title">RoboKala</div>
+                <p class="f-text">
+                    مرجع فروش قطعات رباتیک و آموزش‌های تخصصی میکروکنترلر و الکترونیک
+                </p>
+                <div class="f__badges">
+                    <div>✔ ضمانت کیفیت</div>
+                    <div>✔ ارسال سریع</div>
+                    <div>✔ پشتیبانی ۲۴/۷</div>
+                </div>
+            </div>
+            <!-- links -->
+            <div class="f-col">
+                <div class="f-title">لینک‌های سریع</div>
+                <a href="#">خانه</a>
+                <a href="#">محصولات</a>
+                <a href="#">تخفیف‌ها</a>
+                <a href="#">مقالات</a>
+            </div>
+            <!-- learning -->
+            <div class="f-col">
+                <div class="f-title">آموزش‌ها</div>
+                <a href="#">Arduino</a>
+                <a href="#">AVR</a>
+                <a href="#">رباتیک</a>
+                <a href="#">پروژه‌ها</a>
+            </div>
+            <!-- contact -->
+            <div class="f-col">
+                <div class="f-title">ارتباط با ما</div>
+                <div class="f-contact">
+                    <div>📞 0912xxxxxxx</div>
+                    <div>✉ info@robokala.ir</div>
+                </div>
+                <div class="f-social">
+                    <span>Social-1</span>
+                    <span>Social-2</span>
+                    <span>Social-3</span>
+                </div>
+            </div>
+        </div>
+        <div class="f-bottom">
+            © 2026 RoboKala - All rights reserved
+        </div>
+        <div class="site-credit" dir="ltr">
+            Designed with ❤️ by
+            <span><a href="https://sinafiruzian.ir/">Sinos60!</a></span> | Backend Powered by <span><a href="https://mehrshad-web.github.io/Profile/" target="_blank">Mehrshad</a></span>
+
+        </div>
+    </footer>
+
+    <!-- ============ script ============== -->
+    <!-- navbar -->
+    <script src="components/js/navbar.js"></script>
+    <!-- academy -->
+    <script src="js/academy/academy.js"></script>
+</body>
+
+</html>

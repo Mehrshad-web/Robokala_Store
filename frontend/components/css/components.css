@@ -1,0 +1,27 @@
+.glass-card {
+    background: var(--clr-grad-section);
+    backdrop-filter: blur(2px);
+    border: 1px solid var(--clr-border-purple);
+    border-radius: 30px;
+    box-shadow: 0 0 10px var(--clr-shadow-card);
+    transition: transform .4s ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .glass-card:hover {
+        transform: scale(1.05);
+    }
+}
+
+.cart-title {
+    color: var(--clr-text-white);
+    font-size: 1.4rem;
+    margin: 110px auto 0;
+    padding: 10px;
+    width: 85%;
+    border-radius: 20px;
+    border: 1px solid var(--clr-border-purple);
+    background: var(--clr-primary);
+    text-align: center;
+    box-shadow: 0 0 5px var(--clr-shadow-card);
+}

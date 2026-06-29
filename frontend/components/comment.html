@@ -1,0 +1,98 @@
+ <link rel="stylesheet" href="css/comment-continer.css">
+ <!-- comments -->
+    <section class="comments-section">
+        <!-- ستون کامنت‌ها -->
+        <div class="comments-list" id="commentsList">
+            <h3>نظرات کاربران</h3>
+            <!-- نمونه کامنت -->
+            <div class="comment-card glass-card">
+                <div class="comment-header">
+                    <span class="comment-author">نام + فامیلی</span>
+                    <span class="comment-date">1405/12/6</span>
+                </div>
+                <p class="comment-text">محصول خیلی خوبیه، پیشنهاد میکنم.</p>
+                <button class="reply-toggle" onclick="toggleReply(this)">
+                    <i class="ti ti-message-reply"></i> پاسخ
+                </button>
+
+                <!-- reply ها -->
+                <div class="replies">
+                    <div class="comment-card reply-card glass-card">
+                        <div class="comment-header">
+                            <span class="comment-author">پشتیبانی RoboKala</span>
+                            <span class="comment-date">1405/2/5</span>
+                        </div>
+                        <p class="comment-text">ممنون از نظر شما!</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="comment-card glass-card">
+                <div class="comment-header">
+                    <span class="comment-author">نام + فامیلی</span>
+                    <span class="comment-date">1405/3/26</span>
+                </div>
+                <p class="comment-text">ارسال سریع بود، بسته‌بندی هم عالی.</p>
+                <button class="reply-toggle" onclick="toggleReply(this)">
+                    <i class="ti ti-message-reply"></i> پاسخ
+                </button>
+                <div class="replies"></div>
+            </div>
+
+            <div class="comment-card glass-card">
+                <div class="comment-header">
+                    <span class="comment-author">نام + فامیلی</span>
+                    <span class="comment-date">1405/3/26</span>
+                </div>
+                <p class="comment-text">ارسال سریع بود، بسته‌بندی هم عالی.</p>
+                <button class="reply-toggle" onclick="toggleReply(this)">
+                    <i class="ti ti-message-reply"></i> پاسخ
+                </button>
+                <div class="replies"></div>
+            </div>
+
+            <div class="comment-card glass-card">
+                <div class="comment-header">
+                    <span class="comment-author">نام + فامیلی</span>
+                    <span class="comment-date">1405/3/26</span>
+                </div>
+                <p class="comment-text">ارسال سریع بود، بسته‌بندی هم عالی.</p>
+                <button class="reply-toggle" onclick="toggleReply(this)">
+                    <i class="ti ti-message-reply"></i> پاسخ
+                </button>
+                <div class="replies"></div>
+            </div>
+
+            <div class="comment-card glass-card">
+                <div class="comment-header">
+                    <span class="comment-author">نام + فامیلی</span>
+                    <span class="comment-date">1405/3/26</span>
+                </div>
+                <p class="comment-text">ارسال سریع بود، بسته‌بندی هم عالی.</p>
+                <button class="reply-toggle" onclick="toggleReply(this)">
+                    <i class="ti ti-message-reply"></i> پاسخ
+                </button>
+                <div class="replies"></div>
+            </div>
+        </div>
+        <!-- ستون فرم -->
+        <div class="comment-form-sticky">
+            <div class="comment-form glass-card">
+                <h3>ثبت نظر</h3>
+
+                <div class="form-group user-info">
+                    <i class="ti ti-user-circle"></i>
+                    <span class="logged-user">نام + فامیلی</span> <!-- از session بیاد -->
+                </div>
+
+                <div class="form-group">
+                    <textarea class="form-input" rows="5" placeholder="نظرتون رو بنویسید..."></textarea>
+                </div>
+
+                <button class="submit-btn">ارسال نظر</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- comment -->
+    <script src="js/comments.js"></script>

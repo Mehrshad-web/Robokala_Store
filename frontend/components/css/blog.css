@@ -1,0 +1,48 @@
+/* ===================== blog ===================== */
+.blog-wrap {
+  width: min(1400px, 96%);
+  margin: 60px auto 0; padding: 20px; border-radius: 20px;
+  background: var(--clr-grad-section-sm);
+  backdrop-filter: blur(1px);
+}
+.blog-header { display: flex; justify-content: space-between; margin-bottom: 16px; }
+.blog-title  { font-size: 18px; font-weight: 800; }
+
+.blog-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+.blog-featured { position: relative; border-radius: 18px; overflow: hidden; height: 320px; }
+.blog-featured img { width: 100%; height: 100%; object-fit: cover; transition: 0.4s; }
+.blog-featured:hover img { transform: scale(1.05); }
+.blog-featured .overlay {
+  position: absolute; bottom: 0; width: 100%; padding: 16px;
+  background: linear-gradient(to top, rgba(83,116,237,0.591), transparent);
+  color: var(--clr-text-white);
+}
+.blog-featured .tag {
+  background: var(--clr-primary);
+  padding: 3px 10px; border-radius: 100px;
+  font-size: 11px; width: fit-content;
+}
+.blog-featured .title { font-size: 16px; font-weight: 700; margin-top: 6px; }
+
+.blog-list { display: flex; flex-direction: column; gap: 12px; }
+.blog-item {
+  display: flex; gap: 10px; align-items: center;
+  background: var(--clr-surface-white);
+  padding: 10px; border-radius: 12px;
+}
+.blog-item img { width: 60px; height: 60px; border-radius: 10px; object-fit: cover; }
+.blog-item .t  { font-size: 13px; font-weight: 600; }
+.blog-item .s  { font-size: 11px; opacity: 0.6; }
+.blog-more{text-decoration: none;position: absolute;bottom: 25px;right: 35px;background: var(--clr-primary);
+    padding: 10px 20px;width: 45%;text-align: center;color: var(--clr-text-white);border-radius: 10px;
+    transition: background .35s ease;}
+.blog-more:hover{background: var(--clr-primary-hover);}
+@media (max-width: 768px) {
+  .blog-layout    { grid-template-columns: 1fr; }
+  .blog-featured  { height: 220px; }
+  .blog-more{position: absolute;top: 17px;left: 0;right: 193px;
+    padding: 6px 15px;width: 36%;;
+    transition: background .35s ease;height: 35px;}
+}
+/* ================================================ */

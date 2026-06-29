@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="fa" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="components/bootstrap/bootstrap.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+    <link rel="stylesheet" href="components/css/root.css">
+    <link rel="stylesheet" href="components/css/components.css">
+    <link rel="stylesheet" href="components/css/warning-and-restor-msg.css">
+    <link rel="stylesheet" href="css/authentication/authentication.css">
+    <title>ورود | RoboKala</title>
+</head>
+
+<body>
+
+    <div class="auth-screen">
+        <!-- ================= visual panel ================= -->
+        <div class="visual-panel" dir="rtl">
+            <div class="floating-shape shape-1"></div>
+            <div class="floating-shape shape-2"></div>
+            <div class="floating-shape shape-3"></div>
+            <div class="floating-shape shape-4"></div>
+
+            <div class="visual-content">
+                <div class="visual-logo">
+                    <div class="visual-logo-icon"><i class="ti ti-robot"></i></div>
+                    RoboKala
+                </div>
+                <h1 class="visual-title">دنیای الکترونیک و روباتیک رو از اینجا شروع کن</h1>
+                <p class="visual-desc">
+                    پروژه‌های خودت رو بساز و از جدیدترین قطعات و آموزش‌ها بهره ببر.
+                </p>
+                <div class="visual-stats">
+                    <div>
+                        <div class="visual-stat-num">+۱۲هزار</div>
+                        <div class="visual-stat-label">کاربر فعال</div>
+                    </div>
+                    <div>
+                        <div class="visual-stat-num">+۸۰۰</div>
+                        <div class="visual-stat-label">محصول متنوع</div>
+                    </div>
+                    <div>
+                        <div class="visual-stat-num">۴.۸</div>
+                        <div class="visual-stat-label">رضایت کاربران</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bot-icon-orbit"><i class="ti ti-cpu"></i></div>
+        </div>
+
+        <!-- ================= form panel ================= -->
+        <div class="form-panel" dir="rtl">
+            <div class="auth-card auth-card-relative glass-card">
+
+                <div class="auth-greeting">
+                    <h2 id="greetingTitle">خوش برگشتی!</h2>
+                    <p id="greetingDesc">برای ادامه وارد حساب کاربری خودت شو</p>
+                </div>
+
+                <!-- swicher login/register-->
+                <div class="switch-pill">
+                    <div class="switch-pill-bg" id="switchBg"></div>
+                    <button type="button" class="active" id="btnLogin">ورود</button>
+                    <button type="button" id="btnRegister">ثبت‌نام</button>
+                </div>
+
+                <!-- forms-->
+                <div class="forms-viewport">
+                    <div class="forms-track" id="formsTrack">
+
+                        <!-- ================== register form ================ -->
+                        <form class="form-slide" id="registerForm">
+
+                            <div class="form-group">
+                                <label>نام و نام خانوادگی</label>
+                                <div class="input-wrap">
+                                    <i class="ti ti-user"></i>
+                                    <input type="text" class="auth-input" id="registerName" placeholder="نام + فامیلی">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>شماره موبایل</label>
+                                <div class="input-wrap">
+                                    <i class="ti ti-phone"></i>
+                                    <input type="tel" class="auth-input" id="registerPhone" placeholder="09xxxxxxxxx">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>ایمیل <span class="optional-tag">(اختیاری)</span></label>
+                                <div class="input-wrap">
+                                    <i class="ti ti-mail"></i>
+                                    <input type="email" class="auth-input" id="registerEmail"
+                                        placeholder="example@email.com">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>رمز عبور</label>
+                                <div class="input-wrap">
+                                    <i class="ti ti-lock"></i>
+                                    <input type="password" class="auth-input" id="registerPassword"
+                                        placeholder="حداقل ۸ کاراکتر">
+                                    <button type="button" class="pass-toggle" id="registerPassToggle">
+                                        <i class="ti ti-eye"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="otp-wrap" id="registerOtpWrap">
+                                <div class="form-group">
+                                    <label>کد تایید ارسال‌شده</label>
+                                    <div class="otp-inputs">
+                                        <input type="text" class="otp-input" maxlength="1">
+                                        <input type="text" class="otp-input" maxlength="1">
+                                        <input type="text" class="otp-input" maxlength="1">
+                                        <input type="text" class="otp-input" maxlength="1">
+                                        <input type="text" class="otp-input" maxlength="1">
+                                    </div>
+                                </div>
+                                <div class="otp-timer">
+                                    ارسال مجدد تا <span id="registerTimer">02:00</span>
+                                    <button type="button" class="resend-btn" id="registerResend">ارسال مجدد</button>
+                                </div>
+                            </div>
+
+                            <button type="submit" class="auth-submit" id="registerSubmitBtn">ثبت‌نام و دریافت
+                                کد</button>
+
+                        </form>
+
+                        <!-- ================= login form ================= -->
+                        <form class="form-slide" id="loginForm">
+
+                            <div class="method-row">
+                                <div class="method-label-group">
+                                    <i class="ti ti-phone"></i>
+                                    <span class="method-name on" id="loginPhoneLbl">موبایل</span>
+                                </div>
+                                <button type="button" class="ios-switch" id="loginMethodSwitch">
+                                    <div class="ios-knob"></div>
+                                </button>
+                                <div class="method-label-group">
+                                    <span class="method-name" id="loginEmailLbl">ایمیل</span>
+                                    <i class="ti ti-mail"></i>
+                                </div>
+                            </div>
+
+                            <div class="form-group" id="loginPhoneGroup">
+                                <label>شماره موبایل</label>
+                                <div class="input-wrap">
+                                    <i class="ti ti-phone"></i>
+                                    <input type="tel" class="auth-input" id="loginPhone" placeholder="09xxxxxxxxx">
+                                </div>
+                            </div>
+
+                            <div class="otp-wrap" id="loginOtpWrap">
+                                <div class="form-group">
+                                    <label>کد تایید ارسال‌شده</label>
+                                    <div class="otp-inputs">
+                                        <input type="text" class="otp-input" maxlength="1">
+                                        <input type="text" class="otp-input" maxlength="1">
+                                        <input type="text" class="otp-input" maxlength="1">
+                                        <input type="text" class="otp-input" maxlength="1">
+                                        <input type="text" class="otp-input" maxlength="1">
+                                    </div>
+                                </div>
+                                <div class="otp-timer">
+                                    ارسال مجدد تا <span id="loginTimer">02:00</span>
+                                    <button type="button" class="resend-btn" id="loginResend">ارسال مجدد</button>
+                                </div>
+                            </div>
+
+                            <div class="form-group" id="loginEmailGroup" style="display:none">
+                                <label>ایمیل</label>
+                                <div class="input-wrap">
+                                    <i class="ti ti-mail"></i>
+                                    <input type="email" class="auth-input" id="loginEmail"
+                                        placeholder="example@email.com">
+                                </div>
+                            </div>
+
+                            <div class="form-group" id="loginPasswordGroup" style="display:none">
+                                <label>رمز عبور</label>
+                                <div class="input-wrap">
+                                    <i class="ti ti-lock"></i>
+                                    <input type="password" class="auth-input" id="loginPassword" placeholder="رمز عبور">
+                                    <button type="button" class="pass-toggle" id="loginPassToggle">
+                                        <i class="ti ti-eye"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <a href="#" class="forgot-link" id="forgotLink" style="display:none">فراموشی رمز عبور؟</a>
+
+                            <button type="submit" class="auth-submit" id="loginSubmitBtn">دریافت کد تایید</button>
+
+                        </form>
+
+                    </div>
+                </div>
+
+                <!-- ================= forgot-overlay ================= -->
+                <div class="forgot-overlay" id="forgotOverlay">
+                    <button type="button" class="back-row" id="backFromForgot">
+                        <i class="ti ti-arrow-right"></i> بازگشت به ورود
+                    </button>
+                    <div class="auth-greeting" style="text-align:right; margin-top: 10px;">
+                        <h2 style="font-size:1.2rem">بازیابی رمز عبور</h2>
+                        <p>ایمیل حساب کاربری‌تون رو وارد کنید تا لینک بازیابی برات ارسال شه</p>
+                    </div>
+                    <div class="form-group">
+                        <label>ایمیل</label>
+                        <div class="input-wrap">
+                            <i class="ti ti-mail"></i>
+                            <input type="email" class="auth-input" placeholder="example@email.com">
+                        </div>
+                    </div>
+                    <button type="button" class="auth-submit" id="forgotSubmitBtn">ارسال لینک بازیابی</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- =========== script ============= -->
+    <script src="js/auth-helper.js"></script>
+    <script src="js/authentication/authentication.js"></script>
+</body>
+
+</html>

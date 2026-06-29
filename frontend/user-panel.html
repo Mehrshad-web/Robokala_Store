@@ -1,0 +1,1188 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="components/bootstrap/bootstrap.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+    <link rel="stylesheet" href="components/css/root.css">
+    <link rel="stylesheet" href="components/css/body.css">
+    <link rel="stylesheet" href="components/css/navbar.css">
+    <link rel="stylesheet" href="components/css/product-card.css">
+    <link rel="stylesheet" href="components/css/components.css">
+    <link rel="stylesheet" href="css/panel/user-panel.css">
+    <link rel="stylesheet" href="components/css/footer.css">
+    <title>پنل کاربری | RoboKala</title>
+</head>
+
+<body>
+    <!-- navbar -->
+    <nav class="nav-wrap">
+        <div class="Byisland ms-2 byLogo" id="byLogo" style="--dir: 22rem">
+            <a href="#">
+                <div class="logo p-1">
+                    <div class="logo-dot"></div>
+                    <span>RoboKala</span>
+                </div>
+            </a>
+        </div>
+
+        <div class="island" id="island">
+            <div class="links">
+                <button class="lnk active">خانه</button>
+                <button class="lnk">محصولات</button>
+                <button class="lnk">پکیج ها</button>
+                <button class="lnk"><i class="ti ti-shopping-cart"></i></button>
+            </div>
+            <div class="search-wrapper" id="searchWrapper">
+                <input type="text" class="search-input" id="searchInput" placeholder="جستجو...">
+
+                <button class="nav-search" id="searchBtn">
+                    <img src="img/search.png" alt="">
+                </button>
+            </div>
+            <div class="peek-bar"></div>
+        </div>
+
+        <div class="Byisland account me-2" id="bybtn" style="--dir: -22rem">
+            <img class="img-account" src="img/account.png" alt="account">
+        </div>
+    </nav>
+
+    <!-- panel -->
+    <div class="panel-page">
+        <!-- ================= SIDEBAR ================= -->
+        <aside class="panel-sidebar">
+            <!-- profile -->
+            <div class="panel-card glass-card user-card">
+                <div class="user-avatar">
+                    ن <!-- اینجا داخل اسم  بگیر حروف اول نمایش بزار -->
+                    <div class="avatar-edit"><i class="ti ti-pencil"></i></div>
+                </div>
+                <div class="user-name">نام + فامیلی</div>
+                <div class="user-phone">۰۹۱۲۳۴۵۶۷۸۹</div>
+                <div class="user-badge">کاربر عادی</div>
+            </div>
+
+            <!-- Panel menu on mobile -->
+            <button class="mobile-nav-toggle glass-card" id="mobileNavToggle">
+                <i class="ti ti-menu-2"></i> منوی پنل
+            </button>
+
+            <!-- dashboard -->
+            <div class="panel-card glass-card" style="padding: 12px;">
+                <nav class="panel-nav" id="panelNav">
+                    <button class="nav-item active" data-section="dashboard">
+                        <i class="ti ti-layout-dashboard"></i> داشبورد
+                    </button>
+                    <button class="nav-item" data-section="orders">
+                        <i class="ti ti-package"></i> سفارشات
+                        <span class="nav-badge">۳</span><!--این جکم نوتیف داره-->
+                    </button>
+                    <button class="nav-item" data-section="wishlist">
+                        <i class="ti ti-heart"></i> علاقه‌مندی‌ها
+                    </button>
+                    <button class="nav-item" data-section="addresses">
+                        <i class="ti ti-map-pin"></i> آدرس‌ها
+                    </button>
+                    <button class="nav-item" data-section="wallet">
+                        <i class="ti ti-wallet"></i> کیف پول
+                    </button>
+                    <button class="nav-item" data-section="tickets">
+                        <i class="ti ti-headset"></i> پشتیبانی
+                        <span class="nav-badge">۱</span>
+                    </button>
+                    <div class="nav-divider"></div>
+                    <button class="nav-item" data-section="profile">
+                        <i class="ti ti-user"></i> اطلاعات شخصی
+                    </button>
+                    <button class="nav-item" data-section="password">
+                        <i class="ti ti-lock"></i> تغییر رمز عبور
+                    </button>
+                    <div class="nav-divider"></div>
+                    <button class="nav-item nav-logout">
+                        <i class="ti ti-logout"></i> خروج از حساب
+                    </button>
+                </nav>
+            </div>
+        </aside>
+
+        <!-- ================= CONTENT ================= -->
+        <main class="panel-content">
+            <!-- recent-orders & status -->
+            <div class="panel-section active" id="section-dashboard">
+                <!-- top-status-bar -->
+                <div class="stats-grid">
+                    <div class="stat-card glass-card">
+                        <div class="stat-icon"><i class="ti ti-package"></i></div>
+                        <div class="stat-value">۱۲</div>
+                        <div class="stat-label">کل سفارشات</div>
+                    </div>
+                    <div class="stat-card glass-card">
+                        <div class="stat-icon"><i class="ti ti-clock"></i></div>
+                        <div class="stat-value">۳</div>
+                        <div class="stat-label">در حال پردازش</div>
+                    </div>
+                    <div class="stat-card glass-card">
+                        <div class="stat-icon"><i class="ti ti-heart"></i></div>
+                        <div class="stat-value">۸</div>
+                        <div class="stat-label">علاقه‌مندی‌ها</div>
+                    </div>
+                    <div class="stat-card glass-card">
+                        <div class="stat-icon"><i class="ti ti-wallet"></i></div>
+                        <div class="stat-value">۲۵۰K</div>
+                        <div class="stat-label">کیف پول</div>
+                    </div>
+                </div>
+
+                <!-- last-orders -->
+                <div class="panel-card glass-card">
+                    <div class="panel-title"><i class="ti ti-clock"></i> آخرین سفارشات</div>
+                    <!-- orders -->
+                    <div class="order-card glass-card">
+                        <div class="order-header">
+                            <div class="order-id">سفارش <span>#۱۰۰۴۵</span></div>
+                            <span class="order-status status-shipping">در حال ارسال</span>
+                        </div>
+
+                        <div class="order-items-preview">
+                            <img class="order-thumb" src="img/product/prod1.jpeg" alt="">
+                            <img class="order-thumb" src="img/product/prod2.jpeg" alt="">
+                            <img class="order-thumb" src="img/product/prod3.jpeg" alt="">
+                            <img class="order-thumb" src="img/product/prod4.jpeg" alt="">
+                        </div>
+
+                        <div class="order-footer">
+                            <span class="order-price">640,000 تومان</span>
+                            <span class="order-date">۱۴۰۳ / ۳ / ۱۵</span>
+                            <button class="order-detail-btn">جزئیات</button>
+                        </div>
+
+                        <div class="order-details">
+                            <div class="detail-row">
+                                <span>گیرنده:</span>
+                                <span>علی محمدی</span>
+                            </div>
+
+                            <div class="detail-row">
+                                <span>آدرس:</span>
+                                <span>تهران، خیابان آزادی...</span>
+                            </div>
+
+                            <div class="detail-row">
+                                <span>روش ارسال:</span>
+                                <span>پست پیشتاز</span>
+                            </div>
+
+                            <div class="detail-row">
+                                <span>کد رهگیری:</span>
+                                <span>123456789</span>
+                            </div>
+                            <div class="detail-row">
+                                <span>هزینه ارسال</span>
+                                <span>45,000 تومان</span>
+                            </div>
+
+                            <div class="detail-row">
+                                <span>نوع تخفیف</span>
+                                <span>کد تخفیف تابستانه</span>
+                            </div>
+
+                            <div class="detail-row">
+                                <span>مبلغ تخفیف</span>
+                                <span class="discount-price">80,000 تومان</span>
+                            </div>
+
+                            <div class="detail-row">
+                                <span>مبلغ نهایی</span>
+                                <span>640,000 تومان</span>
+                            </div>
+
+                            <div class="order-products">
+                                <!-- products-list -->
+                                <a href="#" class="ordered-product">
+                                    <img src="img/product/prod1.jpeg" alt="">
+                                    <div class="ordered-product-info">
+                                        <div class="ordered-product-title">
+                                            هندزفری بلوتوثی X1
+                                        </div>
+
+                                        <div class="ordered-product-price">
+                                            320,000 تومان
+                                        </div>
+
+                                        <div class="ordered-product-discount">
+                                            خریداری شده با 20٪ تخفیف
+                                        </div>
+                                    </div>
+                                </a>
+                                <a href="#" class="ordered-product">
+                                    <img src="img/product/prod2.jpeg" alt="">
+                                    <div class="ordered-product-info">
+                                        <div class="ordered-product-title">
+                                            شارژر فست شارژ
+                                        </div>
+
+                                        <div class="ordered-product-price">
+                                            400,000 تومان
+                                        </div>
+
+                                        <div class="ordered-product-discount">
+                                            <!-- اگه تخفیف نداشت اینجا خالی میمونه -->
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="order-card glass-card">
+                        <div class="order-header">
+                            <div class="order-id">سفارش <span>#۱۰۰۴۵</span></div>
+                            <span class="order-status status-shipping">در حال ارسال</span>
+                        </div>
+
+                        <div class="order-items-preview">
+                            <img class="order-thumb" src="img/product/prod5.jpeg" alt="">
+                            <img class="order-thumb" src="img/product/prod7.jpeg" alt="">
+                            <img class="order-thumb" src="img/product/prod8.jpeg" alt="">
+                            <img class="order-thumb" src="img/product/prod3.jpeg" alt="">
+                            <img class="order-thumb" src="img/product/prod2.jpeg" alt="">
+                        </div>
+
+                        <div class="order-footer">
+                            <span class="order-price">640,000 تومان</span>
+                            <span class="order-date">۱۴۰۳ / ۳ / ۱۵</span>
+                            <button class="order-detail-btn">جزئیات</button>
+                        </div>
+
+                        <div class="order-details">
+                            <div class="detail-row">
+                                <span>گیرنده:</span>
+                                <span>علی محمدی</span>
+                            </div>
+
+                            <div class="detail-row">
+                                <span>آدرس:</span>
+                                <span>تهران، خیابان آزادی...</span>
+                            </div>
+
+                            <div class="detail-row">
+                                <span>روش ارسال:</span>
+                                <span>پست پیشتاز</span>
+                            </div>
+
+                            <div class="detail-row">
+                                <span>کد رهگیری:</span>
+                                <span>123456789</span>
+                            </div>
+                            <div class="detail-row">
+                                <span>هزینه ارسال</span>
+                                <span>45,000 تومان</span>
+                            </div>
+
+                            <div class="detail-row">
+                                <span>نوع تخفیف</span>
+                                <span>کد تخفیف تابستانه</span>
+                            </div>
+
+                            <div class="detail-row">
+                                <span>مبلغ تخفیف</span>
+                                <span class="discount-price">80,000 تومان</span>
+                            </div>
+
+                            <div class="detail-row">
+                                <span>مبلغ نهایی</span>
+                                <span>640,000 تومان</span>
+                            </div>
+
+                            <div class="order-products">
+                                <a href="#" class="ordered-product">
+                                    <img src="img/product/prod8.jpeg" alt="">
+                                    <div class="ordered-product-info">
+                                        <div class="ordered-product-title">
+                                            هندزفری بلوتوثی X1
+                                        </div>
+
+                                        <div class="ordered-product-price">
+                                            320,000 تومان
+                                        </div>
+
+                                        <div class="ordered-product-discount">
+                                            خریداری شده با 20٪ تخفیف
+                                        </div>
+                                    </div>
+                                </a>
+
+                                <a href="#" class="ordered-product">
+                                    <img src="img/product/prod7.jpeg" alt="">
+                                    <div class="ordered-product-info">
+                                        <div class="ordered-product-title">
+                                            هندزفری بلوتوثی X1
+                                        </div>
+
+                                        <div class="ordered-product-price">
+                                            320,000 تومان
+                                        </div>
+
+                                        <div class="ordered-product-discount">
+                                            خریداری شده با 20٪ تخفیف
+                                        </div>
+                                    </div>
+                                </a>
+
+                                <a href="#" class="ordered-product">
+                                    <img src="img/product/prod5.jpeg" alt="">
+                                    <div class="ordered-product-info">
+                                        <div class="ordered-product-title">
+                                            هندزفری بلوتوثی X1
+                                        </div>
+
+                                        <div class="ordered-product-price">
+                                            320,000 تومان
+                                        </div>
+
+                                        <div class="ordered-product-discount">
+                                            خریداری شده با 20٪ تخفیف
+                                        </div>
+                                    </div>
+                                </a>
+
+                                <a href="#" class="ordered-product">
+                                    <img src="img/product/prod2.jpeg" alt="">
+                                    <div class="ordered-product-info">
+                                        <div class="ordered-product-title">
+                                            شارژر فست شارژ
+                                        </div>
+
+                                        <div class="ordered-product-price">
+                                            400,000 تومان
+                                        </div>
+
+                                        <div class="ordered-product-discount">
+                                            <!-- اگه تخفیف نداشت اینجا خالی میمونه -->
+                                        </div>
+                                    </div>
+                                </a>
+
+                                <a href="#" class="ordered-product">
+                                    <img src="img/product/prod2.jpeg" alt="">
+                                    <div class="ordered-product-info">
+                                        <div class="ordered-product-title">
+                                            شارژر فست شارژ
+                                        </div>
+
+                                        <div class="ordered-product-price">
+                                            400,000 تومان
+                                        </div>
+
+                                        <div class="ordered-product-discount">
+                                            <!-- اگه تخفیف نداشت اینجا خالی میمونه -->
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- orders -->
+            <div class="panel-section" id="section-orders">
+                <div class="panel-card glass-card">
+                    <div class="panel-title"><i class="ti ti-package"></i> سفارشات من</div>
+
+                    <!-- topBar -->
+                    <div class="orders-filter">
+                        <button class="filter-pill active">همه</button>
+                        <button class="filter-pill">در حال پردازش</button>
+                        <button class="filter-pill">در حال ارسال</button>
+                        <button class="filter-pill">تحویل داده شده</button>
+                        <button class="filter-pill">لغو شده</button>
+                    </div>
+                    <!-- order -->
+                    <div class="order-card glass-card">
+                        <div class="order-header">
+                            <div class="order-id">سفارش <span>#۱۰۰۴۵</span></div>
+                            <span class="order-status status-shipping">در حال ارسال</span>
+                        </div>
+
+                        <div class="order-items-preview">
+                            <img class="order-thumb" src="img/product/prod1.jpeg" alt="">
+                            <img class="order-thumb" src="img/product/prod3.jpeg" alt="">
+                        </div>
+
+                        <div class="order-footer">
+                            <span class="order-price">640,000 تومان</span>
+                            <span class="order-date">۱۴۰۳ / ۳ / ۱۵</span>
+                            <button class="order-detail-btn">جزئیات</button>
+                        </div>
+
+                        <div class="order-details">
+                            <div class="detail-row">
+                                <span>گیرنده:</span>
+                                <span>علی محمدی</span>
+                            </div>
+
+                            <div class="detail-row">
+                                <span>آدرس:</span>
+                                <span>تهران، خیابان آزادی...</span>
+                            </div>
+
+                            <div class="detail-row">
+                                <span>روش ارسال:</span>
+                                <span>پست پیشتاز</span>
+                            </div>
+
+                            <div class="detail-row">
+                                <span>کد رهگیری:</span>
+                                <span>123456789</span>
+                            </div>
+                            <div class="detail-row">
+                                <span>هزینه ارسال</span>
+                                <span>45,000 تومان</span>
+                            </div>
+
+                            <div class="detail-row">
+                                <span>نوع تخفیف</span>
+                                <span>کد تخفیف تابستانه</span>
+                            </div>
+
+                            <div class="detail-row">
+                                <span>مبلغ تخفیف</span>
+                                <span class="discount-price">80,000 تومان</span>
+                            </div>
+
+                            <div class="detail-row">
+                                <span>مبلغ نهایی</span>
+                                <span>640,000 تومان</span>
+                            </div>
+
+                            <div class="order-products">
+                                <!-- products-list -->
+                                <a href="#" class="ordered-product">
+                                    <img src="img/product/prod2.jpeg" alt="">
+                                    <div class="ordered-product-info">
+                                        <div class="ordered-product-title">
+                                            هندزفری بلوتوثی X1
+                                        </div>
+
+                                        <div class="ordered-product-price">
+                                            320,000 تومان
+                                        </div>
+
+                                        <div class="ordered-product-discount">
+                                            خریداری شده با 20٪ تخفیف
+                                        </div>
+                                    </div>
+                                </a>
+                                <a href="#" class="ordered-product">
+                                    <img src="img/product/prod1.jpeg" alt="">
+                                    <div class="ordered-product-info">
+                                        <div class="ordered-product-title">
+                                            شارژر فست شارژ
+                                        </div>
+
+                                        <div class="ordered-product-price">
+                                            400,000 تومان
+                                        </div>
+
+                                        <div class="ordered-product-discount">
+                                            <!-- اگه تخفیف نداشت اینجا خالی میمونه -->
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="order-card glass-card">
+                        <div class="order-header">
+                            <div class="order-id">سفارش <span>#۱۰۰۴۵</span></div>
+                            <span class="order-status status-delivered">تحویل داده شده</span>
+
+                        </div>
+
+                        <div class="order-items-preview">
+                            <img class="order-thumb" src="img/product/prod1.jpeg" alt="">
+                            <img class="order-thumb" src="img/product/prod2.jpeg" alt="">
+                            <img class="order-thumb" src="img/product/prod3.jpeg" alt="">
+                            <img class="order-thumb" src="img/product/prod4.jpeg" alt="">
+                        </div>
+
+                        <div class="order-footer">
+                            <span class="order-price">640,000 تومان</span>
+                            <span class="order-date">۱۴۰۳ / ۳ / ۱۵</span>
+                            <button class="order-detail-btn">جزئیات</button>
+                        </div>
+
+                        <div class="order-details">
+                            <div class="detail-row">
+                                <span>گیرنده:</span>
+                                <span>علی محمدی</span>
+                            </div>
+
+                            <div class="detail-row">
+                                <span>آدرس:</span>
+                                <span>تهران، خیابان آزادی...</span>
+                            </div>
+
+                            <div class="detail-row">
+                                <span>روش ارسال:</span>
+                                <span>پست پیشتاز</span>
+                            </div>
+
+                            <div class="detail-row">
+                                <span>کد رهگیری:</span>
+                                <span>123456789</span>
+                            </div>
+                            <div class="detail-row">
+                                <span>هزینه ارسال</span>
+                                <span>45,000 تومان</span>
+                            </div>
+
+                            <div class="detail-row">
+                                <span>نوع تخفیف</span>
+                                <span>کد تخفیف تابستانه</span>
+                            </div>
+
+                            <div class="detail-row">
+                                <span>مبلغ تخفیف</span>
+                                <span class="discount-price">80,000 تومان</span>
+                            </div>
+
+                            <div class="detail-row">
+                                <span>مبلغ نهایی</span>
+                                <span>640,000 تومان</span>
+                            </div>
+
+                            <div class="order-products">
+                                <!-- products-list -->
+                                <a href="#" class="ordered-product">
+                                    <img src="img/product/prod5.jpeg" alt="">
+                                    <div class="ordered-product-info">
+                                        <div class="ordered-product-title">
+                                            هندزفری بلوتوثی X1
+                                        </div>
+
+                                        <div class="ordered-product-price">
+                                            320,000 تومان
+                                        </div>
+
+                                        <div class="ordered-product-discount">
+                                            خریداری شده با 20٪ تخفیف
+                                        </div>
+                                    </div>
+                                </a>
+                                <a href="#" class="ordered-product">
+                                    <img src="img/product/prod8.jpeg" alt="">
+                                    <div class="ordered-product-info">
+                                        <div class="ordered-product-title">
+                                            شارژر فست شارژ
+                                        </div>
+
+                                        <div class="ordered-product-price">
+                                            400,000 تومان
+                                        </div>
+
+                                        <div class="ordered-product-discount">
+                                            <!-- اگه تخفیف نداشت اینجا خالی میمونه -->
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="order-card glass-card">
+                        <div class="order-header">
+                            <div class="order-id">سفارش <span>#۱۰۰۴۵</span></div>
+                            <span class="order-status status-pending">در حال پردازش</span>
+                        </div>
+
+                        <div class="order-items-preview">
+                            <img class="order-thumb" src="img/product/prod5.jpeg" alt="">
+                            <img class="order-thumb" src="img/product/prod8.jpeg" alt="">
+                            <img class="order-thumb" src="img/product/prod7.jpeg" alt="">
+                            <img class="order-thumb" src="img/product/prod3.jpeg" alt="">
+                            <img class="order-thumb" src="img/product/prod2.jpeg" alt="">
+                        </div>
+
+                        <div class="order-footer">
+                            <span class="order-price">640,000 تومان</span>
+                            <span class="order-date">۱۴۰۳ / ۳ / ۱۵</span>
+                            <button class="order-detail-btn">جزئیات</button>
+                        </div>
+
+                        <div class="order-details">
+                            <div class="detail-row">
+                                <span>گیرنده:</span>
+                                <span>علی محمدی</span>
+                            </div>
+
+                            <div class="detail-row">
+                                <span>آدرس:</span>
+                                <span>تهران، خیابان آزادی...</span>
+                            </div>
+
+                            <div class="detail-row">
+                                <span>روش ارسال:</span>
+                                <span>پست پیشتاز</span>
+                            </div>
+
+                            <div class="detail-row">
+                                <span>کد رهگیری:</span>
+                                <span>123456789</span>
+                            </div>
+                            <div class="detail-row">
+                                <span>هزینه ارسال</span>
+                                <span>45,000 تومان</span>
+                            </div>
+
+                            <div class="detail-row">
+                                <span>نوع تخفیف</span>
+                                <span>کد تخفیف تابستانه</span>
+                            </div>
+
+                            <div class="detail-row">
+                                <span>مبلغ تخفیف</span>
+                                <span class="discount-price">80,000 تومان</span>
+                            </div>
+
+                            <div class="detail-row">
+                                <span>مبلغ نهایی</span>
+                                <span>640,000 تومان</span>
+                            </div>
+
+                            <div class="order-products">
+                                <a href="#" class="ordered-product">
+                                    <img src="img/product/prod8.jpeg" alt="">
+                                    <div class="ordered-product-info">
+                                        <div class="ordered-product-title">
+                                            هندزفری بلوتوثی X1
+                                        </div>
+
+                                        <div class="ordered-product-price">
+                                            320,000 تومان
+                                        </div>
+
+                                        <div class="ordered-product-discount">
+                                            خریداری شده با 20٪ تخفیف
+                                        </div>
+                                    </div>
+                                </a>
+
+                                <a href="#" class="ordered-product">
+                                    <img src="img/product/prod8.jpeg" alt="">
+                                    <div class="ordered-product-info">
+                                        <div class="ordered-product-title">
+                                            هندزفری بلوتوثی X1
+                                        </div>
+
+                                        <div class="ordered-product-price">
+                                            320,000 تومان
+                                        </div>
+
+                                        <div class="ordered-product-discount">
+                                            خریداری شده با 20٪ تخفیف
+                                        </div>
+                                    </div>
+                                </a>
+
+                                <a href="#" class="ordered-product">
+                                    <img src="img/product/prod7.jpeg" alt="">
+                                    <div class="ordered-product-info">
+                                        <div class="ordered-product-title">
+                                            هندزفری بلوتوثی X1
+                                        </div>
+
+                                        <div class="ordered-product-price">
+                                            320,000 تومان
+                                        </div>
+
+                                        <div class="ordered-product-discount">
+                                            خریداری شده با 20٪ تخفیف
+                                        </div>
+                                    </div>
+                                </a>
+
+                                <a href="#" class="ordered-product">
+                                    <img src="img/product/prod8.jpeg" alt="">
+                                    <div class="ordered-product-info">
+                                        <div class="ordered-product-title">
+                                            شارژر فست شارژ
+                                        </div>
+
+                                        <div class="ordered-product-price">
+                                            400,000 تومان
+                                        </div>
+
+                                        <div class="ordered-product-discount">
+                                            <!-- اگه تخفیف نداشت اینجا خالی میمونه -->
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="order-card glass-card">
+                        <div class="order-header">
+                            <div class="order-id">سفارش <span>#۱۰۰۴۵</span></div>
+                            <span class="order-status status-cancelled">لغو شده</span>
+                        </div>
+
+                        <div class="order-items-preview">
+                            <img class="order-thumb" src="img/product/prod1.jpeg" alt="">
+                            <img class="order-thumb" src="img/product/prod2.jpeg" alt="">
+                            <img class="order-thumb" src="img/product/prod3.jpeg" alt="">
+                            <img class="order-thumb" src="img/product/prod4.jpeg" alt="">
+                        </div>
+
+                        <div class="order-footer">
+                            <span class="order-price">640,000 تومان</span>
+                            <span class="order-date">۱۴۰۳ / ۳ / ۱۵</span>
+                            <button class="order-detail-btn">جزئیات</button>
+                        </div>
+
+                        <div class="order-details">
+                            <div class="detail-row">
+                                <span>گیرنده:</span>
+                                <span>علی محمدی</span>
+                            </div>
+
+                            <div class="detail-row">
+                                <span>آدرس:</span>
+                                <span>تهران، خیابان آزادی...</span>
+                            </div>
+
+                            <div class="detail-row">
+                                <span>روش ارسال:</span>
+                                <span>پست پیشتاز</span>
+                            </div>
+
+                            <div class="detail-row">
+                                <span>کد رهگیری:</span>
+                                <span>123456789</span>
+                            </div>
+                            <div class="detail-row">
+                                <span>هزینه ارسال</span>
+                                <span>45,000 تومان</span>
+                            </div>
+
+                            <div class="detail-row">
+                                <span>نوع تخفیف</span>
+                                <span>کد تخفیف تابستانه</span>
+                            </div>
+
+                            <div class="detail-row">
+                                <span>مبلغ تخفیف</span>
+                                <span class="discount-price">80,000 تومان</span>
+                            </div>
+
+                            <div class="detail-row">
+                                <span>مبلغ نهایی</span>
+                                <span>640,000 تومان</span>
+                            </div>
+
+                            <div class="order-products">
+                                <!-- products-list -->
+                                <a href="#" class="ordered-product">
+                                    <img src="img/product/prod7.jpeg" alt="">
+                                    <div class="ordered-product-info">
+                                        <div class="ordered-product-title">
+                                            هندزفری بلوتوثی X1
+                                        </div>
+
+                                        <div class="ordered-product-price">
+                                            320,000 تومان
+                                        </div>
+
+                                        <div class="ordered-product-discount">
+                                            خریداری شده با 20٪ تخفیف
+                                        </div>
+                                    </div>
+                                </a>
+                                <a href="#" class="ordered-product">
+                                    <img src="img/product/prod8.jpeg" alt="">
+                                    <div class="ordered-product-info">
+                                        <div class="ordered-product-title">
+                                            شارژر فست شارژ
+                                        </div>
+
+                                        <div class="ordered-product-price">
+                                            400,000 تومان
+                                        </div>
+
+                                        <div class="ordered-product-discount">
+                                            <!-- اگه تخفیف نداشت اینجا خالی میمونه -->
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- favorite -->
+            <div class="panel-section glass-card" id="section-wishlist">
+                <div class="panel-card">
+                    <div class="panel-title"><i class="ti ti-heart"></i> علاقه‌مندی‌های من</div>
+                    <div class="wishlist-grid">
+                        <div class="product-card">
+                            <div class="product-card__badge">13%</div>
+                            <div class="product-card__img"><img src="https://placehold.co/200x200" alt=""></div>
+                            <div class="product-card__name">کیت آموزشی رباتیک پایه</div>
+                            <div class="product-card__footer">
+                                <div class="product-card__price-box">
+                                    <div class="product-card__old">800,000</div>
+                                    <div class="product-card__price">600,000 <span
+                                            class="product-card__unit">تومان</span></div>
+                                </div>
+                                <div class="product-card__cart"><i class="ti ti-shopping-cart"></i></div>
+                            </div>
+                        </div>
+                        <div class="product-card">
+                            <div class="product-card__img"><img src="https://placehold.co/200x200" alt=""></div>
+                            <div class="product-card__name">سنسور اولتراسونیک HC-SR04</div>
+                            <div class="product-card__footer">
+                                <div class="product-card__price-box">
+                                    <div class="product-card__price">120,000 <span
+                                            class="product-card__unit">تومان</span></div>
+                                </div>
+                                <div class="product-card__cart"><i class="ti ti-shopping-cart"></i></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- آدرس‌ها -->
+            <div class="panel-section" id="section-addresses">
+                <div class="panel-card glass-card">
+                    <div class="panel-title"><i class="ti ti-map-pin"></i> آدرس‌های من</div>
+                    <div class="address-grid">
+                        <!-- address -->
+                        <div class="addr-card default glass-card">
+                            <span class="addr-default-badge">پیش‌فرض</span>
+                            <div class="addr-card-name">علی رضایی</div>
+                            <div class="addr-card-detail">تهران، خیابان ولیعصر، پلاک ۱۲، واحد ۳<br>کد پستی: ۱۲۳۴۵۶۷۸۹۰
+                            </div>
+                            <div class="addr-card-detail">۰۹۱۲۳۴۵۶۷۸۹</div>
+                            <div class="addr-card-actions">
+                                <button class="addr-action-btn" onclick="openModal('address', {
+                                    mode:'edit',
+                                    data:{
+                                        id: 12,
+                                        name:'نام',
+                                        phone:'0912',
+                                        province:'مازندراین',
+                                        city:'ساری',
+                                        postal:'123',
+                                        address:'خیابان ...'
+                                    }
+                                })"><i class="ti ti-pencil"></i> ویرایش</button>
+                                <button class="addr-action-btn delete"><i class="ti ti-trash"></i> حذف</button>
+                            </div>
+                        </div>
+                        <!---->
+                        <div class="addr-card glass-card">
+                            <div class="addr-card-name">علی رضایی</div>
+                            <div class="addr-card-detail">اصفهان، خیابان چهارباغ، پلاک ۵۵<br>کد پستی: ۹۸۷۶۵۴۳۲۱۰</div>
+                            <div class="addr-card-detail">۰۹۱۲۳۴۵۶۷۸۹</div>
+                            <div class="addr-card-actions">
+                                <button class="addr-action-btn" onclick="openModal('address', {
+                                    mode:'edit',
+                                    data:{
+                                        id: 13,
+                                        name:'نام',
+                                        phone:'0911',
+                                        province:'مازندراین',
+                                        city:'ساری',
+                                        postal:'123',
+                                        address:'خیابان ...'
+                                    }
+                                })"><i class="ti ti-pencil"></i> ویرایش</button>
+                                <button class="addr-action-btn delete" data-id="12"><i class="ti ti-trash"></i>
+                                    حذف</button>
+                            </div>
+                        </div>
+                        <!-- add -->
+                        <button class="add-addr-card glass-card" onclick="openModal('address', {mode:'add'})">
+                            <i class="ti ti-plus"></i>
+                            افزودن آدرس جدید
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- کیف پول -->
+            <div class="panel-section" id="section-wallet">
+                <div class="panel-card glass-card">
+                    <div class="panel-title"><i class="ti ti-wallet"></i> کیف پول</div>
+                    <div class="wallet-balance">
+                        <div>
+                            <div class="wallet-balance-label">موجودی فعلی</div>
+                            <div class="wallet-balance-amount">250,000 تومان</div>
+                        </div>
+                        <button class="wallet-charge-btn" onclick="openModal('wallet')"><i class="ti ti-plus"></i> شارژ
+                            کیف پول</button>
+                    </div>
+
+                    <div class="panel-title" style="margin-bottom:14px"><i class="ti ti-history"></i> تراکنش‌ها</div>
+
+                    <div class="wallet-tx">
+                        <div class="wallet-tx-icon tx-in"><i class="ti ti-arrow-down-left"></i></div>
+                        <div class="wallet-tx-info">
+                            <div class="wallet-tx-title">شارژ کیف پول</div>
+                            <div class="wallet-tx-date">۱۴۰۳/۳/۱۰</div>
+                        </div>
+                        <div class="wallet-tx-amount tx-in-amount">+ 500,000 تومان</div>
+                    </div>
+                    <div class="wallet-tx">
+                        <div class="wallet-tx-icon tx-out"><i class="ti ti-arrow-up-right"></i></div>
+                        <div class="wallet-tx-info">
+                            <div class="wallet-tx-title">پرداخت سفارش #۱۰۰۴۵</div>
+                            <div class="wallet-tx-date">۱۴۰۳/۳/۱۵</div>
+                        </div>
+                        <div class="wallet-tx-amount tx-out-amount">- 250,000 تومان</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- پشتیبانی -->
+            <div class="panel-section" id="section-tickets">
+                <div class="panel-card glass-card">
+                    <div class="panel-title"><i class="ti ti-headset"></i> پشتیبانی</div>
+                    <button class="new-ticket-btn" onclick="openModal('ticket')">
+                        <i class="ti ti-plus"></i> ارسال تیکت جدید
+                    </button>
+
+                    <div class="ticket-card">
+                        <div class="ticket-icon"><i class="ti ti-package"></i></div>
+                        <div class="ticket-info">
+                            <div class="ticket-title">مشکل در سفارش #۱۰۰۳۸</div>
+                            <div class="ticket-meta">۱۴۰۳/۳/۱۲ · آخرین پاسخ: ۲ ساعت پیش</div>
+                        </div>
+                        <span class="ticket-status ticket-open">باز</span>
+                    </div>
+
+                    <div class="ticket-card">
+                        <div class="ticket-icon"><i class="ti ti-help"></i></div>
+                        <div class="ticket-info">
+                            <div class="ticket-title">سوال درباره گارانتی محصول</div>
+                            <div class="ticket-meta">۱۴۰۳/۲/۲۰ · بسته شده</div>
+                        </div>
+                        <span class="ticket-status ticket-closed">بسته</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- اطلاعات شخصی -->
+            <div class="panel-section" id="section-profile">
+                <div class="panel-card glass-card">
+                    <div class="panel-title"><i class="ti ti-user"></i> اطلاعات شخصی</div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>نام</label>
+                            <div class="form-input-wrap">
+                                <i class="ti ti-user"></i>
+                                <input type="text" class="panel-input" value="نام">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>نام خانوادگی</label>
+                            <div class="form-input-wrap">
+                                <i class="ti ti-user"></i>
+                                <input type="text" class="panel-input" value="فامیلی">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>شماره موبایل</label>
+                            <div class="form-input-wrap">
+                                <i class="ti ti-phone"></i>
+                                <input type="tel" class="panel-input" value="09123456789">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>ایمیل</label>
+                            <div class="form-input-wrap">
+                                <i class="ti ti-mail"></i>
+                                <input type="email" class="panel-input" value="ali@example.com">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>کد ملی</label>
+                            <div class="form-input-wrap">
+                                <i class="ti ti-id"></i>
+                                <input type="text" class="panel-input" placeholder="۱۰ رقم">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>تاریخ تولد</label>
+                            <div class="form-input-wrap">
+                                <i class="ti ti-calendar"></i>
+                                <input type="text" class="panel-input" placeholder="۱۳۷۰/۰۱/۰۱">
+                            </div>
+                        </div>
+                    </div>
+                    <button class="save-btn">ذخیره تغییرات</button>
+                </div>
+            </div>
+
+            <!-- تغییر رمز -->
+            <div class="panel-section" id="section-password">
+                <div class="panel-card glass-card">
+                    <div class="panel-title"><i class="ti ti-lock"></i> تغییر رمز عبور</div>
+                    <div class="password-section">
+                        <div class="form-group" style="margin-bottom:14px">
+                            <label>رمز عبور فعلی</label>
+                            <div class="form-input-wrap">
+                                <i class="ti ti-lock"></i>
+                                <input type="password" class="panel-input-pass panel-input" placeholder="رمز فعلی">
+                            </div>
+                        </div>
+                        <div class="form-group" style="margin-bottom:14px">
+                            <label>رمز عبور جدید</label>
+                            <div class="form-input-wrap">
+                                <i class="ti ti-lock"></i>
+                                <input type="password" class="panel-input-pass panel-input"
+                                    placeholder="حداقل ۸ کاراکتر">
+                            </div>
+                            <div class="password-error"
+                                style="display:none;color:#ff4d4d;font-size:12px;margin-bottom:10px;"></div>
+                        </div>
+                        <div class="form-group" style="margin-bottom:20px">
+                            <label>تکرار رمز عبور جدید</label>
+                            <div class="form-input-wrap">
+                                <i class="ti ti-lock"></i>
+                                <input type="password" class="panel-input-pass panel-input"
+                                    placeholder="تکرار رمز جدید">
+                            </div>
+                        </div>
+                        <button class="save-btn save-btn-pass">تغییر رمز عبور</button>
+                    </div>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+    <!-- footer -->
+    <footer class="site-footer">
+        <div class="footer-wrap">
+            <!-- about -->
+            <div class="f-col">
+                <div class="f-title">RoboKala</div>
+                <p class="f-text">
+                    مرجع فروش قطعات رباتیک و آموزش‌های تخصصی میکروکنترلر و الکترونیک
+                </p>
+                <div class="f__badges">
+                    <div>✔ ضمانت کیفیت</div>
+                    <div>✔ ارسال سریع</div>
+                    <div>✔ پشتیبانی ۲۴/۷</div>
+                </div>
+            </div>
+            <!-- links -->
+            <div class="f-col">
+                <div class="f-title">لینک‌های سریع</div>
+                <a href="#">خانه</a>
+                <a href="#">محصولات</a>
+                <a href="#">تخفیف‌ها</a>
+                <a href="#">مقالات</a>
+            </div>
+            <!-- learning -->
+            <div class="f-col">
+                <div class="f-title">آموزش‌ها</div>
+                <a href="#">Arduino</a>
+                <a href="#">AVR</a>
+                <a href="#">رباتیک</a>
+                <a href="#">پروژه‌ها</a>
+            </div>
+            <!-- contact -->
+            <div class="f-col">
+                <div class="f-title">ارتباط با ما</div>
+                <div class="f-contact">
+                    <div>📞 0912xxxxxxx</div>
+                    <div>✉ info@robokala.ir</div>
+                </div>
+                <div class="f-social">
+                    <span>Social-1</span>
+                    <span>Social-2</span>
+                    <span>Social-3</span>
+                </div>
+            </div>
+        </div>
+        <div class="f-bottom">
+            © 2026 RoboKala - All rights reserved
+        </div>
+        <div class="site-credit" dir="ltr">
+            Designed with ❤️ by
+            <span><a href="https://sinafiruzian.ir/">Sinos60!</a></span> | Backend Powered by <span><a href="https://mehrshad-web.github.io/Profile/" target="_blank">Mehrshad</a></span>
+
+        </div>
+    </footer>
+
+    <!-- ---------------------modal------------------------------- -->
+    <div class="modal-backdrop" id="globalModal">
+        <div class="modal glass-card" id="modalContent">
+        </div>
+    </div>
+    <!-- ticket-view-modal -->
+    <div class="ticket-view-backdrop" id="ticketViewModal">
+        <div class="ticket-view-modal glass-card">
+
+            <!-- HEADER -->
+            <div class="ticket-view-header">
+
+                <div class="ticket-view-title">
+                    تیکت #10038
+                    <span class="ticket-status ticket-open">باز</span>
+                </div>
+
+                <button class="ticket-view-close">×</button>
+            </div>
+
+            <!-- CHAT BODY -->
+            <div class="ticket-chat">
+
+                <div class="chat-msg user">
+                    سلام، مشکل در سفارش دارم
+                </div>
+
+                <div class="chat-msg support">
+                    سلام، لطفاً شماره سفارش را ارسال کنید
+                </div>
+
+            </div>
+
+            <!-- INPUT -->
+            <form class="ticket-chat-form">
+
+                <input type="text" placeholder="پیام خود را بنویسید..." class="chat-input">
+
+                <button type="submit" class="chat-send">
+                    ارسال
+                </button>
+
+            </form>
+
+        </div>
+    </div>
+
+    <!-- ====================== script ========================= -->
+    <!-- navbar -->
+    <script src="js/auth-helper.js"></script>
+    <script src="components/js/navbar.js"></script>
+
+    <!-- user-panel -->
+    <script src="js/panel/user-panel.js"></script>
+</body>
+
+</html>

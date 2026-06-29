@@ -1,0 +1,132 @@
+       /* ===================== MESSAGE WRAPPER ===================== */
+
+       .message-stack {
+           position: fixed;
+           bottom: 24px;
+           right: 24px;
+           z-index: 9999;
+
+           display: flex;
+           flex-direction: column;
+           gap: 10px;
+
+           pointer-events: none;
+       }
+
+       /* ===================== BASE MESSAGE ===================== */
+
+       .message {
+           min-width: 220px;
+           max-width: 320px;
+
+           padding: 12px 14px;
+           border-radius: 16px;
+
+           backdrop-filter: blur(12px);
+           background: var(--clr-surface-glass);
+
+           border: 1px solid var(--clr-border-purple);
+           box-shadow: 0 10px 30px var(--clr-shadow-card);
+
+           color: var(--clr-text);
+           font-size: 14px;
+           font-weight: 500;
+
+           display: flex;
+           align-items: center;
+           justify-content: space-between;
+           gap: 10px;
+
+           pointer-events: auto;
+
+           animation: msgIn 0.25s ease forwards;
+       }
+
+       @keyframes msgIn {
+           from {
+               opacity: 0;
+               transform: translateY(10px) scale(0.96);
+           }
+
+           to {
+               opacity: 1;
+               transform: translateY(0) scale(1);
+           }
+       }
+
+       .message.hide {
+           animation: msgOut 0.2s ease forwards;
+       }
+
+       @keyframes msgOut {
+           to {
+               opacity: 0;
+               transform: translateY(10px) scale(0.96);
+           }
+       }
+
+       /* ===================== TYPES ===================== */
+
+       .message.success {
+           border-left: 3px solid #22c55e;
+       }
+
+       .message.error {
+           border-left: 3px solid #ef4444;
+       }
+
+       .message.info {
+           border-left: 3px solid #3b82f6;
+       }
+
+       /* ===================== UNDO STYLE (SPECIAL MESSAGE) ===================== */
+
+       .message.undo {
+           background: linear-gradient(135deg,
+                   rgba(98, 17, 237, 0.18),
+                   rgba(37, 117, 252, 0.12));
+
+           border: 1px solid var(--clr-border-purple);
+       }
+
+       /* ===================== ACTION BUTTON ===================== */
+
+       .message button {
+           background: var(--clr-grad-main);
+           color: #fff;
+
+           border: none;
+           border-radius: 12px;
+
+           padding: 6px 10px;
+
+           font-size: 12px;
+           font-weight: 600;
+
+           cursor: pointer;
+
+           transition: 0.2s ease;
+       }
+
+       .message button:hover {
+           transform: translateY(-1px);
+           filter: brightness(1.1);
+       }
+
+       .message button:active {
+           transform: scale(0.96);
+       }
+
+       /* ===================== RESPONSIVE ===================== */
+
+       @media (max-width: 600px) {
+           .message-stack {
+               right: 12px;
+               left: 12px;
+               bottom: 12px;
+           }
+
+           .message {
+               max-width: 100%;
+           }
+       }

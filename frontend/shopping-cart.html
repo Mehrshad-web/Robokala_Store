@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="components/bootstrap/bootstrap.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+    <link rel="stylesheet" href="components/css/root.css">
+    <link rel="stylesheet" href="components/css/body.css">
+    <link rel="stylesheet" href="components/css/components.css">
+    <link rel="stylesheet" href="components/css/navbar.css">
+    <link rel="stylesheet" href="components/css/warning-and-restor-msg.css">
+    <link rel="stylesheet" href="css/shopping-cart/shopping-cart.css">
+    <link rel="stylesheet" href="components/css/tracker.css">
+    <link rel="stylesheet" href="components/css/product-card.css">
+    <link rel="stylesheet" href="components/css/slider.css">
+    <link rel="stylesheet" href="components/css/faq.css">
+    <link rel="stylesheet" href="components/css/footer.css">
+    <title>سبد خرید</title>
+</head>
+
+<body>
+    <!-- navbar -->
+    <nav class="nav-wrap">
+        <div class="Byisland ms-2 byLogo" id="byLogo" style="--dir: 22rem">
+            <a href="#">
+                <div class="logo p-1">
+                    <div class="logo-dot"></div>
+                    <span>RoboKala</span>
+                </div>
+            </a>
+        </div>
+
+        <div class="island" id="island">
+            <div class="links">
+                <button class="lnk">خانه</button>
+                <button class="lnk">محصولات</button>
+                <button class="lnk">پکیج ها</button>
+                <button class="lnk active"><i class="ti ti-shopping-cart"></i></button>
+            </div>
+            <div class="search-wrapper" id="searchWrapper">
+                <input type="text" class="search-input" id="searchInput" placeholder="جستجو...">
+
+                <button class="nav-search" id="searchBtn">
+                    <img src="img/search.png" alt="">
+                </button>
+            </div>
+            <div class="peek-bar"></div>
+        </div>
+
+        <div class="Byisland account me-2" id="bybtn" style="--dir: -22rem">
+            <img class="img-account" src="img/account.png" alt="account">
+        </div>
+    </nav>
+    <!-- cart-title -->
+    <h2 class="cart-title">سبد خرید</h2>
+    <!-- cart-page -->
+    <section class="cart-page">
+        <!-- Summary-of-orders-->
+        <div class="cart-summary-sticky glass-card">
+            <div class="cart-summary">
+                <span id="cartItemCount">0 محصول</span>
+                <h3>خلاصه سفارش</h3>
+
+                <div class="summary-row">
+                    <span>قیمت کالاها</span>
+                    <span id="totalOriginal">920,000 تومان</span>
+                </div>
+
+                <div class="summary-row discount">
+                    <span>تخفیف</span>
+                    <span id="totalDiscount">- 200,000 تومان</span>
+                </div>
+
+                <div class="summary-row shipping">
+                    <span>هزینه ارسال</span>
+                    <span>رایگان</span>
+                </div>
+
+                <div class="summary-divider"></div>
+
+                <div class="summary-row total">
+                    <span>مبلغ قابل پرداخت</span>
+                    <span id="totalFinal">720,000 تومان</span>
+                </div>
+
+                <button class="checkout-btn">ادامه و پرداخت</button>
+            </div>
+        </div>
+
+        <!-- list-of-products -->
+        <div class="cart-items">
+            <!-- product-card -->
+            <div class="cart-item glass-card" data-id="1">
+                <img class="cart-item__img" src="img/product/prod2.jpeg" alt="">
+                <div class="cart-item__info">
+                    <h4 class="cart-item__name">کیت آموزشی رباتیک پایه</h4>
+                    <div class="cart-item__badge">13% تخفیف</div>
+                    <div class="cart-item__prices">
+                        <span class="cart-item__old">800,000 تومان</span>
+                        <span class="cart-item__price">600,000 تومان</span>
+                    </div>
+                </div>
+                <div class="cart-item__actions">
+                    <div class="cart-counter-wrap">
+                        <button class="cart-counter-btn decrease">
+                            <i class="ti ti-minus"></i>
+                        </button>
+                        <span class="cart-counter-num">1</span>
+                        <button class="cart-counter-btn increase">
+                            <i class="ti ti-plus"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cart-item glass-card" data-id="2">
+                <img class="cart-item__img" src="img/product/prod1.jpeg" alt="">
+                <div class="cart-item__info">
+                    <h4 class="cart-item__name">سنسور اولتراسونیک HC-SR04</h4>
+                    <div class="cart-item__prices">
+                        <span class="cart-item__price">120,000 تومان</span>
+                    </div>
+                </div>
+                <div class="cart-item__actions">
+                    <div class="cart-counter-wrap">
+                        <button class="cart-counter-btn decrease">
+                            <i class="ti ti-minus"></i>
+                        </button>
+                        <span class="cart-counter-num">2</span>
+                        <button class="cart-counter-btn increase">
+                            <i class="ti ti-plus"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cart-item glass-card" data-id="3">
+                <img class="cart-item__img" src="img/product/prod4.jpeg" alt="">
+                <div class="cart-item__info">
+                    <h4 class="cart-item__name">سنسور اولتراسونیک HC-SR04</h4>
+                    <div class="cart-item__prices">
+                        <span class="cart-item__price">120,000 تومان</span>
+                    </div>
+                </div>
+                <div class="cart-item__actions">
+                    <div class="cart-counter-wrap">
+                        <button class="cart-counter-btn decrease">
+                            <i class="ti ti-minus"></i>
+                        </button>
+                        <span class="cart-counter-num">2</span>
+                        <button class="cart-counter-btn increase">
+                            <i class="ti ti-plus"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cart-item glass-card" data-id="4">
+                <img class="cart-item__img" src="img/product/prod5.jpeg" alt="">
+                <div class="cart-item__info">
+                    <h4 class="cart-item__name">سنسور اولتراسونیک HC-SR04</h4>
+                    <div class="cart-item__prices">
+                        <span class="cart-item__price">120,000 تومان</span>
+                    </div>
+                </div>
+                <div class="cart-item__actions">
+                    <div class="cart-counter-wrap">
+                        <button class="cart-counter-btn decrease">
+                            <i class="ti ti-minus"></i>
+                        </button>
+                        <span class="cart-counter-num">2</span>
+                        <button class="cart-counter-btn increase">
+                            <i class="ti ti-plus"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cart-item glass-card" data-id="5">
+                <img class="cart-item__img" src="img/product/prod8.jpeg" alt="">
+                <div class="cart-item__info">
+                    <h4 class="cart-item__name">سنسور اولتراسونیک HC-SR04</h4>
+                    <div class="cart-item__prices">
+                        <span class="cart-item__price">120,000 تومان</span>
+                    </div>
+                </div>
+                <div class="cart-item__actions">
+                    <div class="cart-counter-wrap">
+                        <button class="cart-counter-btn decrease">
+                            <i class="ti ti-minus"></i>
+                        </button>
+                        <span class="cart-counter-num">2</span>
+                        <button class="cart-counter-btn increase">
+                            <i class="ti ti-plus"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cart-item glass-card" data-id="6">
+                <img class="cart-item__img" src="img/product/prod7.jpeg" alt="">
+                <div class="cart-item__info">
+                    <h4 class="cart-item__name">سنسور اولتراسونیک HC-SR04</h4>
+                    <div class="cart-item__prices">
+                        <span class="cart-item__price">120,000 تومان</span>
+                    </div>
+                </div>
+                <div class="cart-item__actions">
+                    <div class="cart-counter-wrap">
+                        <button class="cart-counter-btn decrease">
+                            <i class="ti ti-minus"></i>
+                        </button>
+                        <span class="cart-counter-num">2</span>
+                        <button class="cart-counter-btn increase">
+                            <i class="ti ti-plus"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Suggestion purchase -->
+    <section class="bs-wrap">
+        <div class="bs-section">
+            <div class="bs-header">
+                <div class="bs-title">پیشنهادهای ویژه برای شما</div>
+            </div>
+            <button class="bs-arrow bs-next">›</button>
+            <button class="bs-arrow bs-prev">‹</button>
+            <div class="bs-scroll" id="bestSellerScroll">
+                <div class="bs-grid">
+                    <div class="product-card">
+                        <div class="product-card__badge">13%</div>
+                        <div class="product-card__img">
+                            <img src="img/product/prod1.jpeg" alt="">
+                        </div>
+                        <div class="product-card__name">کیت آموزشی رباتیک پایه</div>
+                        <div class="product-card__footer">
+                            <div class="product-card__price-box">
+                                <div class="product-card__old ">800,000</div>
+                                <div class="product-card__price">600,000 <span class="product-card__unit">تومان</span>
+                                </div>
+                            </div>
+                            <div class="product-card__cart"><i class="ti ti-shopping-cart"></i></div>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-card__badge">13%</div>
+                        <div class="product-card__img">
+                            <img src="img/product/prod2.jpeg" alt="">
+                        </div>
+                        <div class="product-card__name">کیت آموزشی رباتیک پایه</div>
+                        <div class="product-card__footer">
+                            <div class="product-card__price-box">
+                                <div class="product-card__old ">800,000</div>
+                                <div class="product-card__price">600,000 <span class="product-card__unit">تومان</span>
+                                </div>
+                            </div>
+                            <div class="product-card__cart"><i class="ti ti-shopping-cart"></i></div>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-card__img"><img src="img/product/prod3.jpeg" alt=""></div>
+                        <div class="product-card__name">کیت آموزشی رباتیک پایه</div>
+
+                        <div class="product-card__footer">
+                            <div class="product-card__price-box">
+                                <!-- <div class="product-card__old ">800,000</div> -->
+                                <div class="product-card__price">600,000 <span class="product-card__unit">تومان</span>
+                                </div>
+                            </div>
+                            <div class="product-card__cart"><i class="ti ti-shopping-cart"></i></div>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-card__img"><img src="img/product/prod4.jpeg" alt=""></div>
+                        <div class="product-card__name">کیت آموزشی رباتیک پایه</div>
+                        <div class="product-card__footer">
+                            <div class="product-card__price-box">
+                                <!-- <div class="product-card__old ">800,000</div> -->
+                                <div class="product-card__price">600,000 <span class="product-card__unit">تومان</span>
+                                </div>
+                            </div>
+                            <div class="product-card__cart"><i class="ti ti-shopping-cart"></i></div>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-card__img"><img src="img/product/prod5.jpeg" alt=""></div>
+                        <div class="product-card__name">کیت آموزشی رباتیک پایه</div>
+
+                        <div class="product-card__footer">
+                            <div class="product-card__price-box">
+                                <!-- <div class="product-card__old ">800,000</div> -->
+                                <div class="product-card__price">600,000 <span class="product-card__unit">تومان</span>
+                                </div>
+                            </div>
+                            <div class="product-card__cart"><i class="ti ti-shopping-cart"></i></div>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-card__badge">13%</div>
+                        <div class="product-card__img"><img src="img/product/prod7.jpeg" alt=""></div>
+                        <div class="product-card__name">کیت آموزشی رباتیک پایه</div>
+                        <div class="product-card__footer">
+                            <div class="product-card__price-box">
+                                <div class="product-card__old ">800,000</div>
+                                <div class="product-card__price">600,000 <span class="product-card__unit">تومان</span>
+                                </div>
+                            </div>
+                            <div class="product-card__cart"><i class="ti ti-shopping-cart"></i></div>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-card__badge">13%</div>
+                        <div class="product-card__img"><img src="img/product/prod1.jpeg" alt=""></div>
+                        <div class="product-card__name">پکیج قطعات الکترونیک کامل</div>
+
+                        <div class="product-card__footer">
+                            <div class="product-card__price-box">
+                                <div class="product-card__old ">800,000</div>
+                                <div class="product-card__price">600,000 <span class="product-card__unit">تومان</span>
+                                </div>
+                            </div>
+                            <div class="product-card__cart"><i class="ti ti-shopping-cart"></i></div>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-card__badge">13%</div>
+                        <div class="product-card__img"><img src="img/product/prod2.jpeg" alt=""></div>
+                        <div class="product-card__name">ست آموزشی آردوینو حرفه‌ای</div>
+                        <div class="product-card__footer">
+                            <div class="product-card__price-box">
+                                <div class="product-card__old ">800,000</div>
+                                <div class="product-card__price">600,000 <span class="product-card__unit">تومان</span>
+                                </div>
+                            </div>
+                            <div class="product-card__cart"><i class="ti ti-shopping-cart"></i></div>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-card__img"><img src="img/product/prod3.jpeg" alt=""></div>
+                        <div class="product-card__name">ابزار کامل ساخت پروژه</div>
+                        <div class="product-card__footer">
+                            <div class="product-card__price-box">
+                                <!-- <div class="product-card__old ">800,000</div> -->
+                                <div class="product-card__price">600,000 <span class="product-card__unit">تومان</span>
+                                </div>
+                            </div>
+                            <div class="product-card__cart"><i class="ti ti-shopping-cart"></i></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!---->
+    <div class="mt-5"></div>
+    <!-- track -->
+    <div class="bar-wrap">
+        <div class="fade-l"></div>
+        <div class="fade-r"></div>
+        <div class="bar-track" id="track"></div>
+    </div>
+    <!-- FAQ -->
+    <div class="faq-wrap">
+
+        <div class="faq-header">
+            <div class="faq-title">سوالات متداول</div>
+            <div class="faq-sub">پاسخ سوالات پرتکرار کاربران</div>
+        </div>
+
+        <div class="faq-list">
+
+            <div class="faq-item">
+                <button class="faq-q">چطور سفارش ثبت کنم؟ <span>+</span></button>
+                <div class="faq-a">
+                    بعد از انتخاب محصول، وارد سبد خرید شده و پرداخت را انجام دهید.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-q">مدت ارسال چقدر است؟ <span>+</span></button>
+                <div class="faq-a">
+                    سفارش‌ها معمولاً بین ۲۴ تا ۴۸ ساعت ارسال می‌شوند.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-q">آیا تضمین کیفیت وجود دارد؟ <span>+</span></button>
+                <div class="faq-a">
+                    بله. ما ارائه دهنده بهترین کیفیت در بازار هستیم
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+    <!-- footer -->
+    <footer class="site-footer">
+        <div class="footer-wrap">
+            <!-- about -->
+            <div class="f-col">
+                <div class="f-title">RoboKala</div>
+                <p class="f-text">
+                    مرجع فروش قطعات رباتیک و آموزش‌های تخصصی میکروکنترلر و الکترونیک
+                </p>
+                <div class="f__badges">
+                    <div>✔ ضمانت کیفیت</div>
+                    <div>✔ ارسال سریع</div>
+                    <div>✔ پشتیبانی ۲۴/۷</div>
+                </div>
+            </div>
+            <!-- links -->
+            <div class="f-col">
+                <div class="f-title">لینک‌های سریع</div>
+                <a href="#">خانه</a>
+                <a href="#">محصولات</a>
+                <a href="#">تخفیف‌ها</a>
+                <a href="#">مقالات</a>
+            </div>
+            <!-- learning -->
+            <div class="f-col">
+                <div class="f-title">آموزش‌ها</div>
+                <a href="#">Arduino</a>
+                <a href="#">AVR</a>
+                <a href="#">رباتیک</a>
+                <a href="#">پروژه‌ها</a>
+            </div>
+            <!-- contact -->
+            <div class="f-col">
+                <div class="f-title">ارتباط با ما</div>
+                <div class="f-contact">
+                    <div>📞 0912xxxxxxx</div>
+                    <div>✉ info@robokala.ir</div>
+                </div>
+                <div class="f-social">
+                    <span>Social-1</span>
+                    <span>Social-2</span>
+                    <span>Social-3</span>
+                </div>
+            </div>
+        </div>
+        <div class="f-bottom">
+            © 2026 RoboKala - All rights reserved
+        </div>
+        <div class="site-credit" dir="ltr">
+            Designed with ❤️ by
+            <span><a href="https://sinafiruzian.ir/">Sinos60!</a></span> | Backend Powered by <span><a href="https://mehrshad-web.github.io/Profile/" target="_blank">Mehrshad</a></span>
+
+        </div>
+    </footer>
+    <!-- ==================== script ==================== -->
+    <script src="js/auth-helper.js"></script>
+    <!-- nav & searchBar -->
+    <script src="components/js/navbar.js"></script>
+    <!-- shopping-cart ===== need-api -->
+    <script src="js/shopping-cart/shopping-cart.js"></script>
+    <!-- tracker -->
+    <script src="components/js/tracker.js"></script>
+    <!-- recent purchase -->
+    <script src="components/js/slider.js"></script>
+    <!-- FAQ -->
+    <script src="components/js/faq.js"></script>
+</body>
+
+</html>

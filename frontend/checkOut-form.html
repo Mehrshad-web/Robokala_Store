@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="components/bootstrap/bootstrap.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+    <link rel="stylesheet" href="components/css/root.css">
+    <link rel="stylesheet" href="components/css/body.css">
+    <link rel="stylesheet" href="components/css/components.css">
+    <link rel="stylesheet" href="components/css/navbar.css">
+    <link rel="stylesheet" href="css/checkOut-form/checkOut-form.css">
+    <link rel="stylesheet" href="components/css/footer.css">
+    <title>پرداخت | RoboKala</title>
+</head>
+
+<body>
+    <!-- navbar -->
+    <nav class="nav-wrap">
+        <div class="Byisland ms-2 byLogo" id="byLogo" style="--dir: 22rem">
+            <a href="#">
+                <div class="logo p-1">
+                    <div class="logo-dot"></div>
+                    <span>RoboKala</span>
+                </div>
+            </a>
+        </div>
+
+        <div class="island" id="island">
+            <div class="links">
+                <button class="lnk">خانه</button>
+                <button class="lnk">محصولات</button>
+                <button class="lnk">پکیج ها</button>
+                <button class="lnk"><i class="ti ti-shopping-cart"></i></button>
+            </div>
+            <div class="search-wrapper" id="searchWrapper">
+                <input type="text" class="search-input" id="searchInput" placeholder="جستجو...">
+
+                <button class="nav-search" id="searchBtn">
+                    <img src="img/search.png" alt="">
+                </button>
+            </div>
+            <div class="peek-bar"></div>
+        </div>
+
+        <div class="Byisland account me-2" id="bybtn" style="--dir: -22rem">
+            <img class="img-account" src="img/account.png" alt="account">
+        </div>
+    </nav>
+    <!-- cart-title -->
+    <h2 class="cart-title">مرحله پرداخت</h2>
+    <!-- ----- -->
+    <section class="checkout-page">
+
+        <!-- ================= ستون راست ================= -->
+        <div class="checkout-right">
+            <div class="checkout-right-sticky">
+                <!-- آدرس -->
+                <div class="checkout-card glass-card" style="margin-bottom: 24px;">
+                    <h3 class="section-title">
+                        <i class="ti ti-map-pin"></i> آدرس تحویل
+                    </h3>
+                    <!-- آدرس‌های ذخیره‌شده از backend میان -->
+                    <div class="address-list" id="addressList">
+                        <label class="address-card selected" onclick="selectAddress(this)">
+                            <input type="radio" name="address" class="address-radio" checked>
+                            <div class="address-info">
+                                <span class="address-name">نام + فامیلی</span>
+                                <span class="address-detail">شهر, خیابان , پلاک ، واحد</span>
+                                <span class="address-detail">۰۹۱۲۳۴۵۶۷۸۹</span>
+                            </div>
+                            <span class="address-badge">پیش‌فرض</span>
+                        </label>
+
+                        <label class="address-card" onclick="selectAddress(this)">
+                            <input type="radio" name="address" class="address-radio">
+                            <div class="address-info">
+                                <span class="address-name">نام + فامیلی</span>
+                                <span class="address-detail">شهر , خیابان , پلاک </span>
+                                <span class="address-detail">۰۹۱۲۳۴۵۶۷۸۹</span>
+                            </div>
+                        </label>
+
+                        <label class="address-card" onclick="selectAddress(this)">
+                            <input type="radio" name="address" class="address-radio">
+                            <div class="address-info">
+                                <span class="address-name">نام + فامیلی</span>
+                                <span class="address-detail">شهر , خیابان , پلاک </span>
+                                <span class="address-detail">۰۹۱۲۳۴۵۶۷۸۹</span>
+                            </div>
+                        </label>
+
+                        <label class="address-card" onclick="selectAddress(this)">
+                            <input type="radio" name="address" class="address-radio">
+                            <div class="address-info">
+                                <span class="address-name">نام + فامیلی</span>
+                                <span class="address-detail">شهر , خیابان , پلاک </span>
+                                <span class="address-detail">۰۹۱۲۳۴۵۶۷۸۹</span>
+                            </div>
+                        </label>
+                    </div>
+                    <!-- دکمه افزودن آدرس -->
+                    <button class="add-address-btn" id="addAddressBtn">
+                        <i class="ti ti-plus"></i> افزودن آدرس جدید
+                    </button>
+                    <!-- فرم آدرس جدید -->
+                    <div class="new-address-form" id="newAddressForm">
+                        <div class="divider"></div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>نام</label>
+                                <div class="form-input-wrap">
+                                    <i class="ti ti-user"></i>
+                                    <input type="text" class="checkout-input glass-card" placeholder="نام">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>نام خانوادگی</label>
+                                <div class="form-input-wrap">
+                                    <i class="ti ti-user"></i>
+                                    <input type="text" class="checkout-input glass-card" placeholder="نام خانوادگی">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>استان</label>
+                                <div class="form-input-wrap">
+                                    <i class="ti ti-map"></i>
+                                    <input type="text" class="checkout-input glass-card" placeholder="استان">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>شهر</label>
+                                <div class="form-input-wrap">
+                                    <i class="ti ti-building"></i>
+                                    <input type="text" class="checkout-input glass-card" placeholder="شهر">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>آدرس کامل</label>
+                            <div class="form-input-wrap">
+                                <i class="ti ti-map-pin"></i>
+                                <input type="text" class="checkout-input glass-card" placeholder="خیابان، کوچه، پلاک">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>کد پستی</label>
+                                <div class="form-input-wrap">
+                                    <i class="ti ti-mailbox"></i>
+                                    <input type="text" class="checkout-input glass-card" placeholder="4813456789">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>شماره موبایل</label>
+                                <div class="form-input-wrap">
+                                    <i class="ti ti-phone"></i>
+                                    <input type="tel" class="checkout-input  glass-card" placeholder="09xxxxxxxxx">
+                                </div>
+                            </div>
+                        </div>
+                        <button type="button" class="save-address-btn" style="align-self:flex-start">
+                            ذخیره آدرس
+                        </button>
+                    </div>
+                </div>
+                <!-- محصولات -->
+                <div class="checkout-card mb-4 glass-card">
+                    <h3 class="section-title">
+                        <i class="ti ti-shopping-bag"></i> سفارش شما
+                    </h3>
+                    <div class="order-items-list" id="orderItemsList">
+                        <div class="order-item" data-id="1">
+                            <img src="img/product/prod1.jpeg" alt="">
+                            <div class="order-item-info">
+                                <span class="order-item-name">کیت آموزشی رباتیک پایه</span>
+                                <span class="order-item-qty">× ۱</span>
+                            </div>
+                            <span class="order-item-price">600,000 تومان</span>
+                            <button class="order-item-remove" onclick="removeOrderItem(this)">
+                                <i class="ti ti-x"></i>
+                            </button>
+                        </div>
+
+                        <div class="order-item" data-id="1">
+                            <img src="img/product/prod2.jpeg" alt="">
+                            <div class="order-item-info">
+                                <span class="order-item-name">کیت آموزشی رباتیک پایه</span>
+                                <span class="order-item-qty">× ۱</span>
+                            </div>
+                            <span class="order-item-price">600,000 تومان</span>
+                            <button class="order-item-remove" onclick="removeOrderItem(this)">
+                                <i class="ti ti-x"></i>
+                            </button>
+                        </div>
+                        <div class="order-item" data-id="1">
+                            <img src="img/product/prod3.jpeg" alt="">
+                            <div class="order-item-info">
+                                <span class="order-item-name">کیت آموزشی رباتیک پایه</span>
+                                <span class="order-item-qty">× ۱</span>
+                            </div>
+                            <span class="order-item-price">600,000 تومان</span>
+                            <button class="order-item-remove" onclick="removeOrderItem(this)">
+                                <i class="ti ti-x"></i>
+                            </button>
+                        </div>
+                        <div class="order-item" data-id="1">
+                            <img src="img/product/prod4.jpeg" alt="">
+                            <div class="order-item-info">
+                                <span class="order-item-name">کیت آموزشی رباتیک پایه</span>
+                                <span class="order-item-qty">× ۱</span>
+                            </div>
+                            <span class="order-item-price">600,000 تومان</span>
+                            <button class="order-item-remove" onclick="removeOrderItem(this)">
+                                <i class="ti ti-x"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= ستون چپ (خلاصه) ================= -->
+        <div class="summary-sticky">
+
+            <!-- روش پرداخت -->
+            <div class="checkout-card glass-card">
+                <h3 class="section-title">
+                    <i class="ti ti-credit-card"></i> روش پرداخت
+                </h3>
+                <!-- card-paymethod -->
+                <div class="payment-methods" id="paymentMethods">
+
+                    <!-- روش‌های پرداخت از backend کنترل میشن -->
+                    <label class="payment-method selected" onclick="selectPayment(this)">
+                        <input type="radio" name="payment" checked>
+                        <div class="payment-method-info">
+                            <span class="payment-method-name">درگاه آنلاین</span>
+                            <span class="payment-method-desc">پرداخت امن با کارت بانکی</span>
+                        </div>
+                        <i class="ti ti-world payment-method-icon"></i>
+                    </label>
+
+                    <label class="payment-method" onclick="selectPayment(this)">
+                        <input type="radio" name="payment">
+                        <div class="payment-method-info">
+                            <span class="payment-method-name">پرداخت در محل</span>
+                            <span class="payment-method-desc">هنگام تحویل به پیک پرداخت کنید</span>
+                        </div>
+                        <i class="ti ti-cash payment-method-icon"></i>
+                    </label>
+
+                    <label class="payment-method" onclick="selectPayment(this)">
+                        <input type="radio" name="payment">
+                        <div class="payment-method-info">
+                            <span class="payment-method-name">کیف پول</span>
+                            <span class="payment-method-desc">موجودی: 250,000 تومان</span>
+                        </div>
+                        <i class="ti ti-wallet payment-method-icon"></i>
+                    </label>
+
+                    <label class="payment-method" onclick="selectPayment(this)">
+                        <input type="radio" name="payment">
+                        <div class="payment-method-info">
+                            <span class="payment-method-name">کیف پول</span>
+                            <span class="payment-method-desc">موجودی: 250,000 تومان</span>
+                        </div>
+                        <i class="ti ti-wallet payment-method-icon"></i>
+                    </label>
+
+                    <label class="payment-method" onclick="selectPayment(this)">
+                        <input type="radio" name="payment">
+                        <div class="payment-method-info">
+                            <span class="payment-method-name">کیف پول</span>
+                            <span class="payment-method-desc">موجودی: 250,000 تومان</span>
+                        </div>
+                        <i class="ti ti-wallet payment-method-icon"></i>
+                    </label>
+
+                    <label class="payment-method" onclick="selectPayment(this)">
+                        <input type="radio" name="payment">
+                        <div class="payment-method-info">
+                            <span class="payment-method-name">کیف پول</span>
+                            <span class="payment-method-desc">موجودی: 250,000 تومان</span>
+                        </div>
+                        <i class="ti ti-wallet payment-method-icon"></i>
+                    </label>
+
+                </div>
+            </div>
+
+            <!-- خلاصه قیمت -->
+            <div class="checkout-card glass-card">
+                <h3 class="section-title">
+                    <i class="ti ti-receipt"></i> خلاصه پرداخت
+                </h3>
+
+                <!-- کد تخفیف -->
+                <div class="discount-wrap">
+                    <div class="form-input-wrap" style="flex:1">
+                        <i class="ti ti-tag"></i>
+                        <input type="text" class="checkout-input discount-code" placeholder="کد تخفیف">
+                    </div>
+                    <button class="discount-apply-btn" id="discountBtn">اعمال</button>
+                </div>
+
+                <div class="divider"></div>
+
+                <div class="summary-row">
+                    <span>قیمت کالاها</span>
+                    <span>840,000 تومان</span>
+                </div>
+                <div class="summary-row discount">
+                    <span>تخفیف</span>
+                    <span>- 200,000 تومان</span>
+                </div>
+                <div class="summary-row shipping">
+                    <span>هزینه ارسال</span>
+                    <span>رایگان</span>
+                </div>
+
+                <div class="divider"></div>
+
+                <div class="summary-row total">
+                    <span>مبلغ قابل پرداخت</span>
+                    <span>640,000 تومان</span>
+                </div>
+
+                <button class="checkout-submit" id="checkoutSubmit">
+                    پرداخت
+                </button>
+
+                <p class="checkout-note">
+                    <i class="ti ti-lock"></i>
+                    پرداخت امن و رمزگذاری‌شده
+                </p>
+
+            </div>
+        </div>
+        </div>
+
+    </section>
+    <!-- footer -->
+    <footer class="site-footer">
+        <div class="footer-wrap">
+            <!-- about -->
+            <div class="f-col">
+                <div class="f-title">RoboKala</div>
+                <p class="f-text">
+                    مرجع فروش قطعات رباتیک و آموزش‌های تخصصی میکروکنترلر و الکترونیک
+                </p>
+                <div class="f__badges">
+                    <div>✔ ضمانت کیفیت</div>
+                    <div>✔ ارسال سریع</div>
+                    <div>✔ پشتیبانی ۲۴/۷</div>
+                </div>
+            </div>
+            <!-- links -->
+            <div class="f-col">
+                <div class="f-title">لینک‌های سریع</div>
+                <a href="#">خانه</a>
+                <a href="#">محصولات</a>
+                <a href="#">تخفیف‌ها</a>
+                <a href="#">مقالات</a>
+            </div>
+            <!-- learning -->
+            <div class="f-col">
+                <div class="f-title">آموزش‌ها</div>
+                <a href="#">Arduino</a>
+                <a href="#">AVR</a>
+                <a href="#">رباتیک</a>
+                <a href="#">پروژه‌ها</a>
+            </div>
+            <!-- contact -->
+            <div class="f-col">
+                <div class="f-title">ارتباط با ما</div>
+                <div class="f-contact">
+                    <div>📞 0912xxxxxxx</div>
+                    <div>✉ info@robokala.ir</div>
+                </div>
+                <div class="f-social">
+                    <span>Social-1</span>
+                    <span>Social-2</span>
+                    <span>Social-3</span>
+                </div>
+            </div>
+        </div>
+        <div class="f-bottom">
+            © 2026 RoboKala - All rights reserved
+        </div>
+        <div class="site-credit" dir="ltr">
+            Designed with ❤️ by
+            <span><a href="https://sinafiruzian.ir/">Sinos60!</a></span> | Backend Powered by <span><a href="https://mehrshad-web.github.io/Profile/" target="_blank">Mehrshad</a></span>
+
+        </div>
+    </footer>
+    <!-- ==================== script ==================== -->
+    <!-- nav-and-searchBar -->
+    <script src="components/js/navbar.js"></script>
+    <!-- checkOut-form -->
+    <script src="js/checkOut-form/checkOut-form.js"></script>
+</body>
+
+</html>

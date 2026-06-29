@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="components/bootstrap/bootstrap.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+    <link rel="stylesheet" href="components/css/root.css">
+    <link rel="stylesheet" href="components/css/body.css">
+    <link rel="stylesheet" href="components/css/navbar.css">
+    <link rel="stylesheet" href="components/css/components.css">
+    <link rel="stylesheet" href="components/css/comment-continer.css">
+    <link rel="stylesheet" href="css/academy-details/academy-details.css">
+    <link rel="stylesheet" href="components/css/footer.css">
+    <title>آموزش راه‌اندازی اولین پروژه آردوینو | RoboKala</title>
+
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <!-- navbar -->
+    <nav class="nav-wrap">
+        <div class="Byisland ms-2 byLogo" id="byLogo" style="--dir: 22rem">
+            <a href="#">
+                <div class="logo p-1">
+                    <div class="logo-dot"></div>
+                    <span>RoboKala</span>
+                </div>
+            </a>
+        </div>
+
+        <div class="island" id="island">
+            <div class="links">
+                <button class="lnk">خانه</button>
+                <button class="lnk">محصولات</button>
+                <button class="lnk">پکیج ها</button>
+                <button class="lnk"><i class="ti ti-shopping-cart"></i></button>
+            </div>
+            <div class="search-wrapper" id="searchWrapper">
+                <input type="text" class="search-input" id="searchInput" placeholder="جستجو...">
+
+                <button class="nav-search" id="searchBtn">
+                    <img src="img/search.png" alt="">
+                </button>
+            </div>
+            <div class="peek-bar"></div>
+        </div>
+
+        <div class="Byisland account me-2" id="bybtn" style="--dir: -22rem">
+            <img class="img-account" src="img/account.png" alt="account">
+        </div>
+    </nav>
+    <!-- article-page -->
+    <section class="article-page">
+        <!-- ================= sidBAR ================= -->
+        <aside class="sidebar-sticky">
+            <!-- list of article-->
+            <div class="sidebar-card  glass-card">
+                <h4 class="sidebar-title"><i class="ti ti-list"></i> فهرست مطالب</h4>
+                <div class="toc-list" id="tocList">
+                    <a href="#sec1" class="toc-item">معرفی آردوینو</a>
+                    <a href="#sec2" class="toc-item">قطعات مورد نیاز</a>
+                    <a href="#sec3" class="toc-item">مراحل نصب نرم‌افزار</a>
+                    <a href="#sec4" class="toc-item">نوشتن اولین کد</a>
+                </div>
+            </div>
+        </aside>
+        <!-- ================= main content ================= -->
+        <main class="content-card  glass-card">
+
+            <!-- cover / img -->
+            <div class="article-cover">
+                <img src="https://placehold.co/900x500" alt="">
+            </div>
+
+            <!-- title -->
+            <span class="article-cat-tag">آردوینو</span>
+            <h1 class="article-main-title">آموزش راه‌اندازی اولین پروژه آردوینو</h1>
+            <!-- article-meta-bar -->
+            <div class="article-meta-bar">
+                <div class="meta-item"><i class="ti ti-calendar"></i> ۱۴۰۳/۳/۱۰</div>
+                <div class="meta-item"><i class="ti ti-clock"></i> ۸ دقیقه مطالعه</div>
+                <div class="meta-item"><i class="ti ti-eye"></i> ۲,۱۰۰ بازدید</div>
+                <div class="author-chip">
+                    <div class="author-avatar">ر</div>
+                    <span class="author-name">تیم رباکالا</span>
+                </div>
+            </div>
+            <!-- article-body -->
+            <article class="article-body-text" id="articleBody">
+
+                <h2 id="sec1">معرفی آردوینو</h2>
+                <p>
+                    آردوینو یک پلتفرم متن‌باز سخت‌افزاری و نرم‌افزاریه که برای ساخت پروژه‌های الکترونیکی تعاملی استفاده
+                    میشه.
+                    این برد توسط طیف وسیعی از علاقه‌مندان، از تازه‌کارها تا متخصصین حرفه‌ای، مورد استفاده قرار می‌گیره.
+                </p>
+
+                <img src="https://placehold.co/800x400" alt="">
+
+                <h2 id="sec2">قطعات مورد نیاز</h2>
+                <p>برای شروع این پروژه به موارد زیر نیاز دارید:</p>
+                <ul>
+                    <li>برد آردوینو UNO</li>
+                    <li>کابل USB</li>
+                    <li>برد بورد (Breadboard)</li>
+                    <li>چند عدد LED و مقاومت</li>
+                </ul>
+
+                <h2 id="sec3">مراحل نصب نرم‌افزار</h2>
+                <p>
+                    قبل از شروع کدنویسی باید نرم‌افزار Arduino IDE رو از سایت رسمی دانلود و نصب کنید.
+                    این نرم‌افزار محیط برنامه‌نویسی شماست که کدها رو روی برد آپلود می‌کنه.
+                </p>
+
+                <h2 id="sec4">نوشتن اولین کد</h2>
+                <p>
+                    حالا وقتشه اولین برنامه خودتون رو بنویسید. این برنامه یک LED رو هر یک ثانیه روشن و خاموش می‌کنه.
+                </p>
+
+            </article>
+            <!-- article-tags -->
+            <div class="article-tags">
+                <span class="tag-pill">#آردوینو</span>
+                <span class="tag-pill">#پروژه_مبتدی</span>
+                <span class="tag-pill">#الکترونیک</span>
+            </div>
+            <!-- article-actions -->
+            <div class="article-actions">
+                <button class="action-btn" id="likeBtn">
+                    <i class="ti ti-heart"></i> <span id="likeCount">12</span>
+                </button>
+                <div class="share-group">
+                    <button class="action-btn"><i class="ti ti-link"></i></button>
+                </div>
+            </div>
+
+        </main>
+
+    </section>
+    <!-- ================= Related articles ================= -->
+    <section class="related-section">
+        <div class="sidebar-card  glass-card">
+            <h4 class="sidebar-title"><i class="ti ti-bookmarks"></i> مطالب مرتبط</h4>
+
+            <div class="related-item">
+                <img class="related-thumb" src="https://placehold.co/100x100" alt="">
+                <div class="related-info">
+                    <span class="related-title">معرفی کامل سنسور اولتراسونیک</span>
+                    <span class="related-date">۱۴۰۳/۲/۲۵</span>
+                </div>
+            </div>
+
+            <div class="related-item">
+                <img class="related-thumb" src="https://placehold.co/100x100" alt="">
+                <div class="related-info">
+                    <span class="related-title">شروع برنامه‌نویسی رزبری پای با پایتون</span>
+                    <span class="related-date">۱۴۰۳/۲/۱۸</span>
+                </div>
+            </div>
+
+            <div class="related-item">
+                <img class="related-thumb" src="https://placehold.co/100x100" alt="">
+                <div class="related-info">
+                    <span class="related-title">ساخت ربات دنبال‌کننده خط</span>
+                    <span class="related-date">۱۴۰۳/۳/۵</span>
+                </div>
+            </div>
+
+        </div>
+    </section>
+    <!-- ================= comments ================= -->
+    <section class="comments-section">
+        <!-- ستون کامنت‌ها -->
+        <div class="comments-list" id="commentsList">
+            <h3>نظرات کاربران</h3>
+            <!-- نمونه کامنت -->
+            <div class="comment-card glass-card">
+                <div class="comment-header">
+                    <span class="comment-author">نام + فامیلی</span>
+                    <span class="comment-date">1405/12/6</span>
+                </div>
+                <p class="comment-text">محصول خیلی خوبیه، پیشنهاد میکنم.</p>
+                <button class="reply-toggle" onclick="toggleReply(this)">
+                    <i class="ti ti-message-reply"></i> پاسخ
+                </button>
+
+                <!-- reply ها -->
+                <div class="replies">
+                    <div class="comment-card reply-card glass-card">
+                        <div class="comment-header">
+                            <span class="comment-author">پشتیبانی RoboKala</span>
+                            <span class="comment-date">1405/2/5</span>
+                        </div>
+                        <p class="comment-text">ممنون از نظر شما!</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="comment-card glass-card">
+                <div class="comment-header">
+                    <span class="comment-author">نام + فامیلی</span>
+                    <span class="comment-date">1405/3/26</span>
+                </div>
+                <p class="comment-text">ارسال سریع بود، بسته‌بندی هم عالی.</p>
+                <button class="reply-toggle" onclick="toggleReply(this)">
+                    <i class="ti ti-message-reply"></i> پاسخ
+                </button>
+                <div class="replies"></div>
+            </div>
+
+            <div class="comment-card glass-card">
+                <div class="comment-header">
+                    <span class="comment-author">نام + فامیلی</span>
+                    <span class="comment-date">1405/3/26</span>
+                </div>
+                <p class="comment-text">ارسال سریع بود، بسته‌بندی هم عالی.</p>
+                <button class="reply-toggle" onclick="toggleReply(this)">
+                    <i class="ti ti-message-reply"></i> پاسخ
+                </button>
+                <div class="replies"></div>
+            </div>
+
+            <div class="comment-card glass-card">
+                <div class="comment-header">
+                    <span class="comment-author">نام + فامیلی</span>
+                    <span class="comment-date">1405/3/26</span>
+                </div>
+                <p class="comment-text">ارسال سریع بود، بسته‌بندی هم عالی.</p>
+                <button class="reply-toggle" onclick="toggleReply(this)">
+                    <i class="ti ti-message-reply"></i> پاسخ
+                </button>
+                <div class="replies"></div>
+            </div>
+
+            <div class="comment-card glass-card">
+                <div class="comment-header">
+                    <span class="comment-author">نام + فامیلی</span>
+                    <span class="comment-date">1405/3/26</span>
+                </div>
+                <p class="comment-text">ارسال سریع بود، بسته‌بندی هم عالی.</p>
+                <button class="reply-toggle" onclick="toggleReply(this)">
+                    <i class="ti ti-message-reply"></i> پاسخ
+                </button>
+                <div class="replies"></div>
+            </div>
+        </div>
+        <!-- ستون فرم -->
+        <div class="comment-form-sticky">
+            <div class="comment-form glass-card">
+                <h3>ثبت نظر</h3>
+
+                <div class="form-group user-info">
+                    <i class="ti ti-user-circle"></i>
+                    <span class="logged-user">نام + فامیلی</span> <!-- از session بیاد -->
+                </div>
+
+                <div class="form-group">
+                    <textarea class="form-input" rows="5" placeholder="نظرتون رو بنویسید..."></textarea>
+                </div>
+
+                <button class="submit-btn">ارسال نظر</button>
+            </div>
+        </div>
+    </section>
+    <!-- footer -->
+<footer class="site-footer">
+    <div class="footer-wrap">
+        <!-- about -->
+        <div class="f-col">
+            <div class="f-title">RoboKala</div>
+            <p class="f-text">
+                مرجع فروش قطعات رباتیک و آموزش‌های تخصصی میکروکنترلر و الکترونیک
+            </p>
+            <div class="f__badges">
+                <div>✔ ضمانت کیفیت</div>
+                <div>✔ ارسال سریع</div>
+                <div>✔ پشتیبانی ۲۴/۷</div>
+            </div>
+        </div>
+        <!-- links -->
+        <div class="f-col">
+            <div class="f-title">لینک‌های سریع</div>
+            <a href="#">خانه</a>
+            <a href="#">محصولات</a>
+            <a href="#">تخفیف‌ها</a>
+            <a href="#">مقالات</a>
+        </div>
+        <!-- learning -->
+        <div class="f-col">
+            <div class="f-title">آموزش‌ها</div>
+            <a href="#">Arduino</a>
+            <a href="#">AVR</a>
+            <a href="#">رباتیک</a>
+            <a href="#">پروژه‌ها</a>
+        </div>
+        <!-- contact -->
+        <div class="f-col">
+            <div class="f-title">ارتباط با ما</div>
+            <div class="f-contact">
+                <div>📞 0912xxxxxxx</div>
+                <div>✉ info@robokala.ir</div>
+            </div>
+            <div class="f-social">
+                <span>Social-1</span>
+                <span>Social-2</span>
+                <span>Social-3</span>
+            </div>
+        </div>
+    </div>
+    <div class="f-bottom">
+        © 2026 RoboKala - All rights reserved
+    </div>
+    <div class="site-credit" dir="ltr">
+        Designed with ❤️ by
+        <span><a href="https://sinafiruzian.ir/">Sinos60!</a></span> | Backend Powered by <span><a href="https://mehrshad-web.github.io/Profile/" target="_blank">Mehrshad</a></span>
+
+    </div>
+</footer>
+    <!-- ==============script=============== -->
+    <!-- navbar -->
+    <script src="components/js/navbar.js"></script>
+    <!-- academy details -->
+    <script src="js/academy-details/academy-details.js"></script>
+    <!-- comment -->
+    <script src="components/js/comments.js"></script>
+</body>
+
+</html>
