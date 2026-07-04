@@ -1,6 +1,6 @@
 flask
 flask-sqlalchemy
-flask-cors
-flask-migrate
-gunicorn
 flask-jwt-extended
+flask-cors
+werkzeug
+psycopg2-binary

@@ -1,0 +1,14 @@
+# local database
+instance/
+*.db
+*.sqlite3
+
+# environment variables
+.env
+
+# python cache
+__pycache__/
+*.pyc
+
+# os files
+.DS_Store
