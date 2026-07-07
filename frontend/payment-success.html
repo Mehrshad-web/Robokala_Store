@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>پرداخت موفق — RoboKala</title>
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            background: #0d1117; color: #e6edf3;
+            min-height: 100vh;
+            display: flex; align-items: center; justify-content: center;
+            direction: rtl; padding: 20px;
+        }
+        .card {
+            background: #161b22;
+            border: 1px solid rgba(255,255,255,.08);
+            border-radius: 20px;
+            padding: 48px 40px;
+            text-align: center;
+            max-width: 460px; width: 100%;
+            box-shadow: 0 20px 60px rgba(0,0,0,.4);
+        }
+        .icon-wrap {
+            width: 90px; height: 90px; border-radius: 50%;
+            background: rgba(63,185,80,.12);
+            display: flex; align-items: center; justify-content: center;
+            margin: 0 auto 24px;
+            animation: pop .4s ease;
+        }
+        @keyframes pop {
+            0%   { transform: scale(.6); opacity: 0; }
+            80%  { transform: scale(1.1); }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        .icon-wrap i { font-size: 46px; color: #3fb950; }
+        h1 { font-size: 22px; margin-bottom: 10px; color: #3fb950; }
+        .sub { font-size: 14px; color: #8b949e; margin-bottom: 28px; }
+        .info-box {
+            background: rgba(255,255,255,.04);
+            border: 1px solid rgba(255,255,255,.07);
+            border-radius: 12px;
+            padding: 18px 20px;
+            margin-bottom: 28px;
+            text-align: right;
+        }
+        .info-row {
+            display: flex; justify-content: space-between;
+            font-size: 13px; padding: 6px 0;
+            border-bottom: 1px solid rgba(255,255,255,.05);
+        }
+        .info-row:last-child { border-bottom: none; }
+        .info-row .label { color: #8b949e; }
+        .info-row .value { font-weight: 600; color: #00d4ff; }
+        .btn-home {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: #00d4ff; color: #000;
+            padding: 12px 28px; border-radius: 10px;
+            text-decoration: none; font-weight: 700;
+            font-size: 14px; transition: opacity .2s;
+        }
+        .btn-home:hover { opacity: .85; }
+        .btn-orders {
+            display: inline-flex; align-items: center; gap: 6px;
+            margin-top: 12px;
+            background: rgba(255,255,255,.06);
+            color: #e6edf3; padding: 10px 22px;
+            border-radius: 10px; text-decoration: none;
+            font-size: 13px; transition: opacity .2s;
+        }
+        .btn-orders:hover { opacity: .8; }
+        .btns { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+    </style>
+</head>
+<body>
+<div class="card">
+    <div class="icon-wrap">
+        <i class="ti ti-circle-check-filled"></i>
+    </div>
+    <h1>پرداخت موفق بود! 🎉</h1>
+    <p class="sub">سفارش شما با موفقیت ثبت و پرداخت شد.</p>
+
+    <div class="info-box">
+        <div class="info-row">
+            <span class="label">شماره سفارش</span>
+            <span class="value" id="orderId">—</span>
+        </div>
+        <div class="info-row">
+            <span class="label">کد پیگیری پرداخت</span>
+            <span class="value" id="refId">—</span>
+        </div>
+        <div class="info-row" id="testModeRow" style="display:none">
+            <span class="label">وضعیت</span>
+            <span class="value" style="color:#d29922">حالت تست</span>
+        </div>
+    </div>
+
+    <div class="btns">
+        <a href="/" class="btn-home">
+            <i class="ti ti-home"></i> بازگشت به فروشگاه
+        </a>
+        <a href="/user-panel.html" class="btn-orders">
+            <i class="ti ti-clipboard-list"></i> مشاهده سفارشات من
+        </a>
+    </div>
+</div>
+
+<script>
+    const p = new URLSearchParams(window.location.search);
+    const orderId = p.get('order_id');
+    const refId   = p.get('ref_id');
+
+    document.getElementById('orderId').textContent = orderId ? `#${orderId}` : '—';
+    document.getElementById('refId').textContent   = refId   || '—';
+
+    if (refId === 'TEST-MODE') {
+        document.getElementById('refId').textContent   = '—';
+        document.getElementById('testModeRow').style.display = 'flex';
+    }
+</script>
+</body>
+</html>
