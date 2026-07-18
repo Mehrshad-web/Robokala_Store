@@ -19,70 +19,56 @@ with app.app_context():
     db.session.add_all([cat_robotics, cat_electronics, cat_educational])
     db.session.commit()
 
-    # ساخت محصولات
+    # ساخت محصولات با مشخصات فیزیکی جدید
     products = [
         Product(
-            name='Arduino Uno',
-            price=350000,
-            discount=0,
-            stock=10,
+            name='Arduino Uno', price=350000, discount=0, stock=10,
             image_url='img/product/prod1.jpeg',
             description='برد آردوینو اونو مناسب برای شروع پروژه‌های الکترونیک و رباتیک',
-            category_id=cat_electronics.id
+            category_id=cat_electronics.id,
+            brand='Arduino', sku='ARD-UNO-R3', weight_grams=90, warranty_months=12
         ),
         Product(
-            name='Raspberry Pi 4',
-            price=1200000,
-            discount=10,
-            stock=5,
+            name='Raspberry Pi 4', price=1200000, discount=10, stock=5,
             image_url='img/product/prod2.jpeg',
             description='میکروکامپیوتر قدرتمند برای پروژه‌های IoT و یادگیری ماشین',
-            category_id=cat_electronics.id
+            category_id=cat_electronics.id,
+            brand='Raspberry Pi Foundation', sku='RPI4-2GB', weight_grams=150, warranty_months=12
         ),
         Product(
-            name='Servo Motor SG90',
-            price=180000,
-            discount=0,
-            stock=20,
+            name='Servo Motor SG90', price=180000, discount=0, stock=20,
             image_url='img/product/prod3.jpeg',
             description='موتور سروو مینیاتوری برای کنترل دقیق زاویه در رباتیک',
-            category_id=cat_robotics.id
+            category_id=cat_robotics.id,
+            brand='TowerPro', sku='SG90-SRV', weight_grams=40, warranty_months=3
         ),
         Product(
-            name='Breadboard 830',
-            price=75000,
-            discount=5,
-            stock=50,
+            name='Breadboard 830', price=75000, discount=5, stock=50,
             image_url='img/product/prod4.jpeg',
             description='برد آزمایشگاهی ۸۳۰ سوراخه برای ساخت مدارات بدون لحیم',
-            category_id=cat_electronics.id
+            category_id=cat_electronics.id,
+            brand='Generic', sku='BB-830', weight_grams=80, warranty_months=0
         ),
         Product(
-            name='Starter Kit Arduino',
-            price=850000,
-            discount=15,
-            stock=8,
+            name='Starter Kit Arduino', price=850000, discount=15, stock=8,
             image_url='img/product/prod5.jpeg',
             description='کیت جامع شروع با آردوینو شامل قطعات ضروری برای مبتدیان',
-            category_id=cat_educational.id
+            category_id=cat_educational.id,
+            brand='Arduino', sku='ARD-KIT-01', weight_grams=600, warranty_months=6
         ),
         Product(
-            name='ربات آموزشی پایه',
-            price=2500000,
-            discount=0,
-            stock=3,
+            name='ربات آموزشی پایه', price=2500000, discount=0, stock=3,
             image_url='img/product/prod7.jpeg',
             description='ربات آموزشی کامل برای یادگیری اصول رباتیک و برنامه‌نویسی',
-            category_id=cat_robotics.id
+            category_id=cat_robotics.id,
+            brand='RoboKala', sku='ROBO-EDU-01', weight_grams=1200, warranty_months=12
         ),
         Product(
-            name='کیت سنسور ۳۷ در ۱',
-            price=450000,
-            discount=20,
-            stock=15,
+            name='کیت سنسور ۳۷ در ۱', price=450000, discount=20, stock=15,
             image_url='img/product/prod8.jpeg',
             description='مجموعه ۳۷ سنسور مختلف برای پروژه‌های آردوینو و رزبری‌پای',
-            category_id=cat_educational.id
+            category_id=cat_educational.id,
+            brand='Generic', sku='SEN-KIT-37', weight_grams=350, warranty_months=3
         ),
     ]
     db.session.add_all(products)
@@ -97,5 +83,5 @@ with app.app_context():
     db.session.add(admin)
     db.session.commit()
 
-    print('✅ داده‌های تست با موفقیت اضافه شدن')
+    print('✅ داده‌های تست با مشخصات واقعی اضافه شدن')
     print('👤 ادمین: admin@robokala.ir / admin123')

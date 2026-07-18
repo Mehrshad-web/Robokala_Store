@@ -52,6 +52,12 @@ class Product(db.Model):
     description = db.Column(db.Text)
     category_id = db.Column(db.Integer, db.ForeignKey('categories.id'))
 
+    # ─── مشخصات واقعی محصول ──────────────────────────────
+    brand = db.Column(db.String(100))
+    sku = db.Column(db.String(100))
+    weight_grams = db.Column(db.Integer)
+    warranty_months = db.Column(db.Integer, default=0)
+
     comments = db.relationship('Comment', backref='product', lazy=True, cascade='all, delete-orphan')
 
     def to_dict(self):
@@ -64,7 +70,11 @@ class Product(db.Model):
             'image_url': self.image_url,
             'description': self.description,
             'category_id': self.category_id,
-            'category_name': self.category.name if self.category else None
+            'category_name': self.category.name if self.category else None,
+            'brand': self.brand,
+            'sku': self.sku,
+            'weight_grams': self.weight_grams,
+            'warranty_months': self.warranty_months
         }
 
 
@@ -93,16 +103,39 @@ class Order(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     total = db.Column(db.Float, nullable=False)
-    status = db.Column(db.String(50), default='pending')
+    status = db.Column(db.String(50), default='pending_payment')
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
 
-    items = db.relationship('OrderItem', backref='order', lazy=True, cascade='all, delete-orphan')
+    # ─── آدرس تحویل ──────────────────────────────────────────
+    recipient_name = db.Column(db.String(100), nullable=True)
+    recipient_phone = db.Column(db.String(20), nullable=True)
+    province = db.Column(db.String(50), nullable=True)
+    city = db.Column(db.String(50), nullable=True)
+    address = db.Column(db.Text, nullable=True)
+    postal_code = db.Column(db.String(20), nullable=True)
+
+    # ─── پرداخت ──────────────────────────────────────────────
+    payment_authority = db.Column(db.String(200), nullable=True)
+    payment_ref_id = db.Column(db.String(100), nullable=True)
+    payment_status = db.Column(db.String(50), default='unpaid')
+
+    items = db.relationship(
+        'OrderItem',
+        backref='order',
+        lazy=True,
+        cascade='all, delete-orphan'
+    )
 
     def to_dict(self):
         return {
             'id': self.id,
             'total': self.total,
             'status': self.status,
+            'payment_status': self.payment_status,
+            'payment_ref_id': self.payment_ref_id,
+            'recipient_name': self.recipient_name,
+            'city': self.city,
+            'address': self.address,
             'created_at': self.created_at.isoformat(),
             'items': [item.to_dict() for item in self.items]
         }
@@ -150,3 +183,53 @@ class Comment(db.Model):
             'rating': self.rating,
             'created_at': self.created_at.isoformat()
         }
+
+
+class Slide(db.Model):
+    __tablename__ = 'slides'
+
+    id = db.Column(db.Integer, primary_key=True)
+    image_url = db.Column(db.String(500), nullable=False)
+    title = db.Column(db.String(200))
+    description = db.Column(db.Text)
+    link_url = db.Column(db.String(500))
+    order_index = db.Column(db.Integer, default=0)
+
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'image_url': self.image_url,
+            'title': self.title,
+            'description': self.description,
+            'link_url': self.link_url,
+            'order_index': self.order_index
+        }
+
+
+class SocialLink(db.Model):
+    __tablename__ = 'social_links'
+
+    id = db.Column(db.Integer, primary_key=True)
+    platform = db.Column(db.String(50), nullable=False)
+    icon_class = db.Column(db.String(100), default='ti ti-link')
+    url = db.Column(db.String(500), nullable=False)
+    order_index = db.Column(db.Integer, default=0)
+
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'platform': self.platform,
+            'icon_class': self.icon_class,
+            'url': self.url,
+            'order_index': self.order_index
+        }
+
+
+class SiteSetting(db.Model):
+    __tablename__ = 'site_settings'
+
+    key = db.Column(db.String(100), primary_key=True)
+    value = db.Column(db.Text)
+
+    def to_dict(self):
+        return {'key': self.key, 'value': self.value}
