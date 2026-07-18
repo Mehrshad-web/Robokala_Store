@@ -1,182 +1,140 @@
 // ============================================================
-// products-explore.js — نسخه نهایی ادغام‌شده (RoboKala)
+// products-explore.js — RoboKala (Optimized & Integrated)
 // ============================================================
 
-const CART_KEY  = 'robokala_cart';
-const TOKEN_KEY = 'robokala_token';
-const API_BASE  = ''; // Flask same domain
+// کش محلی برای نگهداری اطلاعات محصولات (جلوگیری از باگ کوتیشن در HTML)
+let productsCache = {};
 
 // ════════════════════════════════════════════════════════════
-// تابع نمایش نوتیفیکیشن (برگرفته از popup شما)
-// ════════════════════════════════════════════════════════════
-function showNotification(msg, ok = true) {
-    document.querySelectorAll('.rk-popup').forEach(n => n.remove());
-    const n = document.createElement('div');
-    n.className = 'rk-popup';
-    n.textContent = msg;
-    Object.assign(n.style, {
-        position:'fixed', bottom:'24px', left:'50%', transform:'translateX(-50%)',
-        background: ok ? '#51cf66' : '#ff6b6b', color:'white',
-        padding:'12px 28px', borderRadius:'10px', zIndex:'99999',
-        fontSize:'14px', boxShadow:'0 4px 20px rgba(0,0,0,.3)',
-        transition:'opacity .3s', whiteSpace:'nowrap'
-    });
-    document.body.appendChild(n);
-    setTimeout(() => { n.style.opacity = '0'; setTimeout(() => n.remove(), 300); }, 2500);
-}
-
-// ════════════════════════════════════════════════════════════
-// افزودن به سبد خرید (نسخه همکار - ادغام‌شده با showNotification و KEY ها)
-// ════════════════════════════════════════════════════════════
-async function addToCartFromCard(product, event) {
-    // جلوگیری از رفتن به صفحه product
-    if (event) {
-        event.preventDefault();
-        event.stopPropagation();
-    }
-
-    try {
-        if (typeof isLoggedIn === 'function' && isLoggedIn()) {
-            const res = await authFetch('/api/cart/items', {
-                method: 'POST',
-                body: JSON.stringify({
-                    product_id: product.id,
-                    quantity: 1
-                })
-            });
-
-            if (res && res.ok) {
-                showNotification('✅ به سبد اضافه شد');
-            } else if (res) {
-                const d = await res.json();
-                showNotification(d.error || 'خطا', false);
-            }
-        } else {
-            const cart = JSON.parse(localStorage.getItem(CART_KEY) || '[]');
-            const existing = cart.find(i => i.id === product.id);
-
-            if (existing) {
-                existing.quantity++;
-            } else {
-                cart.push({
-                    id: product.id,
-                    quantity: 1,
-                    price: product.price,
-                    discount: product.discount || 0,
-                    name: product.name,
-                    image_url: product.image_url || ''
-                });
-            }
-
-            localStorage.setItem(CART_KEY, JSON.stringify(cart));
-            showNotification('✅ محصول به سبد اضافه شد');
-        }
-    } catch (err) {
-        console.error(err);
-        showNotification('خطا در ارتباط با سرور', false);
-    }
-}
-
-// ════════════════════════════════════════════════════════════
-// ساخت HTML کارت محصول (نسخه همکار)
-// ════════════════════════════════════════════════════════════
-function renderProductCard(p) {
-    const hasDiscount = p.discount > 0;
-    const finalPrice = hasDiscount
-        ? Math.round(p.price * (1 - p.discount / 100))
-        : p.price;
-    const img = p.image_url || 'img/product/prod1.jpeg';
-    const badge = hasDiscount
-        ? `<div class="product-card__badge">${p.discount}%</div>`
-        : '';
-    const oldPrice = hasDiscount
-        ? `<div class="product-card__old">${p.price.toLocaleString('fa-IR')}</div>`
-        : '';
-
-    return `
-        <a href="product.html?id=${p.id}" style="text-decoration:none;color:inherit;">
-            <div class="product-card">
-                ${badge}
-                <div class="product-card__img">
-                    <img src="${img}" alt="${p.name}"
-                         onerror="this.onerror=null;this.src='img/product/prod1.jpeg'">
-                </div>
-                <div class="product-card__name">${p.name}</div>
-                <div class="product-card__footer">
-                    <div class="product-card__price-box">
-                        ${oldPrice}
-                        <div class="product-card__price">
-                            ${finalPrice.toLocaleString('fa-IR')}
-                            <span class="product-card__unit">تومان</span>
-                        </div>
-                    </div>
-                    <div class="product-card__cart"
-                        onclick='addToCartFromCard(${JSON.stringify(p)}, event)'
-                        style="cursor:pointer">
-                        <i class="ti ti-shopping-cart"></i>
-                    </div>
-                </div>
-            </div>
-        </a>`;
-}
-
-// ════════════════════════════════════════════════════════════
-// لود محصولات از API (ادغام‌شده)
+// لود محصولات از API
 // ════════════════════════════════════════════════════════════
 async function loadProducts(params = {}) {
     const grid = document.querySelector('.products-grid');
     const countEl = document.querySelector('.products-count');
     if (!grid) return;
 
-    grid.innerHTML = '<p style="text-align:center;padding:40px;opacity:0.6">در حال بارگذاری محصولات...</p>';
+    grid.innerHTML = '<div style="text-align:center;padding:60px;opacity:.6;grid-column:1/-1">در حال بارگذاری محصولات...</div>';
 
+    // فیلتر کردن پارامترهای خالی
     const cleanParams = Object.fromEntries(
         Object.entries(params).filter(([_, v]) => v !== '' && v != null)
     );
-
-    const query = new URLSearchParams(cleanParams).toString();
-    const url = `${API_BASE}/api/products${query ? '?' + query : ''}`;
+    const qs = new URLSearchParams(cleanParams).toString();
 
     try {
-        const res = await fetch(url);
-        if (!res.ok) throw new Error('خطای سرور');
+        const res = await fetch(`/api/products${qs ? '?' + qs : ''}`);
+        if (!res.ok) throw new Error('Network response was not ok');
+        
         const data = await res.json();
-        const products = Array.isArray(data) ? data : (data.products ?? []);
+        const products = Array.isArray(data) ? data : (data.products || []);
         const total = data.total ?? products.length;
 
         if (countEl) countEl.textContent = `${total} محصول`;
 
         if (!products.length) {
-            grid.innerHTML = '<p style="text-align:center;padding:40px;opacity:0.6">محصولی یافت نشد</p>';
+            grid.innerHTML = '<div style="text-align:center;padding:60px;opacity:.6;grid-column:1/-1">محصولی با این مشخصات یافت نشد</div>';
             return;
         }
 
-        grid.innerHTML = products.map(renderProductCard).join('');
+        // پر کردن کش محصولات برای استفاده در کلیک‌ها
+        productsCache = {};
+        products.forEach(p => { productsCache[p.id] = p; });
+
+        // رندر کارت‌ها
+        grid.innerHTML = products.map(renderCard).join('');
 
     } catch (err) {
-        console.error(err);
-        grid.innerHTML = '<p style="text-align:center;padding:40px;color:red">خطا در ارتباط با سرور — مطمئن شو Flask اجرا شده</p>';
+        console.error('Fetch error:', err);
+        grid.innerHTML = '<div style="text-align:center;padding:60px;color:#ff6b6b;grid-column:1/-1">⚠️ خطا در ارتباط با سرور — مطمئن شو Flask اجرا شده باشه</div>';
     }
 }
 
 // ════════════════════════════════════════════════════════════
-// لود دسته‌بندی‌ها از API (ادغام‌شده)
+// ساخت HTML کارت محصول (بدون onclick درون‌خطی و ایمن)
+// ════════════════════════════════════════════════════════════
+function renderCard(p) {
+    const hasDisc = p.discount > 0;
+    const finalPrice = hasDisc ? Math.round(p.price * (1 - p.discount / 100)) : p.price;
+    const img = p.image_url || 'img/product/prod1.jpeg';
+    
+    return `
+        <div class="product-card" data-pid="${p.id}" style="cursor:pointer">
+            ${hasDisc ? `<div class="product-card__badge">${p.discount}%</div>` : ''}
+            <div class="product-card__img">
+                <img src="${img}" alt="${p.name}"
+                     onerror="this.onerror=null;this.src='img/product/prod1.jpeg'">
+            </div>
+            <div class="product-card__name">${p.name}</div>
+            <div class="product-card__footer">
+                <div class="product-card__price-box">
+                    ${hasDisc ? `<div class="product-card__old">${p.price.toLocaleString('fa-IR')}</div>` : ''}
+                    <div class="product-card__price">
+                        ${finalPrice.toLocaleString('fa-IR')}
+                        <span class="product-card__unit">تومان</span>
+                    </div>
+                </div>
+                <div class="product-card__cart" data-cart-pid="${p.id}" style="cursor:pointer" title="افزودن به سبد خرید">
+                    <i class="ti ti-shopping-cart"></i>
+                </div>
+            </div>
+        </div>`;
+}
+
+// ════════════════════════════════════════════════════════════
+// رویدادها و Event Delegation (یکپارچه و پرفورمنس بالا)
+// ════════════════════════════════════════════════════════════
+document.addEventListener('DOMContentLoaded', () => {
+
+    // هندل کردن کلیک‌های روی کل گرید (سبد خرید یا رفتن به صفحه محصول)
+    const grid = document.querySelector('.products-grid');
+    if (grid) {
+        grid.addEventListener('click', (e) => {
+            // آیا روی دکمه سبد خرید کلیک شده؟
+            const cartBtn = e.target.closest('[data-cart-pid]');
+            if (cartBtn) {
+                e.stopPropagation(); // جلوگیری از رفتن به صفحه محصول
+                const product = productsCache[cartBtn.dataset.cartPid];
+                if (product) addToCartFromCard(product, 1); // استفاده از تابع ایمن auth-helper.js
+                return;
+            }
+            
+            // آیا روی بدنه کارت کلیک شده؟
+            const card = e.target.closest('[data-pid]');
+            if (card) {
+                window.location.href = `/product.html?id=${card.dataset.pid}`;
+            }
+        });
+    }
+
+    // خواندن پارامترهای URL
+    const sp = new URLSearchParams(window.location.search);
+    const urlSearch = sp.get('search');
+    const urlCat = sp.get('category');
+
+    loadCategories();
+    loadProducts(
+        urlSearch ? { search: urlSearch } :
+        urlCat ? { category: urlCat } :
+        {}
+    );
+});
+
+// ════════════════════════════════════════════════════════════
+// لود دسته‌بندی‌ها از API
 // ════════════════════════════════════════════════════════════
 async function loadCategories() {
     try {
         const res = await fetch('/api/categories');
         if (!res.ok) return;
-        const categories = await res.json();
+        const cats = await res.json();
 
         document.querySelectorAll('.filter-group').forEach(group => {
-            const title = group.querySelector('h4')?.textContent?.trim();
-            if (title !== 'دسته‌بندی') return;
-
+            if (group.querySelector('h4')?.textContent?.trim() !== 'دسته‌بندی') return;
+            
             group.querySelectorAll('.filter-check').forEach(c => c.remove());
-            const btn = group.querySelector('.show-more-btn');
-            if (btn) btn.remove();
+            group.querySelector('.show-more-btn')?.remove();
 
-            categories.forEach(cat => {
+            cats.forEach(cat => {
                 const div = document.createElement('div');
                 div.className = 'filter-check';
                 div.innerHTML = `
@@ -188,12 +146,12 @@ async function loadCategories() {
             });
         });
     } catch (err) {
-        console.error('خطا در لود دسته‌بندی‌ها:', err);
+        console.error('Categories load error:', err);
     }
 }
 
 // ════════════════════════════════════════════════════════════
-// اعمال فیلترها (ادغام‌شده)
+// اعمال فیلترها
 // ════════════════════════════════════════════════════════════
 async function applyFilters() {
     const params = {};
@@ -208,169 +166,128 @@ async function applyFilters() {
         }
     });
 
-    const priceMin = document.getElementById('priceMin')?.value;
-    const priceMax = document.getElementById('priceMax')?.value;
+    const pMin = document.getElementById('priceMin')?.value;
+    const pMax = document.getElementById('priceMax')?.value;
+    if (pMin) params.price_min = pMin;
+    if (pMax) params.price_max = pMax;
 
-    if (priceMin) params.price_min = priceMin;
-    if (priceMax) params.price_max = priceMax;
+    // استخراج وضعیت Sort فعلی
+    const selectedText = document.getElementById('selectedOption')?.textContent.trim();
+    const sortMap = { 'جدیدترین': '', 'ارزان‌ترین': 'price_asc', 'گران‌ترین': 'price_desc' };
+    if (selectedText && sortMap[selectedText]) {
+        params.sort = sortMap[selectedText];
+    }
 
     await loadProducts(params);
 }
 
 // ════════════════════════════════════════════════════════════
-// نمایش بیشتر / بستن فیلترها (نسخه همکار)
+// نمایش بیشتر / کمتر در فیلترها
 // ════════════════════════════════════════════════════════════
 document.querySelectorAll('.filter-group').forEach(group => {
     const checks = group.querySelectorAll('.filter-check');
     if (checks.length <= 2) return;
 
-    checks.forEach((check, i) => {
-        if (i >= 2) check.style.display = 'none';
-    });
+    checks.forEach((c, i) => { if (i >= 2) c.style.display = 'none'; });
 
     const btn = document.createElement('button');
     btn.className = 'show-more-btn';
     btn.textContent = `+ ${checks.length - 2} مورد بیشتر`;
-    let isOpen = false;
+    let open = false;
 
     btn.addEventListener('click', () => {
-        isOpen = !isOpen;
-        checks.forEach((check, i) => {
-            if (i >= 2) check.style.display = isOpen ? 'flex' : 'none';
-        });
-        btn.textContent = isOpen ? 'بستن' : `+ ${checks.length - 2} مورد بیشتر`;
+        open = !open;
+        checks.forEach((c, i) => { if (i >= 2) c.style.display = open ? 'flex' : 'none'; });
+        btn.textContent = open ? 'بستن' : `+ ${checks.length - 2} مورد بیشتر`;
     });
     group.appendChild(btn);
 });
 
 // ════════════════════════════════════════════════════════════
-// دکمه‌های Clear / Apply (ادغام‌شده)
+// دکمه‌های پاک کردن و اعمال فیلتر
 // ════════════════════════════════════════════════════════════
 function updateClearBtn() {
     const clearBtn = document.querySelector('.filter-clear');
     const applyBtn = document.getElementById('applyBtn');
+    
+    const hasChecked = [...document.querySelectorAll('.filter-check input')].some(i => i.checked);
+    const hasPrice = document.getElementById('priceMin')?.value !== '' || document.getElementById('priceMax')?.value !== '';
+    const active = hasChecked || hasPrice;
 
-    const priceMin = document.getElementById('priceMin');
-    const priceMax = document.getElementById('priceMax');
-
-    const hasChecked = [...document.querySelectorAll('.filter-check input')]
-        .some(i => i.checked);
-
-    const hasPrice = priceMin?.value !== '' || priceMax?.value !== '';
-
-    const hasActive = hasChecked || hasPrice;
-
-    if (clearBtn) {
-        clearBtn.style.opacity = hasActive ? '1' : '0';
-        clearBtn.style.pointerEvents = hasActive ? 'all' : 'none';
-    }
-    if (applyBtn) {
-        applyBtn.style.opacity = hasActive ? '1' : '0';
-        applyBtn.style.pointerEvents = hasActive ? 'all' : 'none';
-    }
+    [clearBtn, applyBtn].forEach(el => {
+        if (!el) return;
+        el.style.opacity = active ? '1' : '0';
+        el.style.pointerEvents = active ? 'all' : 'none';
+    });
 }
 
-// ════════════════════════════════════════════════════════════
-// Event Listeners برای فیلترها (ادغام‌شده)
-// ════════════════════════════════════════════════════════════
-document.querySelectorAll('.filter-check input').forEach(input => {
-    input.addEventListener('change', updateClearBtn);
-});
-
+document.querySelectorAll('.filter-check input').forEach(i => i.addEventListener('change', updateClearBtn));
 document.getElementById('priceMin')?.addEventListener('input', updateClearBtn);
 document.getElementById('priceMax')?.addEventListener('input', updateClearBtn);
-
 document.getElementById('applyBtn')?.addEventListener('click', applyFilters);
+
+document.querySelector('.filter-clear')?.addEventListener('click', () => {
+    document.querySelectorAll('.filter-check input').forEach(i => i.checked = false);
+    if (document.getElementById('priceMin')) document.getElementById('priceMin').value = '';
+    if (document.getElementById('priceMax')) document.getElementById('priceMax').value = '';
+    updateClearBtn();
+    applyFilters(); // فراخوانی به جای loadProducts خالی تا با Sort ترکیب شود
+});
 
 updateClearBtn();
 
 // ════════════════════════════════════════════════════════════
-// Filter Reset (ادغام‌شده)
+// منوی فیلتر موبایل
 // ════════════════════════════════════════════════════════════
-document.querySelector('.filter-clear')?.addEventListener('click', () => {
-    document.querySelectorAll('.filter-check input')
-        .forEach(input => input.checked = false);
-
-    if (document.getElementById('priceMin')) document.getElementById('priceMin').value = '';
-    if (document.getElementById('priceMax')) document.getElementById('priceMax').value = '';
-
-    updateClearBtn();
-    loadProducts();
+document.querySelector('.filter-mobile-toggle')?.addEventListener('click', () => {
+    const sidebar = document.querySelector('.filter-sidebar');
+    sidebar?.classList.toggle('mobile-open');
+    const span = document.querySelector('.filter-mobile-toggle span');
+    if (span) span.textContent = sidebar?.classList.contains('mobile-open') ? 'بستن فیلترها' : 'فیلترها';
 });
 
 // ════════════════════════════════════════════════════════════
-// Mobile Filter Toggle (ادغام‌شده)
-// ════════════════════════════════════════════════════════════
-const filterSidebar = document.querySelector('.filter-sidebar');
-const filterToggle = document.querySelector('.filter-mobile-toggle');
-
-filterToggle?.addEventListener('click', () => {
-    filterSidebar?.classList.toggle('mobile-open');
-
-    const span = filterToggle?.querySelector('span');
-    if (span) {
-        span.textContent =
-            filterSidebar?.classList.contains('mobile-open')
-                ? 'بستن فیلترها'
-                : 'فیلترها';
-    }
-});
-
-// ════════════════════════════════════════════════════════════
-// Custom Select (مرتب‌سازی) (ادغام‌شده)
+// منوی کرکره‌ای سفارشی (مرتب‌سازی)
 // ════════════════════════════════════════════════════════════
 const customSelect = document.getElementById('customSelect');
 const selectedOption = document.getElementById('selectedOption');
 
-if (customSelect && selectedOption) {
+if (customSelect) {
     const optionsEl = customSelect.querySelector('.custom-select__options');
-
     if (optionsEl) {
         document.body.appendChild(optionsEl);
 
-        function positionOptions() {
-            const rect = customSelect.getBoundingClientRect();
+        const pos = () => {
+            const r = customSelect.getBoundingClientRect();
             Object.assign(optionsEl.style, {
-                position: 'fixed',
-                top: (rect.bottom + 8) + 'px',
-                left: rect.left + 'px',
-                width: rect.width + 'px'
+                position:'fixed', top:(r.bottom+8)+'px',
+                left:r.left+'px', width:r.width+'px',
+                zIndex: '9999'
             });
-        }
+        };
 
-        customSelect.addEventListener('click', (e) => {
-            const isOpen = customSelect.classList.toggle('open');
-            if (isOpen) {
-                positionOptions();
-                optionsEl.style.opacity = '1';
-                optionsEl.style.pointerEvents = 'all';
-                optionsEl.style.transform = 'translateY(0)';
-            } else {
-                optionsEl.style.opacity = '0';
-                optionsEl.style.pointerEvents = 'none';
-                optionsEl.style.transform = 'translateY(-8px)';
-            }
+        customSelect.addEventListener('click', e => {
+            const open = customSelect.classList.toggle('open');
+            if (open) pos();
+            optionsEl.style.opacity = open ? '1' : '0';
+            optionsEl.style.pointerEvents = open ? 'all' : 'none';
+            optionsEl.style.transform = open ? 'translateY(0)' : 'translateY(-8px)';
             e.stopPropagation();
         });
 
-        const sortMap = {
-            'جدیدترین': '',
-            'ارزان‌ترین': 'price_asc',
-            'گران‌ترین': 'price_desc'
-        };
-
-        optionsEl.querySelectorAll('.custom-select__option').forEach(option => {
-            option.addEventListener('click', (e) => {
+        optionsEl.querySelectorAll('.custom-select__option').forEach(opt => {
+            opt.addEventListener('click', e => {
                 e.stopPropagation();
-                selectedOption.textContent = option.textContent;
-                optionsEl.querySelectorAll('.custom-select__option')
-                    .forEach(o => o.classList.remove('active'));
-                option.classList.add('active');
+                if (selectedOption) selectedOption.textContent = opt.textContent;
+                
+                optionsEl.querySelectorAll('.custom-select__option').forEach(o => o.classList.remove('active'));
+                opt.classList.add('active');
+                
                 customSelect.classList.remove('open');
                 optionsEl.style.opacity = '0';
                 optionsEl.style.pointerEvents = 'none';
-                const sort = sortMap[option.textContent.trim()] ?? '';
-                loadProducts(sort ? { sort } : {});
+                
+                applyFilters(); // فراخوانی این تابع تا هم فیلترها و هم سورت باهم اعمال شوند
             });
         });
 
@@ -379,23 +296,9 @@ if (customSelect && selectedOption) {
             optionsEl.style.opacity = '0';
             optionsEl.style.pointerEvents = 'none';
         });
+        
+        window.addEventListener('scroll', () => {
+            if (customSelect.classList.contains('open')) pos();
+        });
     }
 }
-
-// ════════════════════════════════════════════════════════════
-// INITIALIZATION (بارگذاری اولیه)
-// ════════════════════════════════════════════════════════════
-// خواندن پارامترها از URL
-const urlSearchParams = new URLSearchParams(window.location.search);
-const urlSearch = urlSearchParams.get('search');
-const urlCat = urlSearchParams.get('category'); // اضافه شدن از کد شما
-
-// لود دسته‌بندی‌ها
-loadCategories();
-
-// لود محصولات با پارامترهای URL
-loadProducts(
-    urlSearch ? { search: urlSearch } :
-    urlCat ? { category: urlCat } :
-    {}
-);

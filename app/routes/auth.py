@@ -1,3 +1,4 @@
+from datetime import timedelta
 from flask import Blueprint, jsonify, request
 from flask_jwt_extended import create_access_token, jwt_required, get_jwt_identity
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -5,6 +6,12 @@ from app.extensions import db
 from app.models.models import User
 
 auth = Blueprint('auth', __name__)
+
+
+def make_token(user):
+    """تنظیم داینامیک زمان انقضا: ۷ روز برای کاربر عادی، ۱۰ ساعت برای ادمین"""
+    expires = timedelta(hours=10) if user.is_admin else timedelta(days=7)
+    return create_access_token(identity=str(user.id), expires_delta=expires)
 
 
 # POST /auth/register
@@ -35,7 +42,8 @@ def register():
     db.session.add(user)
     db.session.commit()
 
-    token = create_access_token(identity=str(user.id))
+    # استفاده از تابع کمکی برای اعمال زمان انقضای درست
+    token = make_token(user)
     return jsonify({'access_token': token, 'user': user.to_dict()}), 201
 
 
@@ -56,7 +64,8 @@ def login():
     if not user or not check_password_hash(user.password_hash, password):
         return jsonify({'error': 'ایمیل یا رمز اشتباهه'}), 401
 
-    token = create_access_token(identity=str(user.id))
+    # استفاده از تابع کمکی برای اعمال زمان انقضای درست
+    token = make_token(user)
     return jsonify({'access_token': token, 'user': user.to_dict()})
 
 
