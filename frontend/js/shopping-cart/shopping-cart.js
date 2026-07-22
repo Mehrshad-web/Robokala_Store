@@ -157,18 +157,18 @@ async function loadCart() {
         </div>
     `;
 
-    try {
-        if (safeIsLoggedIn()) {
-            const res = await safeAuthFetch(CART_CONFIG.CART_API);
+    if (safeIsLoggedIn()) {
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 15000); // سقف انتظار: ۱۵ ثانیه
 
-            if (!res) {
-                renderCart([]);
-                return;
-            }
+        try {
+            const res = await safeAuthFetch(CART_CONFIG.CART_API, { signal: controller.signal });
+            clearTimeout(timeoutId);
+            
+            if (!res) return; // authFetch خودش یا ریدایرکت کرده یا پیام خطا داده
 
             if (!res.ok) {
-                notify('خطا در دریافت سبد خرید', false);
-                renderCart([]);
+                showCartError(`خطای سرور (کد ${res.status})`);
                 return;
             }
 
@@ -177,18 +177,37 @@ async function loadCart() {
 
             cartItemsCache = items;
             renderCart(items, true);
-            return;
+
+        } catch (err) {
+            clearTimeout(timeoutId);
+            console.error('خطا در بارگذاری سبد خرید:', err);
+            
+            if (err.name === 'AbortError') {
+                showCartError('سرور خیلی دیر جواب داد — اگه رو Render تستش می‌کنی، ممکنه سرور تازه داشته بیدار می‌شده');
+            } else {
+                showCartError('اتصال به سرور برقرار نشد');
+            }
         }
-
+    } else {
         const localItems = safeGetLocalCart().map(normalizeLocalItem);
-
         cartItemsCache = localItems;
         renderCart(localItems, false);
-    } catch (error) {
-        console.error(error);
-        notify('خطا در ارتباط با سرور', false);
-        renderCart([]);
     }
+}
+
+function showCartError(msg) {
+    const container = document.querySelector('.cart-items');
+    if (!container) return;
+    container.innerHTML = `
+        <div style="text-align:center;padding:50px 20px">
+            <div style="font-size:15px;color:#ff6b6b;margin-bottom:18px">⚠️ ${msg}</div>
+            <button onclick="loadCart()" style="
+                background:#00d4ff;border:none;color:#000;
+                padding:10px 26px;border-radius:9px;cursor:pointer;
+                font-size:14px;font-weight:700;">
+                تلاش دوباره
+            </button>
+        </div>`;
 }
 
 /* ===================== RENDER CART ===================== */
@@ -442,18 +461,21 @@ function bindCheckout() {
     if (!checkoutBtn) return;
 
     checkoutBtn.addEventListener('click', async () => {
-        if (!safeIsLoggedIn()) {
-            notify('برای خرید ابتدا وارد شوید', false);
+
+        if (!isLoggedIn()) {
+            setRedirectAfterLogin('/shopping-cart.html');
+
+            showNotification('برای ثبت سفارش ابتدا وارد حساب شو', false);
 
             setTimeout(() => {
-                window.location.href = CART_CONFIG.AUTH_PAGE;
+                window.location.href = '/authentication.html';
             }, 1200);
 
             return;
         }
 
         if (!cartItemsCache.length) {
-            notify('سبد خرید شما خالی است', false);
+            showNotification('سبد خرید شما خالی است', false);
             return;
         }
 
@@ -468,25 +490,28 @@ function bindCheckout() {
             });
 
             if (!res) {
-                notify('خطا در ثبت سفارش', false);
+                showNotification('خطا در ثبت سفارش', false);
                 return;
             }
 
             const data = await res.json().catch(() => ({}));
 
             if (res.ok) {
-                notify(`✅ سفارش #${data.id || data.order_id || ''} ثبت شد`);
+                showNotification(`✅ سفارش #${data.id || data.order_id || ''} ثبت شد`);
                 safeUpdateCartBadge();
 
                 setTimeout(() => {
                     window.location.href = '/';
                 }, 1800);
             } else {
-                notify(data.error || data.message || 'خطا در ثبت سفارش', false);
+                showNotification(
+                    data.error || data.message || 'خطا در ثبت سفارش',
+                    false
+                );
             }
         } catch (error) {
             console.error(error);
-            notify('خطا در ارتباط با سرور', false);
+            showNotification('خطا در ارتباط با سرور', false);
         } finally {
             checkoutBtn.disabled = false;
             checkoutBtn.textContent = originalText || 'ادامه و پرداخت';
@@ -494,8 +519,7 @@ function bindCheckout() {
     });
 }
 
-/* ===================== INIT ===================== */
-
+// مقداردهی اولیه سبد خرید هنگام بارگذاری صفحه
 document.addEventListener('DOMContentLoaded', () => {
     loadCart();
     bindCheckout();

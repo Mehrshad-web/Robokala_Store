@@ -224,6 +224,21 @@ class SocialLink(db.Model):
             'order_index': self.order_index
         }
 
+class FAQItem(db.Model):
+    __tablename__ = 'faq_items'
+
+    id = db.Column(db.Integer, primary_key=True)
+    question = db.Column(db.String(500), nullable=False)
+    answer = db.Column(db.Text, nullable=False)
+    order_index = db.Column(db.Integer, default=0)
+
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'question': self.question,
+            'answer': self.answer,
+            'order_index': self.order_index
+        }
 
 class SiteSetting(db.Model):
     __tablename__ = 'site_settings'

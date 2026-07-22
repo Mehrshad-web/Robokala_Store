@@ -1,12 +1,13 @@
 from app import create_app
 from app.extensions import db
-from app.models.models import Slide, SocialLink, SiteSetting
+from app.models.models import Slide, SocialLink, SiteSetting, FAQItem
 
 app = create_app()
 
 with app.app_context():
     Slide.query.delete()
     SocialLink.query.delete()
+    FAQItem.query.delete()
     db.session.commit()
 
     slides = [
@@ -32,6 +33,16 @@ with app.app_context():
     ]
     db.session.add_all(socials)
 
+    faqs = [
+        FAQItem(question='چطور سفارش ثبت کنم؟',
+                answer='بعد از انتخاب محصول، وارد سبد خرید شده و پرداخت را انجام دهید.', order_index=1),
+        FAQItem(question='مدت ارسال چقدر است؟',
+                answer='سفارش‌ها معمولاً بین ۲۴ تا ۴۸ ساعت ارسال می‌شوند.', order_index=2),
+        FAQItem(question='آیا تضمین کیفیت وجود دارد؟',
+                answer='بله. ما ارائه دهنده بهترین کیفیت در بازار هستیم.', order_index=3),
+    ]
+    db.session.add_all(faqs)
+
     defaults = {
         'footer_about': 'مرجع فروش قطعات رباتیک و آموزش‌های تخصصی میکروکنترلر و الکترونیک',
         'footer_phone': '📞 0912xxxxxxx',
@@ -43,6 +54,4 @@ with app.app_context():
             db.session.add(SiteSetting(key=k, value=v))
 
     db.session.commit()
-    print('✅ اسلایدر، شبکه‌های اجتماعی و تنظیمات فوتر اضافه شد')
-
-    
+    print('✅ اسلایدر، شبکه‌های اجتماعی، سوالات متداول و تنظیمات فوتر اضافه شد')

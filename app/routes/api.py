@@ -21,6 +21,14 @@ def get_products():
     if search:
         query = query.filter(Product.name.ilike(f'%{search}%'))
 
+    brand = request.args.get('brand')
+    if brand:
+        query = query.filter(Product.brand == brand)
+
+    discount_only = request.args.get('discount_only')
+    if discount_only == 'true':
+        query = query.filter(Product.discount > 0)
+
     # فیلتر قیمت
     price_min = request.args.get('price_min', type=float)
     price_max = request.args.get('price_max', type=float)
@@ -129,3 +137,13 @@ def add_comment(product_id):
     db.session.commit()
 
     return jsonify(comment.to_dict()), 201
+
+# ─────────────────────────────────────────
+# GET /api/brands — لیست برندهای موجود (برای فیلتر)
+# ─────────────────────────────────────────
+@api.route('/brands', methods=['GET'])
+def get_brands():
+    rows = db.session.query(Product.brand).filter(
+        Product.brand.isnot(None), Product.brand != ''
+    ).distinct().order_by(Product.brand).all()
+    return jsonify([r[0] for r in rows])

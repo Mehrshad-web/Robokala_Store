@@ -1,499 +1,190 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>پنل مدیریت — RoboKala</title>
-
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
-<link rel="stylesheet" href="components/css/root.css">
-
-<style>
-
-*{box-sizing:border-box;margin:0;padding:0}
-
-body{
-font-family:'Segoe UI',Tahoma,sans-serif;
-background:var(--bg,#0f1117);
-color:var(--text,#eee);
-min-height:100vh;
-direction:rtl;
-}
-
-.admin-layout{
-display:flex;
-min-height:100vh;
-}
-
-/* SIDEBAR */
-
-.admin-sidebar{
-width:240px;
-flex-shrink:0;
-background:rgba(255,255,255,.05);
-border-left:1px solid rgba(255,255,255,.08);
-padding:24px 16px;
-display:flex;
-flex-direction:column;
-gap:8px;
-}
-
-.admin-logo{
-font-size:20px;
-font-weight:700;
-color:#00d4ff;
-padding:0 8px 16px;
-border-bottom:1px solid rgba(255,255,255,.08);
-margin-bottom:8px;
-}
-
-.admin-logo span{
-font-size:12px;
-color:#aaa;
-display:block;
-font-weight:400;
-}
-
-.side-btn{
-display:flex;
-align-items:center;
-gap:10px;
-padding:10px 12px;
-border-radius:10px;
-border:none;
-background:transparent;
-color:inherit;
-cursor:pointer;
-font-size:14px;
-transition:background .2s;
-width:100%;
-text-align:right;
-}
-
-.side-btn:hover{
-background:rgba(255,255,255,.07);
-}
-
-.side-btn.active{
-background:rgba(0,212,255,.15);
-color:#00d4ff;
-}
-
-.side-btn.logout{
-color:#ff6b6b;
-margin-top:auto;
-}
-
-/* MAIN */
-
-.admin-main{
-flex:1;
-padding:28px;
-overflow-y:auto;
-}
-
-.admin-section{
-display:none;
-}
-
-.admin-section.active{
-display:block;
-}
-
-.section-title{
-font-size:20px;
-font-weight:700;
-margin-bottom:20px;
-display:flex;
-align-items:center;
-gap:10px;
-}
-
-/* STATS */
-
-.stats-row{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:16px;
-margin-bottom:24px;
-}
-
-.stat-box{
-background:rgba(255,255,255,.05);
-border:1px solid rgba(255,255,255,.08);
-border-radius:14px;
-padding:20px;
-display:flex;
-align-items:center;
-gap:16px;
-}
-
-.stat-box i{
-font-size:28px;
-color:#00d4ff;
-}
-
-.stat-num{
-font-size:28px;
-font-weight:700;
-}
-
-.stat-lbl{
-font-size:13px;
-color:#aaa;
-}
-
-/* TABLE */
-
-table{
-width:100%;
-border-collapse:collapse;
-background:rgba(255,255,255,.03);
-border-radius:12px;
-overflow:hidden;
-}
-
-th,td{
-padding:12px 16px;
-text-align:right;
-border-bottom:1px solid rgba(255,255,255,.06);
-font-size:14px;
-}
-
-th{
-background:rgba(255,255,255,.06);
-color:#aaa;
-}
-
-tr:last-child td{
-border-bottom:none;
-}
-
-.product-thumb{
-width:44px;
-height:44px;
-object-fit:cover;
-border-radius:8px;
-}
-
-/* BUTTON */
-
-.btn-primary{
-background:#00d4ff;
-color:#000;
-border:none;
-padding:10px 20px;
-border-radius:10px;
-cursor:pointer;
-font-size:14px;
-font-weight:600;
-display:flex;
-align-items:center;
-gap:6px;
-}
-
-.btn-sm{
-padding:6px 12px;
-border:none;
-border-radius:7px;
-cursor:pointer;
-}
-
-.btn-edit{
-background:rgba(0,212,255,.15);
-color:#00d4ff;
-}
-
-.btn-delete{
-background:rgba(255,107,107,.15);
-color:#ff6b6b;
-}
-
-/* MODAL */
-
-.modal{
-display:none;
-position:fixed;
-inset:0;
-background:rgba(0,0,0,.7);
-backdrop-filter:blur(4px);
-z-index:1000;
-align-items:center;
-justify-content:center;
-}
-
-.modal.open{
-display:flex;
-}
-
-.modal-box{
-background:#1a1d2e;
-border:1px solid rgba(255,255,255,.1);
-border-radius:16px;
-padding:28px;
-width:520px;
-max-width:95vw;
-max-height:90vh;
-overflow-y:auto;
-}
-
-.modal-title{
-font-size:17px;
-font-weight:700;
-margin-bottom:20px;
-display:flex;
-justify-content:space-between;
-}
-
-.form-group{
-margin-bottom:14px;
-}
-
-.form-input,
-.form-select{
-width:100%;
-padding:10px 14px;
-background:rgba(255,255,255,.06);
-border:1px solid rgba(255,255,255,.1);
-border-radius:9px;
-color:inherit;
-font-size:14px;
-}
-
-.form-row{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:12px;
-}
-
-/* IMAGE UPLOAD */
-
-.img-upload-area{
-border:2px dashed rgba(255,255,255,.15);
-border-radius:12px;
-padding:20px;
-text-align:center;
-cursor:pointer;
-background:rgba(255,255,255,.03);
-transition:.2s;
-}
-
-.img-upload-area:hover{
-border-color:#00d4ff;
-background:rgba(0,212,255,.06);
-}
-
-.img-preview{
-width:100%;
-max-height:150px;
-object-fit:contain;
-border-radius:8px;
-display:none;
-margin-bottom:10px;
-}
-
-@media(max-width:768px){
-
-.admin-layout{
-flex-direction:column;
-}
-
-.stats-row{
-grid-template-columns:1fr;
-}
-
-}
-
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>پنل مدیریت — RoboKala</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+    <link rel="stylesheet" href="components/css/root.css">
+    <style>
+        *{box-sizing:border-box;margin:0;padding:0}
+        body{font-family:'Segoe UI',Tahoma,sans-serif;background:var(--bg,#0f1117);color:var(--text,#eee);min-height:100vh;direction:rtl;}
+        .admin-layout{display:flex;min-height:100vh;}
+        /* SIDEBAR */
+        .admin-sidebar{width:240px;flex-shrink:0;background:rgba(255,255,255,.05);border-left:1px solid rgba(255,255,255,.08);padding:24px 16px;display:flex;flex-direction:column;gap:8px;}
+        .admin-logo{font-size:20px;font-weight:700;color:#00d4ff;padding:0 8px 16px;border-bottom:1px solid rgba(255,255,255,.08);margin-bottom:8px;}
+        .admin-logo span{font-size:12px;color:#aaa;display:block;font-weight:400;}
+        .side-btn{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:10px;border:none;background:transparent;color:inherit;cursor:pointer;font-size:14px;transition:background .2s;width:100%;text-align:right;}
+        .side-btn:hover{background:rgba(255,255,255,.07);}
+        .side-btn.active{background:rgba(0,212,255,.15);color:#00d4ff;}
+        .side-btn.logout{color:#ff6b6b;margin-top:auto;}
+        /* MAIN */
+        .admin-main{flex:1;padding:28px;overflow-y:auto;}
+        .admin-section{display:none;}
+        .admin-section.active{display:block;}
+        .section-title{font-size:20px;font-weight:700;margin-bottom:20px;display:flex;align-items:center;gap:10px;}
+        /* STATS */
+        .stats-row{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:24px;}
+        .stat-box{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:20px;display:flex;align-items:center;gap:16px;}
+        .stat-box i{font-size:28px;color:#00d4ff;}
+        .stat-num{font-size:28px;font-weight:700;}
+        .stat-lbl{font-size:13px;color:#aaa;}
+        /* TABLE */
+        table{width:100%;border-collapse:collapse;background:rgba(255,255,255,.03);border-radius:12px;overflow:hidden;}
+        th,td{padding:12px 16px;text-align:right;border-bottom:1px solid rgba(255,255,255,.06);font-size:14px;}
+        th{background:rgba(255,255,255,.06);color:#aaa;}
+        tr:last-child td{border-bottom:none;}
+        .product-thumb{width:44px;height:44px;object-fit:cover;border-radius:8px;}
+        /* BUTTON */
+        .btn-primary{background:#00d4ff;color:#000;border:none;padding:10px 20px;border-radius:10px;cursor:pointer;font-size:14px;font-weight:600;display:flex;align-items:center;gap:6px;}
+        .btn-sm{padding:6px 12px;border:none;border-radius:7px;cursor:pointer;}
+        .btn-edit{background:rgba(0,212,255,.15);color:#00d4ff;}
+        .btn-delete{background:rgba(255,107,107,.15);color:#ff6b6b;}
+        /* MODAL */
+        .modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.7);backdrop-filter:blur(4px);z-index:1000;align-items:center;justify-content:center;}
+        .modal.open{display:flex;}
+        .modal-box{background:#1a1d2e;border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:28px;width:520px;max-width:95vw;max-height:90vh;overflow-y:auto;}
+        .modal-title{font-size:17px;font-weight:700;margin-bottom:20px;display:flex;justify-content:space-between;}
+        .form-group{margin-bottom:14px;}
+        .form-input,.form-select{width:100%;padding:10px 14px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:9px;color:inherit;font-size:14px;}
+        .form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+        /* IMAGE UPLOAD */
+        .img-upload-area{border:2px dashed rgba(255,255,255,.15);border-radius:12px;padding:20px;text-align:center;cursor:pointer;background:rgba(255,255,255,.03);transition:.2s;}
+        .img-upload-area:hover{border-color:#00d4ff;background:rgba(0,212,255,.06);}
+        .img-preview{width:100%;max-height:150px;object-fit:contain;border-radius:8px;display:none;margin-bottom:10px;}
+        @media(max-width:768px){.admin-layout{flex-direction:column;}.stats-row{grid-template-columns:1fr;}}
+        
+        /* استایل‌های اختصاصی برای بخش جدید مدیریت محتوا */
+        .card{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:12px;padding:20px;margin-bottom:16px;}
+        .card-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;}
+        .card-title{font-weight:600;display:flex;align-items:center;gap:8px;}
+    </style>
 </head>
-
 <body>
 
 <div class="admin-layout">
+    <aside class="admin-sidebar">
+        <div class="admin-logo">🤖 RoboKala<span>پنل مدیریت</span></div>
+        <button class="side-btn active" data-section="dashboard"><i class="ti ti-layout-dashboard"></i> داشبورد</button>
+        <button class="side-btn" data-section="products"><i class="ti ti-package"></i> محصولات</button>
+        
+        <!-- جایگزین شده: دکمه محتوای سایت -->
+        <button class="side-btn" data-section="content">
+            <i class="ti ti-photo"></i> محتوای سایت
+        </button>
 
-<aside class="admin-sidebar">
+        <button class="side-btn" data-section="orders"><i class="ti ti-clipboard-list"></i> سفارشات</button>
+        <button class="side-btn logout" id="adminLogoutBtn"><i class="ti ti-logout"></i> خروج</button>
+    </aside>
 
-<div class="admin-logo">
-🤖 RoboKala
-<span>پنل مدیریت</span>
-</div>
+    <main class="admin-main">
+        <!-- DASHBOARD -->
+        <section class="admin-section active" id="section-dashboard">
+            <div class="section-title"><i class="ti ti-layout-dashboard"></i> داشبورد</div>
+            <div class="stats-row">
+                <div class="stat-box"><i class="ti ti-package"></i><div><div class="stat-num" id="statProducts">—</div><div class="stat-lbl">محصول</div></div></div>
+                <div class="stat-box"><i class="ti ti-category"></i><div><div class="stat-num" id="statCategories">—</div><div class="stat-lbl">دسته‌بندی</div></div></div>
+                <div class="stat-box"><i class="ti ti-clipboard-list"></i><div><div class="stat-num" id="statOrders">—</div><div class="stat-lbl">سفارش</div></div></div>
+            </div>
+        </section>
 
-<button class="side-btn active" data-section="dashboard">
-<i class="ti ti-layout-dashboard"></i> داشبورد
-</button>
+        <!-- PRODUCTS -->
+        <section class="admin-section" id="section-products">
+            <div style="display:flex;justify-content:space-between;margin-bottom:16px">
+                <div class="section-title" style="margin:0"><i class="ti ti-package"></i> محصولات</div>
+                <button class="btn-primary" id="openAddProduct"><i class="ti ti-plus"></i> افزودن محصول</button>
+            </div>
+            <table>
+                <thead><tr><th>تصویر</th><th>نام</th><th>قیمت</th><th>موجودی</th><th>عملیات</th></tr></thead>
+                <tbody id="productsTbl"><tr><td colspan="5">در حال بارگذاری...</td></tr></tbody>
+            </table>
+        </section>
 
-<button class="side-btn" data-section="products">
-<i class="ti ti-package"></i> محصولات
-</button>
+        <!-- بخش جدید: محتوای سایت (قبل از اتمام main اضافه شد) -->
+        <section class="admin-section" id="section-content">
+            <div class="section-title"><i class="ti ti-photo"></i> محتوای سایت</div>
+            
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-title"><i class="ti ti-photo"></i> اسلایدر صفحه اصلی</span>
+                    <button class="btn-primary" id="openAddSlideBtn"><i class="ti ti-plus"></i> اسلاید جدید</button>
+                </div>
+                <table>
+                    <thead><tr><th>تصویر</th><th>عنوان</th><th>توضیح</th><th>ترتیب</th><th>عملیات</th></tr></thead>
+                    <tbody id="slides-body"><tr><td colspan="5">در حال بارگذاری...</td></tr></tbody>
+                </table>
+            </div>
 
-<button class="side-btn" data-section="categories">
-<i class="ti ti-category"></i> دسته‌بندی‌ها
-</button>
+            <div class="card">
+                <div class="card-header"><span class="card-title"><i class="ti ti-share"></i> شبکه‌های اجتماعی فوتر</span></div>
+                <div class="form-row" style="grid-template-columns:1fr 1fr 1fr auto; align-items:end; gap:10px">
+                    <div class="form-group" style="margin:0"><label>نام پلتفرم</label><input class="form-input" id="socPlatform" placeholder="اینستاگرام"></div>
+                    <div class="form-group" style="margin:0"><label>آیکون</label><input class="form-input" id="socIcon" placeholder="ti ti-brand-instagram"></div>
+                    <div class="form-group" style="margin:0"><label>آدرس صفحه</label><input class="form-input" id="socUrl" placeholder="https://instagram.com/..."></div>
+                    <button class="btn-primary" id="addSocBtn" style="height:37px"><i class="ti ti-plus"></i></button>
+                </div>
+                <div id="socList" style="margin-top:14px"></div>
+            </div>
 
-<button class="side-btn" data-section="orders">
-<i class="ti ti-clipboard-list"></i> سفارشات
-</button>
+            <!-- سوالات متداول -->
+            <div class="card" style="margin-bottom:16px">
+                <div class="card-header"><span class="card-title"><i class="ti ti-help-circle"></i> سوالات متداول (FAQ)</span></div>
+                <div class="card-body">
+                    <input type="hidden" id="editFaqId">
+                    <div class="form-group">
+                        <label id="faqFormTitle">سوال جدید</label>
+                        <input class="form-input" id="newFaqQ" placeholder="مثلاً: هزینه ارسال چقدره؟">
+                    </div>
+                    <div class="form-group">
+                        <label>جواب</label>
+                        <textarea class="form-input" id="newFaqA" rows="2"></textarea>
+                    </div>
+                    <div style="display:flex;gap:10px;">
+                        <button class="btn-primary" id="addFaqBtn"><i class="ti ti-plus"></i> ذخیره سوال</button>
+                        <button class="btn-sm btn-delete" id="cancelEditFaqBtn" style="display:none;">انصراف</button>
+                    </div>
+                    <div id="faqListBox" style="margin-top:16px;display:flex;flex-direction:column;gap:8px"></div>
+                </div>
 
-<button class="side-btn logout" id="adminLogoutBtn">
-<i class="ti ti-logout"></i> خروج
-</button>
-
-</aside>
-
-<main class="admin-main">
-
-<!-- DASHBOARD -->
-
-<section class="admin-section active" id="section-dashboard">
-
-<div class="section-title">
-<i class="ti ti-layout-dashboard"></i>
-داشبورد
-</div>
-
-<div class="stats-row">
-
-<div class="stat-box">
-<i class="ti ti-package"></i>
-<div>
-<div class="stat-num" id="statProducts">—</div>
-<div class="stat-lbl">محصول</div>
-</div>
-</div>
-
-<div class="stat-box">
-<i class="ti ti-category"></i>
-<div>
-<div class="stat-num" id="statCategories">—</div>
-<div class="stat-lbl">دسته‌بندی</div>
-</div>
-</div>
-
-<div class="stat-box">
-<i class="ti ti-clipboard-list"></i>
-<div>
-<div class="stat-num" id="statOrders">—</div>
-<div class="stat-lbl">سفارش</div>
-</div>
-</div>
-
-</div>
-
-</section>
-
-<!-- PRODUCTS -->
-
-<section class="admin-section" id="section-products">
-
-<div style="display:flex;justify-content:space-between;margin-bottom:16px">
-
-<div class="section-title" style="margin:0">
-<i class="ti ti-package"></i>
-محصولات
-</div>
-
-<button class="btn-primary" id="openAddProduct">
-<i class="ti ti-plus"></i>
-افزودن محصول
-</button>
-
-</div>
-
-<table>
-
-<thead>
-<tr>
-<th>تصویر</th>
-<th>نام</th>
-<th>قیمت</th>
-<th>موجودی</th>
-<th>عملیات</th>
-</tr>
-</thead>
-
-<tbody id="productsTbl">
-<tr>
-<td colspan="5">در حال بارگذاری...</td>
-</tr>
-</tbody>
-
-</table>
-
-</section>
-
-</main>
-
+            <!-- تنظیمات فوتر -->
+            <div class="card">
+                <div class="card-header"><span class="card-title"><i class="ti ti-settings"></i> اطلاعات فوتر</span></div>
+                <div class="form-group"><label>متن درباره ما</label><textarea class="form-input" id="setAbout"></textarea></div>
+                <div class="form-row">
+                    <div class="form-group"><label>شماره تماس</label><input class="form-input" id="setPhone"></div>
+                    <div class="form-group"><label>ایمیل</label><input class="form-input" id="setEmail"></div>
+                </div>
+                <button class="btn-primary" id="saveSettingsBtn"><i class="ti ti-check"></i> ذخیره تنظیمات</button>
+            </div>
+        </section>
+    </main>
 </div>
 
 <!-- MODAL -->
-
 <div class="modal" id="productModal">
-
-<div class="modal-box">
-
-<div class="modal-title">
-<span id="modalTitle">افزودن محصول</span>
-<button id="closeModal">×</button>
-</div>
-
-<input type="hidden" id="editProductId">
-
-<div class="form-group">
-
-<label>تصویر محصول</label>
-
-<div class="img-upload-area" id="uploadArea">
-
-<img id="imgPreview" class="img-preview">
-
-<div id="uploadHint">
-
-<i class="ti ti-photo-up" style="font-size:28px"></i>
-
-<div>کلیک کنید یا عکس را بکشید</div>
-
-</div>
-
-</div>
-
-<input type="file" id="fileInput" accept="image/*" hidden>
-
-<input class="form-input" id="pImage" placeholder="یا آدرس تصویر">
-
-</div>
-
-<div class="form-group">
-<label>نام محصول</label>
-<input class="form-input" id="pName">
-</div>
-
-<div class="form-row">
-
-<div class="form-group">
-<label>قیمت</label>
-<input class="form-input" id="pPrice" type="number">
-</div>
-
-<div class="form-group">
-<label>موجودی</label>
-<input class="form-input" id="pStock" type="number">
-</div>
-
-</div>
-
-<div class="form-group">
-<label>توضیحات</label>
-<textarea class="form-input" id="pDesc"></textarea>
-</div>
-
-<button class="btn-primary" id="saveProductBtn">
-ذخیره محصول
-</button>
-
-</div>
-
+    <div class="modal-box">
+        <div class="modal-title"><span id="modalTitle">افزودن محصول</span><button id="closeModal">×</button></div>
+        <input type="hidden" id="editProductId">
+        <div class="form-group">
+            <label>تصویر محصول</label>
+            <div class="img-upload-area" id="uploadArea">
+                <img id="imgPreview" class="img-preview">
+                <div id="uploadHint">
+                    <i class="ti ti-photo-up" style="font-size:28px"></i>
+                    <div>کلیک کنید یا عکس را بکشید</div>
+                </div>
+            </div>
+            <input type="file" id="fileInput" accept="image/*" hidden>
+            <input class="form-input" id="pImage" placeholder="یا آدرس تصویر">
+        </div>
+        <div class="form-group"><label>نام محصول</label><input class="form-input" id="pName"></div>
+        <div class="form-row">
+            <div class="form-group"><label>قیمت</label><input class="form-input" id="pPrice" type="number"></div>
+            <div class="form-group"><label>موجودی</label><input class="form-input" id="pStock" type="number"></div>
+        </div>
+        <div class="form-group"><label>توضیحات</label><textarea class="form-input" id="pDesc"></textarea></div>
+        <button class="btn-primary" id="saveProductBtn">ذخیره محصول</button>
+    </div>
 </div>
 
 <script src="js/auth-helper.js"></script>

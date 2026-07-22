@@ -4,7 +4,7 @@ from flask_jwt_extended import jwt_required, get_jwt_identity
 from werkzeug.utils import secure_filename
 
 from app.extensions import db
-from app.models.models import Product, Category, User, Order, Slide, SocialLink, SiteSetting
+from app.models.models import Product, Category, User, Order, Slide, SocialLink, SiteSetting, FAQItem
 
 admin = Blueprint('admin', __name__)
 
@@ -262,3 +262,49 @@ def update_settings():
         else: db.session.add(SiteSetting(key=key, value=value))
     db.session.commit()
     return jsonify({'message': 'تنظیمات ذخیره شد'})
+
+# ═══════════════════ FAQ ═══════════════════
+@admin.route('/faqs', methods=['GET'])
+@jwt_required()
+def get_faqs():
+    if not check_admin(): return jsonify({'error': 'دسترسی غیرمجاز'}), 403
+    items = FAQItem.query.order_by(FAQItem.order_index).all()
+    return jsonify([f.to_dict() for f in items])
+
+@admin.route('/faqs', methods=['POST'])
+@jwt_required()
+def add_faq():
+    if not check_admin(): return jsonify({'error': 'دسترسی غیرمجاز'}), 403
+    data = request.get_json()
+    if not data or not data.get('question') or not data.get('answer'):
+        return jsonify({'error': 'سوال و جواب اجباریه'}), 400
+    f = FAQItem(
+        question=data['question'], answer=data['answer'],
+        order_index=data.get('order_index', 0)
+    )
+    db.session.add(f)
+    db.session.commit()
+    return jsonify(f.to_dict()), 201
+
+@admin.route('/faqs/<int:fid>', methods=['PUT'])
+@jwt_required()
+def update_faq(fid):
+    if not check_admin(): return jsonify({'error': 'دسترسی غیرمجاز'}), 403
+    f = FAQItem.query.get(fid)
+    if not f: return jsonify({'error': 'پیدا نشد'}), 404
+    data = request.get_json()
+    if 'question' in data: f.question = data['question']
+    if 'answer' in data: f.answer = data['answer']
+    if 'order_index' in data: f.order_index = data['order_index']
+    db.session.commit()
+    return jsonify(f.to_dict())
+
+@admin.route('/faqs/<int:fid>', methods=['DELETE'])
+@jwt_required()
+def delete_faq(fid):
+    if not check_admin(): return jsonify({'error': 'دسترسی غیرمجاز'}), 403
+    f = FAQItem.query.get(fid)
+    if not f: return jsonify({'error': 'پیدا نشد'}), 404
+    db.session.delete(f)
+    db.session.commit()
+    return jsonify({'message': 'حذف شد'})

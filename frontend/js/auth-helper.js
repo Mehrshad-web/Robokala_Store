@@ -373,4 +373,30 @@ document.addEventListener('DOMContentLoaded', () => {
     updateNavUser();
     updateCartBadge();
     loadFooterContent();
+    loadFAQContent();
 });
+
+// ─── سوالات متداول داینامیک ──────────────────────────
+async function loadFAQContent() {
+    const faqList = document.querySelector('.faq-list');
+    if (!faqList) return;
+    try {
+        const res = await fetch('/api/site-content');
+        if (!res.ok) return;
+        const data = await res.json();
+        const faqs = data.faqs || [];
+        if (!faqs.length) return; // اگه چیزی تو دیتابیس نبود، همون FAQ استاتیک می‌مونه
+
+        faqList.innerHTML = faqs.map(f => `
+            <div class="faq-item">
+                <button class="faq-q">${f.question} <span>+</span></button>
+                <div class="faq-a">${f.answer}</div>
+            </div>`).join('');
+
+        faqList.querySelectorAll('.faq-item').forEach(item => {
+            item.querySelector('.faq-q')?.addEventListener('click', () => {
+                item.classList.toggle('open');
+            });
+        });
+    } catch (err) { console.error('خطا در لود FAQ:', err); }
+}
