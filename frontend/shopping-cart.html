@@ -41,7 +41,6 @@
             </div>
             <div class="search-wrapper" id="searchWrapper">
                 <input type="text" class="search-input" id="searchInput" placeholder="جستجو...">
-
                 <button class="nav-search" id="searchBtn">
                     <img src="img/search.png" alt="">
                 </button>
@@ -53,11 +52,14 @@
             <img class="img-account" src="img/account.png" alt="account">
         </div>
     </nav>
+
     <!-- cart-title -->
     <h2 class="cart-title">سبد خرید</h2>
+
     <!-- cart-page -->
     <section class="cart-page">
-        <!-- Summary-of-orders-->
+
+        <!-- Summary-of-orders -->
         <div class="cart-summary-sticky glass-card">
             <div class="cart-summary">
                 <span id="cartItemCount">0 محصول</span>
@@ -65,12 +67,12 @@
 
                 <div class="summary-row">
                     <span>قیمت کالاها</span>
-                    <span id="totalOriginal">920,000 تومان</span>
+                    <span id="totalOriginal">0 تومان</span>
                 </div>
 
                 <div class="summary-row discount">
                     <span>تخفیف</span>
-                    <span id="totalDiscount">- 200,000 تومان</span>
+                    <span id="totalDiscount">- 0 تومان</span>
                 </div>
 
                 <div class="summary-row shipping">
@@ -82,145 +84,22 @@
 
                 <div class="summary-row total">
                     <span>مبلغ قابل پرداخت</span>
-                    <span id="totalFinal">720,000 تومان</span>
+                    <span id="totalFinal">0 تومان</span>
                 </div>
 
                 <button class="checkout-btn">ادامه و پرداخت</button>
             </div>
         </div>
 
-        <!-- list-of-products -->
+        <!-- list-of-products (داینامیک از API لود میشه) -->
         <div class="cart-items">
-            <!-- product-card -->
-            <div class="cart-item glass-card" data-id="1">
-                <img class="cart-item__img" src="img/product/prod2.jpeg" alt="">
-                <div class="cart-item__info">
-                    <h4 class="cart-item__name">کیت آموزشی رباتیک پایه</h4>
-                    <div class="cart-item__badge">13% تخفیف</div>
-                    <div class="cart-item__prices">
-                        <span class="cart-item__old">800,000 تومان</span>
-                        <span class="cart-item__price">600,000 تومان</span>
-                    </div>
-                </div>
-                <div class="cart-item__actions">
-                    <div class="cart-counter-wrap">
-                        <button class="cart-counter-btn decrease">
-                            <i class="ti ti-minus"></i>
-                        </button>
-                        <span class="cart-counter-num">1</span>
-                        <button class="cart-counter-btn increase">
-                            <i class="ti ti-plus"></i>
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="cart-item glass-card" data-id="2">
-                <img class="cart-item__img" src="img/product/prod1.jpeg" alt="">
-                <div class="cart-item__info">
-                    <h4 class="cart-item__name">سنسور اولتراسونیک HC-SR04</h4>
-                    <div class="cart-item__prices">
-                        <span class="cart-item__price">120,000 تومان</span>
-                    </div>
-                </div>
-                <div class="cart-item__actions">
-                    <div class="cart-counter-wrap">
-                        <button class="cart-counter-btn decrease">
-                            <i class="ti ti-minus"></i>
-                        </button>
-                        <span class="cart-counter-num">2</span>
-                        <button class="cart-counter-btn increase">
-                            <i class="ti ti-plus"></i>
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="cart-item glass-card" data-id="3">
-                <img class="cart-item__img" src="img/product/prod4.jpeg" alt="">
-                <div class="cart-item__info">
-                    <h4 class="cart-item__name">سنسور اولتراسونیک HC-SR04</h4>
-                    <div class="cart-item__prices">
-                        <span class="cart-item__price">120,000 تومان</span>
-                    </div>
-                </div>
-                <div class="cart-item__actions">
-                    <div class="cart-counter-wrap">
-                        <button class="cart-counter-btn decrease">
-                            <i class="ti ti-minus"></i>
-                        </button>
-                        <span class="cart-counter-num">2</span>
-                        <button class="cart-counter-btn increase">
-                            <i class="ti ti-plus"></i>
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="cart-item glass-card" data-id="4">
-                <img class="cart-item__img" src="img/product/prod5.jpeg" alt="">
-                <div class="cart-item__info">
-                    <h4 class="cart-item__name">سنسور اولتراسونیک HC-SR04</h4>
-                    <div class="cart-item__prices">
-                        <span class="cart-item__price">120,000 تومان</span>
-                    </div>
-                </div>
-                <div class="cart-item__actions">
-                    <div class="cart-counter-wrap">
-                        <button class="cart-counter-btn decrease">
-                            <i class="ti ti-minus"></i>
-                        </button>
-                        <span class="cart-counter-num">2</span>
-                        <button class="cart-counter-btn increase">
-                            <i class="ti ti-plus"></i>
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="cart-item glass-card" data-id="5">
-                <img class="cart-item__img" src="img/product/prod8.jpeg" alt="">
-                <div class="cart-item__info">
-                    <h4 class="cart-item__name">سنسور اولتراسونیک HC-SR04</h4>
-                    <div class="cart-item__prices">
-                        <span class="cart-item__price">120,000 تومان</span>
-                    </div>
-                </div>
-                <div class="cart-item__actions">
-                    <div class="cart-counter-wrap">
-                        <button class="cart-counter-btn decrease">
-                            <i class="ti ti-minus"></i>
-                        </button>
-                        <span class="cart-counter-num">2</span>
-                        <button class="cart-counter-btn increase">
-                            <i class="ti ti-plus"></i>
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="cart-item glass-card" data-id="6">
-                <img class="cart-item__img" src="img/product/prod7.jpeg" alt="">
-                <div class="cart-item__info">
-                    <h4 class="cart-item__name">سنسور اولتراسونیک HC-SR04</h4>
-                    <div class="cart-item__prices">
-                        <span class="cart-item__price">120,000 تومان</span>
-                    </div>
-                </div>
-                <div class="cart-item__actions">
-                    <div class="cart-counter-wrap">
-                        <button class="cart-counter-btn decrease">
-                            <i class="ti ti-minus"></i>
-                        </button>
-                        <span class="cart-counter-num">2</span>
-                        <button class="cart-counter-btn increase">
-                            <i class="ti ti-plus"></i>
-                        </button>
-                    </div>
-                </div>
+            <div style="text-align:center;padding:40px;opacity:.6">
+                در حال بارگذاری...
             </div>
         </div>
+
     </section>
+
     <!-- Suggestion purchase -->
     <section class="bs-wrap">
         <div class="bs-section">
@@ -230,180 +109,48 @@
             <button class="bs-arrow bs-next">›</button>
             <button class="bs-arrow bs-prev">‹</button>
             <div class="bs-scroll" id="bestSellerScroll">
-                <div class="bs-grid">
-                    <div class="product-card">
-                        <div class="product-card__badge">13%</div>
-                        <div class="product-card__img">
-                            <img src="img/product/prod1.jpeg" alt="">
-                        </div>
-                        <div class="product-card__name">کیت آموزشی رباتیک پایه</div>
-                        <div class="product-card__footer">
-                            <div class="product-card__price-box">
-                                <div class="product-card__old ">800,000</div>
-                                <div class="product-card__price">600,000 <span class="product-card__unit">تومان</span>
-                                </div>
-                            </div>
-                            <div class="product-card__cart"><i class="ti ti-shopping-cart"></i></div>
-                        </div>
-                    </div>
-                    <div class="product-card">
-                        <div class="product-card__badge">13%</div>
-                        <div class="product-card__img">
-                            <img src="img/product/prod2.jpeg" alt="">
-                        </div>
-                        <div class="product-card__name">کیت آموزشی رباتیک پایه</div>
-                        <div class="product-card__footer">
-                            <div class="product-card__price-box">
-                                <div class="product-card__old ">800,000</div>
-                                <div class="product-card__price">600,000 <span class="product-card__unit">تومان</span>
-                                </div>
-                            </div>
-                            <div class="product-card__cart"><i class="ti ti-shopping-cart"></i></div>
-                        </div>
-                    </div>
-                    <div class="product-card">
-                        <div class="product-card__img"><img src="img/product/prod3.jpeg" alt=""></div>
-                        <div class="product-card__name">کیت آموزشی رباتیک پایه</div>
-
-                        <div class="product-card__footer">
-                            <div class="product-card__price-box">
-                                <!-- <div class="product-card__old ">800,000</div> -->
-                                <div class="product-card__price">600,000 <span class="product-card__unit">تومان</span>
-                                </div>
-                            </div>
-                            <div class="product-card__cart"><i class="ti ti-shopping-cart"></i></div>
-                        </div>
-                    </div>
-                    <div class="product-card">
-                        <div class="product-card__img"><img src="img/product/prod4.jpeg" alt=""></div>
-                        <div class="product-card__name">کیت آموزشی رباتیک پایه</div>
-                        <div class="product-card__footer">
-                            <div class="product-card__price-box">
-                                <!-- <div class="product-card__old ">800,000</div> -->
-                                <div class="product-card__price">600,000 <span class="product-card__unit">تومان</span>
-                                </div>
-                            </div>
-                            <div class="product-card__cart"><i class="ti ti-shopping-cart"></i></div>
-                        </div>
-                    </div>
-                    <div class="product-card">
-                        <div class="product-card__img"><img src="img/product/prod5.jpeg" alt=""></div>
-                        <div class="product-card__name">کیت آموزشی رباتیک پایه</div>
-
-                        <div class="product-card__footer">
-                            <div class="product-card__price-box">
-                                <!-- <div class="product-card__old ">800,000</div> -->
-                                <div class="product-card__price">600,000 <span class="product-card__unit">تومان</span>
-                                </div>
-                            </div>
-                            <div class="product-card__cart"><i class="ti ti-shopping-cart"></i></div>
-                        </div>
-                    </div>
-                    <div class="product-card">
-                        <div class="product-card__badge">13%</div>
-                        <div class="product-card__img"><img src="img/product/prod7.jpeg" alt=""></div>
-                        <div class="product-card__name">کیت آموزشی رباتیک پایه</div>
-                        <div class="product-card__footer">
-                            <div class="product-card__price-box">
-                                <div class="product-card__old ">800,000</div>
-                                <div class="product-card__price">600,000 <span class="product-card__unit">تومان</span>
-                                </div>
-                            </div>
-                            <div class="product-card__cart"><i class="ti ti-shopping-cart"></i></div>
-                        </div>
-                    </div>
-                    <div class="product-card">
-                        <div class="product-card__badge">13%</div>
-                        <div class="product-card__img"><img src="img/product/prod1.jpeg" alt=""></div>
-                        <div class="product-card__name">پکیج قطعات الکترونیک کامل</div>
-
-                        <div class="product-card__footer">
-                            <div class="product-card__price-box">
-                                <div class="product-card__old ">800,000</div>
-                                <div class="product-card__price">600,000 <span class="product-card__unit">تومان</span>
-                                </div>
-                            </div>
-                            <div class="product-card__cart"><i class="ti ti-shopping-cart"></i></div>
-                        </div>
-                    </div>
-                    <div class="product-card">
-                        <div class="product-card__badge">13%</div>
-                        <div class="product-card__img"><img src="img/product/prod2.jpeg" alt=""></div>
-                        <div class="product-card__name">ست آموزشی آردوینو حرفه‌ای</div>
-                        <div class="product-card__footer">
-                            <div class="product-card__price-box">
-                                <div class="product-card__old ">800,000</div>
-                                <div class="product-card__price">600,000 <span class="product-card__unit">تومان</span>
-                                </div>
-                            </div>
-                            <div class="product-card__cart"><i class="ti ti-shopping-cart"></i></div>
-                        </div>
-                    </div>
-                    <div class="product-card">
-                        <div class="product-card__img"><img src="img/product/prod3.jpeg" alt=""></div>
-                        <div class="product-card__name">ابزار کامل ساخت پروژه</div>
-                        <div class="product-card__footer">
-                            <div class="product-card__price-box">
-                                <!-- <div class="product-card__old ">800,000</div> -->
-                                <div class="product-card__price">600,000 <span class="product-card__unit">تومان</span>
-                                </div>
-                            </div>
-                            <div class="product-card__cart"><i class="ti ti-shopping-cart"></i></div>
-                        </div>
-                    </div>
-                </div>
+                <div class="bs-grid" id="suggestGrid"></div>
             </div>
         </div>
     </section>
-    <!---->
+
     <div class="mt-5"></div>
+
     <!-- track -->
     <div class="bar-wrap">
         <div class="fade-l"></div>
         <div class="fade-r"></div>
         <div class="bar-track" id="track"></div>
     </div>
+
     <!-- FAQ -->
     <div class="faq-wrap">
-
         <div class="faq-header">
             <div class="faq-title">سوالات متداول</div>
             <div class="faq-sub">پاسخ سوالات پرتکرار کاربران</div>
         </div>
-
         <div class="faq-list">
-
             <div class="faq-item">
                 <button class="faq-q">چطور سفارش ثبت کنم؟ <span>+</span></button>
-                <div class="faq-a">
-                    بعد از انتخاب محصول، وارد سبد خرید شده و پرداخت را انجام دهید.
-                </div>
+                <div class="faq-a">بعد از انتخاب محصول، وارد سبد خرید شده و پرداخت را انجام دهید.</div>
             </div>
-
             <div class="faq-item">
                 <button class="faq-q">مدت ارسال چقدر است؟ <span>+</span></button>
-                <div class="faq-a">
-                    سفارش‌ها معمولاً بین ۲۴ تا ۴۸ ساعت ارسال می‌شوند.
-                </div>
+                <div class="faq-a">سفارش‌ها معمولاً بین ۲۴ تا ۴۸ ساعت ارسال می‌شوند.</div>
             </div>
-
             <div class="faq-item">
                 <button class="faq-q">آیا تضمین کیفیت وجود دارد؟ <span>+</span></button>
-                <div class="faq-a">
-                    بله. ما ارائه دهنده بهترین کیفیت در بازار هستیم
-                </div>
+                <div class="faq-a">بله. ما ارائه دهنده بهترین کیفیت در بازار هستیم</div>
             </div>
-
         </div>
-
     </div>
+
     <!-- footer -->
     <footer class="site-footer">
         <div class="footer-wrap">
-            <!-- about -->
             <div class="f-col">
                 <div class="f-title">RoboKala</div>
-                <p class="f-text">
+                <p class="f-text" id="footerAbout">
                     مرجع فروش قطعات رباتیک و آموزش‌های تخصصی میکروکنترلر و الکترونیک
                 </p>
                 <div class="f__badges">
@@ -412,15 +159,12 @@
                     <div>✔ پشتیبانی ۲۴/۷</div>
                 </div>
             </div>
-            <!-- links -->
             <div class="f-col">
                 <div class="f-title">لینک‌های سریع</div>
-                <a href="#">خانه</a>
-                <a href="#">محصولات</a>
-                <a href="#">تخفیف‌ها</a>
-                <a href="#">مقالات</a>
+                <a href="/">خانه</a>
+                <a href="/products-explore.html">محصولات</a>
+                <a href="/products-explore.html?category=آموزشی">تخفیف‌ها</a>
             </div>
-            <!-- learning -->
             <div class="f-col">
                 <div class="f-title">آموزش‌ها</div>
                 <a href="#">Arduino</a>
@@ -428,40 +172,147 @@
                 <a href="#">رباتیک</a>
                 <a href="#">پروژه‌ها</a>
             </div>
-            <!-- contact -->
             <div class="f-col">
                 <div class="f-title">ارتباط با ما</div>
                 <div class="f-contact">
-                    <div>📞 0912xxxxxxx</div>
-                    <div>✉ info@robokala.ir</div>
+                    <div id="footerPhone">📞 0912xxxxxxx</div>
+                    <div id="footerEmail">✉ info@robokala.ir</div>
                 </div>
-                <div class="f-social">
-                    <span>Social-1</span>
-                    <span>Social-2</span>
-                    <span>Social-3</span>
-                </div>
+                <div class="f-social" id="footerSocial"></div>
             </div>
         </div>
-        <div class="f-bottom">
+        <div class="f-bottom" id="footerCopyright">
             © 2026 RoboKala - All rights reserved
         </div>
         <div class="site-credit" dir="ltr">
             Designed with ❤️ by
-            <span><a href="https://sinafiruzian.ir/">Sinos60!</a></span> | Backend Powered by <span><a href="https://mehrshad-web.github.io/Profile/" target="_blank">Mehrshad</a></span>
-
+            <span><a href="https://sinafiruzian.ir/">Sinos60!</a></span> | Backend Powered by
+            <span><a href="https://mehrshad-web.github.io/Profile/" target="_blank">Mehrshad</a></span>
         </div>
     </footer>
-    <!-- ==================== script ==================== -->
+
+    <!-- ═══════════════ CHECKOUT MODAL ═══════════════ -->
+    <div id="checkoutModal" style="
+        display:none; position:fixed; inset:0;
+        background:rgba(0,0,0,.75); backdrop-filter:blur(6px);
+        z-index:9000; align-items:center; justify-content:center; padding:20px;
+    ">
+        <div style="
+            background:#1a1d2e; border:1px solid rgba(255,255,255,.1);
+            border-radius:16px; padding:28px; width:520px;
+            max-width:100%; max-height:90vh; overflow-y:auto;
+            font-family:'Segoe UI',Tahoma,sans-serif; direction:rtl;
+        ">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:22px">
+                <h3 style="font-size:17px;font-weight:700;color:#e6edf3">
+                    🚚 اطلاعات ارسال
+                </h3>
+                <button id="closeCheckoutModal" style="
+                    background:none;border:none;color:#8b949e;
+                    font-size:24px;cursor:pointer;line-height:1;
+                ">×</button>
+            </div>
+
+            <form id="checkoutForm" autocomplete="on">
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+
+                    <div style="grid-column:1/-1">
+                        <label style="display:block;font-size:12px;color:#8b949e;margin-bottom:6px">
+                            نام گیرنده <span style="color:#f85149">*</span>
+                        </label>
+                        <input id="chkName" name="recipient_name" autocomplete="name"
+                            style="width:100%;padding:10px 13px;background:rgba(255,255,255,.06);
+                                   border:1px solid rgba(255,255,255,.12);border-radius:9px;
+                                   color:#e6edf3;font-size:13px;outline:none;font-family:inherit"
+                            placeholder="نام و نام خانوادگی">
+                    </div>
+
+                    <div style="grid-column:1/-1">
+                        <label style="display:block;font-size:12px;color:#8b949e;margin-bottom:6px">
+                            شماره موبایل <span style="color:#f85149">*</span>
+                        </label>
+                        <input id="chkPhone" name="recipient_phone" type="tel" autocomplete="tel"
+                            style="width:100%;padding:10px 13px;background:rgba(255,255,255,.06);
+                                   border:1px solid rgba(255,255,255,.12);border-radius:9px;
+                                   color:#e6edf3;font-size:13px;outline:none;font-family:inherit"
+                            placeholder="09xxxxxxxxx">
+                    </div>
+
+                    <div>
+                        <label style="display:block;font-size:12px;color:#8b949e;margin-bottom:6px">
+                            استان <span style="color:#f85149">*</span>
+                        </label>
+                        <input id="chkProvince" name="province"
+                            style="width:100%;padding:10px 13px;background:rgba(255,255,255,.06);
+                                   border:1px solid rgba(255,255,255,.12);border-radius:9px;
+                                   color:#e6edf3;font-size:13px;outline:none;font-family:inherit"
+                            placeholder="مثلاً: تهران">
+                    </div>
+
+                    <div>
+                        <label style="display:block;font-size:12px;color:#8b949e;margin-bottom:6px">
+                            شهر <span style="color:#f85149">*</span>
+                        </label>
+                        <input id="chkCity" name="city"
+                            style="width:100%;padding:10px 13px;background:rgba(255,255,255,.06);
+                                   border:1px solid rgba(255,255,255,.12);border-radius:9px;
+                                   color:#e6edf3;font-size:13px;outline:none;font-family:inherit"
+                            placeholder="مثلاً: تهران">
+                    </div>
+
+                    <div style="grid-column:1/-1">
+                        <label style="display:block;font-size:12px;color:#8b949e;margin-bottom:6px">
+                            آدرس دقیق <span style="color:#f85149">*</span>
+                        </label>
+                        <textarea id="chkAddress" name="address" rows="3"
+                            style="width:100%;padding:10px 13px;background:rgba(255,255,255,.06);
+                                   border:1px solid rgba(255,255,255,.12);border-radius:9px;
+                                   color:#e6edf3;font-size:13px;outline:none;resize:vertical;
+                                   font-family:inherit"
+                            placeholder="خیابان، کوچه، پلاک، واحد"></textarea>
+                    </div>
+
+                    <div>
+                        <label style="display:block;font-size:12px;color:#8b949e;margin-bottom:6px">
+                            کد پستی
+                        </label>
+                        <input id="chkPostal" name="postal_code" inputmode="numeric"
+                            style="width:100%;padding:10px 13px;background:rgba(255,255,255,.06);
+                                   border:1px solid rgba(255,255,255,.12);border-radius:9px;
+                                   color:#e6edf3;font-size:13px;outline:none;font-family:inherit"
+                            placeholder="10 رقم">
+                    </div>
+
+                </div>
+
+                <div id="checkoutErr" style="
+                    display:none; margin-top:14px; padding:10px 14px;
+                    background:rgba(248,81,73,.1); border:1px solid rgba(248,81,73,.2);
+                    border-radius:8px; color:#f85149; font-size:13px;
+                "></div>
+
+                <div style="display:flex;gap:10px;margin-top:20px;justify-content:flex-end">
+                    <button type="button" id="cancelCheckoutBtn" style="
+                        background:rgba(255,255,255,.07);border:none;color:#8b949e;
+                        padding:10px 20px;border-radius:9px;cursor:pointer;font-size:13px;
+                    ">انصراف</button>
+                    <button type="submit" id="payNowBtn" style="
+                        background:#00d4ff;border:none;color:#000;padding:10px 24px;
+                        border-radius:9px;cursor:pointer;font-size:14px;font-weight:700;
+                        display:flex;align-items:center;gap:6px;
+                    ">💳 پرداخت</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- ═══════════════════════════════════════ -->
+
+    <!-- scripts -->
     <script src="js/auth-helper.js"></script>
-    <!-- nav & searchBar -->
     <script src="components/js/navbar.js"></script>
-    <!-- shopping-cart ===== need-api -->
     <script src="js/shopping-cart/shopping-cart.js"></script>
-    <!-- tracker -->
     <script src="components/js/tracker.js"></script>
-    <!-- recent purchase -->
     <script src="components/js/slider.js"></script>
-    <!-- FAQ -->
     <script src="components/js/faq.js"></script>
 </body>
 
